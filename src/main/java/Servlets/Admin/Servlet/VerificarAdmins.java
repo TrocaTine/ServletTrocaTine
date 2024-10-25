@@ -24,7 +24,7 @@ public class VerificarAdmins extends HttpServlet {
         } else {
             // Login incorreto, redireciona para a página de login com uma mensagem de erro
             request.setAttribute("erroLogin", "Usuário ou senha incorretos");
-            request.getRequestDispatcher("login2.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
 
         }
     }
