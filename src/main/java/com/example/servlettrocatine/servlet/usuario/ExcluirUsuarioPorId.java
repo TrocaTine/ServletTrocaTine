@@ -1,4 +1,4 @@
 package com.example.servlettrocatine.servlet.usuario;
 
-public class excluirUsuarioPorId {
+public class ExcluirUsuarioPorId {
 }

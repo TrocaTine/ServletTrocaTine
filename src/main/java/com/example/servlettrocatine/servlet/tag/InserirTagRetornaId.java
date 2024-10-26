@@ -1,4 +1,4 @@
 package com.example.servlettrocatine.servlet.tag;
 
-public class inserirTag {
+public class InserirTagRetornaId {
 }

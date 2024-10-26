@@ -45,7 +45,7 @@
 </head>
 <body>
 <h1>Excluir Categoria</h1>
-<form action="${pageContext.request.contextPath}/excluirPorID" method="post">
+<form action="${pageContext.request.contextPath}/ExcluirPorID" method="post">
     <label for="id">ID:</label>
     <input type="number" id="id" name="id" required><br>
     <input type="submit" value="Excluir Categoria">

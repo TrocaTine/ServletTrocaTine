@@ -86,7 +86,7 @@ public class ComunidadeDAO {
                             rs.getString("nome"),
                             rs.getString("criador"),
                             rs.getString("descricao"),
-                            rs.getInt("quantidade_integrantes"),
+                            rs.getInt("qnt_integrantes"),
                             rs.getInt("foto_perfil")
                     );
                 }
@@ -104,7 +104,6 @@ public class ComunidadeDAO {
     public List<Comunidade> buscarComunidadePorNome(String nome) throws SQLException {
         String sql = "SELECT * FROM comunidade WHERE nome = ?";
         List<Comunidade> comunidades = new ArrayList<>();
-
         try {
             Connection conn = conexao.conectar();
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -113,14 +112,14 @@ public class ComunidadeDAO {
                 // Executa a consulta e cria uma lista de objetos Comunidade
                 ResultSet rs = pstmt.executeQuery();
                 while (rs.next()) {
-                    comunidades.add(new Comunidade(
-                            rs.getInt("id"),
-                            rs.getString("nome"),
-                            rs.getString("criador"),
-                            rs.getString("descricao"),
-                            rs.getInt("quantidade_integrantes"),
-                            rs.getInt("foto_perfil")
-                    ));
+                    Comunidade comunidade = new Comunidade();
+                    comunidade.setId(rs.getInt("id"));
+                    comunidade.setNome(rs.getString("nome"));
+                    comunidade.setCriador(rs.getString("criador"));
+                    comunidade.setDescricao(rs.getString("descricao"));
+                    comunidade.setQntIntegrantes(rs.getInt("qnt_integrantes"));
+                    comunidade.setFotoPerfil(rs.getInt("foto_perfil"));
+                    comunidades.add(comunidade);
                 }
             }
         } catch (SQLException e) {
@@ -172,5 +171,35 @@ public class ComunidadeDAO {
         } finally {
             conexao.desconectar();
         }
+    }
+
+    public List<Comunidade> listarTodasComunidades() throws SQLException {
+        String sql = "SELECT * FROM comunidade";
+        List<Comunidade> comunidades = new ArrayList<>();
+
+        try {
+            Connection conn = conexao.conectar();
+            try (PreparedStatement pstmt = conn.prepareStatement(sql);
+                 ResultSet rs = pstmt.executeQuery()) {
+
+                // Executa a consulta e cria uma lista de objetos Comunidade
+                while (rs.next()) {
+                    comunidades.add(new Comunidade(
+                            rs.getInt("id"),
+                            rs.getString("nome"),
+                            rs.getString("criador"),
+                            rs.getString("descricao"),
+                            rs.getInt("qnt_integrantes"),
+                            rs.getInt("foto_perfil")
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conexao.desconectar();
+        }
+
+        return comunidades; // Retorna a lista de comunidades
     }
 }

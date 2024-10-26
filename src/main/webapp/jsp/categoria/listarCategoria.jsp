@@ -91,10 +91,10 @@
     %>
 </table>
 <div class="button-container">
-    <button class="button" onclick="location.href='jsp/categoria/adicionarCategoria.jsp'">Adicionar Categoria</button>
-    <button class="button" onclick="location.href='jsp/categoria/excluirCategoria.jsp'">Excluir Categoria</button>
-    <button class="button" onclick="location.href='jsp/categoria/buscarCategoria.jsp'">Buscar Categoria</button>
-    <button class="button" onclick="location.href='jsp/categoria/editarCategoria.jsp'">Editar Categoria</button>
+    <button class="button" onclick="location.href='jsp/categoria/AdicionarCategoria.jsp'">Adicionar Categoria</button>
+    <button class="button" onclick="location.href='jsp/categoria/ExcluirCategoria.jsp'">Excluir Categoria</button>
+    <button class="button" onclick="location.href='jsp/categoria/BuscarCategoria.jsp'">Buscar Categoria</button>
+    <button class="button" onclick="location.href='jsp/categoria/EditarCategoria.jsp'">Editar Categoria</button>
 </div>
 </body>
 </html>

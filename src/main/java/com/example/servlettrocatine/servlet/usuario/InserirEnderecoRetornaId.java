@@ -1,4 +1,5 @@
 package com.example.servlettrocatine.servlet.usuario;
 
-public class inserirUsuario {
+public class InserirEnderecoRetornaId
+{
 }

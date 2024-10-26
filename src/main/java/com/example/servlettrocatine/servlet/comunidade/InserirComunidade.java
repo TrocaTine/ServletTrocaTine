@@ -10,11 +10,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet(name = "inserirComunidade", value = "/inserirComunidade")
 @MultipartConfig(maxFileSize = 16177215)
-public class inserirComunidade extends HttpServlet {
+public class InserirComunidade extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ComunidadeDAO comunidadeDAO = new ComunidadeDAO();
         int id = Integer.parseInt(request.getParameter("id"));

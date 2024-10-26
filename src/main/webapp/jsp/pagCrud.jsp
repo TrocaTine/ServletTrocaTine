@@ -46,7 +46,7 @@
 <div class="button-container">
     <a href="../categoria" >Categoria</a>
     <a href="adm" >Administrador</a>
-    <a href="comunidade" >Comunidade</a>
+    <a href="../comunidade" >Comunidade</a>
     <a href="tag" >Tag</a>
     <a href="cadastro" >Cadastro</a>
 </div>

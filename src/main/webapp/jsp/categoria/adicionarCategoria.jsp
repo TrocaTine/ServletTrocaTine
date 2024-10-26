@@ -45,7 +45,7 @@
 </head>
 <body>
 <h1>Adicionar Categoria</h1>
-<form action="${pageContext.request.contextPath}/adicionarPorID" method="post">
+<form action="${pageContext.request.contextPath}/AdicionarPorID" method="post">
   <label for="nome">Nome:</label>
   <input type="text" id="nome" name="nome" required><br>
   <label for="id">ID:</label>

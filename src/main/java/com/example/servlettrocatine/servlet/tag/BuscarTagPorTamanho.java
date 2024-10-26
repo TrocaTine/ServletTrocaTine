@@ -1,4 +1,4 @@
 package com.example.servlettrocatine.servlet.tag;
 
-public class buscarTagPorId {
+public class BuscarTagPorTamanho {
 }

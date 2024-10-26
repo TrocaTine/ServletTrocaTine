@@ -66,7 +66,7 @@
 <h1>Buscar Categoria por ID</h1>
 
 <!-- Formulário de busca -->
-<form action="${pageContext.request.contextPath}/buscarPorID" method="GET">
+<form action="${pageContext.request.contextPath}/BuscarPorID" method="GET">
     <input type="text" name="id" placeholder="Digite o ID da categoria" required>
     <input type="submit" value="Buscar">
 </form>
