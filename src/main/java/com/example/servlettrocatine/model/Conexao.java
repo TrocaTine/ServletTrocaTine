@@ -1,4 +1,4 @@
-package com.example.servlettrocatine.model;
+package com.example.servlettrocatine.Model;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
@@ -13,18 +13,16 @@ public class Conexao {
     public Connection conectar() {
         try {
             // Obtendo os valores das variáveis de ambiente
-            Dotenv dotenv = Dotenv.configure().directory("C:\\Users\\carlosgonzalez-ieg\\IdeaProjects\\ServletTrocaTine\\.env").load();
-
-            // Informando qual driver de conexão será utilizado pelo DriverManager
-            Class.forName("org.postgresql.Driver");
+            Dotenv dotenv = Dotenv.configure().directory("C:\\Users\\lucastaxiotti-ieg\\OneDrive - Instituto Germinare\\Área de Trabalho\\ServletTrocaTine\\.env").load();
 
             // Obtendo as variáveis de ambiente do arquivo .env
-            String driver = dotenv.get("org.postgresql.Driver");
+            String driver = dotenv.get("DB_DRIVER");
             String url = dotenv.get("DB_URL");
             String user = dotenv.get("DB_USER");
             String password = dotenv.get("DB_PASSWORD");
 
-
+            // Informando qual driver de conexão será utilizado pelo DriverManager
+            Class.forName("org.postgresql.Driver");
 
             // Criando a conexão
             conn = DriverManager.getConnection(url, user, password);

@@ -19,6 +19,7 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding:0;">
+
         <div class="container-fluid" style="background-color: #55aca0; padding: 10px">
             <img src="../Assets/Logo-nuvem.png" class="navbar-brand logo" alt="" />
             <button
@@ -51,7 +52,7 @@
         <h1 class="text-center mt-4">Login da Área Restrita</h1>
         <div class="d-flex justify-content-center">
             <!-- Formulário de login -->
-            <form class="forms" action="LoginServlet" method="post" style="margin-top: 30px">
+            <form class="forms" action="../VerificarAdms" method="post" style="margin-top: 30px">
                 <div class="mb-3">
                     <label for="user" class="form-label">Nome do Usuário</label>
                     <!-- Campo de texto para o usuário -->

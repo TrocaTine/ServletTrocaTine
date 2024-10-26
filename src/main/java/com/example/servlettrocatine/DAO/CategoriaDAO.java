@@ -3,8 +3,8 @@ package com.example.servlettrocatine.DAO;
 
 
 
-import com.example.servlettrocatine.model.Categoria;
-import com.example.servlettrocatine.model.Conexao;
+import com.example.servlettrocatine.Model.Categoria;
+import com.example.servlettrocatine.Model.Conexao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

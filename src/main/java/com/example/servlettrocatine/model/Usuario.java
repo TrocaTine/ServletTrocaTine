@@ -1,4 +1,4 @@
-package com.example.servlettrocatine.model;
+package com.example.servlettrocatine.Model;
 
 public class Usuario {
     private int id;

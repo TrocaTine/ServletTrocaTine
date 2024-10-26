@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/LoginServlet")
+@WebServlet(value = "/VerificarAdms")
 public class VerificarAdmins extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Receber parâmetros do formulário

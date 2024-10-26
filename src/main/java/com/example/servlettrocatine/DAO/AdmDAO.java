@@ -2,8 +2,8 @@ package com.example.servlettrocatine.DAO;
 
 
 
-import com.example.servlettrocatine.model.Adm;
-import com.example.servlettrocatine.model.Conexao;
+import com.example.servlettrocatine.Model.Adm;
+import com.example.servlettrocatine.Model.Conexao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
