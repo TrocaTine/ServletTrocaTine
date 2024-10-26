@@ -1,7 +1,7 @@
 package com.example.servlettrocatine.servlet.comunidade;
 
 import com.example.servlettrocatine.DAO.ComunidadeDAO;
-import com.example.servlettrocatine.Model.Comunidade;
+import com.example.servlettrocatine.model.Comunidade;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;

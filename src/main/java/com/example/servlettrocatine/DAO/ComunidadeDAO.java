@@ -2,8 +2,8 @@ package com.example.servlettrocatine.DAO;
 
 
 
-import com.example.servlettrocatine.Model.Comunidade;
-import com.example.servlettrocatine.Model.Conexao;
+import com.example.servlettrocatine.model.Comunidade;
+import com.example.servlettrocatine.model.Conexao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

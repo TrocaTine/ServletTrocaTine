@@ -1,9 +1,9 @@
 package com.example.servlettrocatine.DAO;
 
 
-import com.example.servlettrocatine.Model.Conexao;
-import com.example.servlettrocatine.Model.Endereco;
-import com.example.servlettrocatine.Model.Usuario;
+import com.example.servlettrocatine.model.Conexao;
+import com.example.servlettrocatine.model.Endereco;
+import com.example.servlettrocatine.model.Usuario;
 
 import java.sql.*;
 

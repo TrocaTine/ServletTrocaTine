@@ -3,27 +3,30 @@ package com.example.servlettrocatine.DAO;
 
 
 
-import com.example.servlettrocatine.Model.Categoria;
-import com.example.servlettrocatine.Model.Conexao;
+import com.example.servlettrocatine.model.Categoria;
+import com.example.servlettrocatine.model.Conexao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriaDAO {
     // Instância da classe Conexao para gerenciar a conexão com o banco de dados
     Conexao conexao = new Conexao();
 
     // Método para inserir uma nova categoria no banco de dados
-    public boolean inserirCategoria(Categoria categoria) throws SQLException {
-        String sql = "INSERT INTO categoria (tipo_produto) VALUES (?)";
+    public boolean inserirCategoria(String nome, int id) throws SQLException {
+        String sql = "INSERT INTO tipo_produto (tipo_produto, id) VALUES (?, ?)";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // Prepara e executa a instrução SQL para inserir a categoria
-            pstmt.setString(1, categoria.getTipoProduto());
+            pstmt.setString(1, nome);
+            pstmt.setInt(2, id);
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -33,14 +36,14 @@ public class CategoriaDAO {
     }
 
     // Método para editar uma categoria existente com base no ID
-    public boolean editarCategoriaPorId(int id, Categoria categoriaAtualizada) throws SQLException {
-        String sql = "UPDATE categoria SET tipo_produto = ? WHERE id = ?";
+    public boolean editarCategoriaPorId(String nome, int id) throws SQLException {
+        String sql = "UPDATE tipo_produto SET tipo_produto = ? WHERE id = ?";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // Define os novos valores para o tipo de produto
-            pstmt.setString(1, categoriaAtualizada.getTipoProduto());
+            pstmt.setString(1, nome);
             pstmt.setInt(2, id);
 
             // Executa a atualização e verifica se linhas foram afetadas
@@ -54,7 +57,7 @@ public class CategoriaDAO {
 
     // Método para buscar uma categoria no banco de dados pelo ID
     public Categoria buscarCategoriaPorId(int id) throws SQLException {
-        String sql = "SELECT * FROM categoria WHERE id = ?";
+        String sql = "SELECT * FROM tipo_produto WHERE id = ?";
 
         Categoria categoria = null;
 
@@ -80,7 +83,7 @@ public class CategoriaDAO {
 
     // Método para excluir uma categoria do banco de dados pelo ID
     public boolean excluirCategoriaPorId(int id) throws SQLException {
-        String sql = "DELETE FROM categoria WHERE id = ?";
+        String sql = "DELETE FROM tipo_produto WHERE id = ?";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -94,5 +97,23 @@ public class CategoriaDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public List<Categoria> listarCategorias() throws SQLException {
+        String sql = "SELECT * FROM tipo_produto";
+        List<Categoria> categorias = new ArrayList<>();
+        try (Connection conn = conexao.conectar();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String tipoProduto = rs.getString("tipo_produto");
+                Categoria categoria = new Categoria(id, tipoProduto);
+                categorias.add(categoria);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return categorias;
     }
 }

@@ -1,4 +1,4 @@
 package com.example.servlettrocatine.servlet.adm;
 
-public class listarTodosAdms {
+public class ListarTodosAdms {
 }

@@ -1,4 +1,4 @@
-package com.example.servlettrocatine.Model;
+package com.example.servlettrocatine.model;
 
 public class Endereco {
     private int id;
