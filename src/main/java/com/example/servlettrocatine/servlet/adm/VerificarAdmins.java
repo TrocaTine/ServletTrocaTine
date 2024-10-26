@@ -19,8 +19,9 @@ public class VerificarAdmins extends HttpServlet {
             response.sendRedirect("AreaRestrita/dashboard.html");
         } else {
             request.setAttribute("erroLogin", "Usuário ou senha incorretos");
-            request.getRequestDispatcher("login2.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
 
         }
+
     }
 }

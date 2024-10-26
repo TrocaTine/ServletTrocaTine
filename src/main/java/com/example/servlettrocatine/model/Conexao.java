@@ -22,7 +22,7 @@ public class Conexao {
             String password = dotenv.get("DB_PASSWORD");
 
             // Informando qual driver de conexão será utilizado pelo DriverManager
-            Class.forName("org.postgresql.Driver");
+            Class.forName(driver);
 
             // Criando a conexão
             conn = DriverManager.getConnection(url, user, password);
