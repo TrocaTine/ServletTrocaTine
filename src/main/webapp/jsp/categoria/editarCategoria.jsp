@@ -45,7 +45,7 @@
 </head>
 <body>
 <h1>Editar Categoria</h1>
-<form action="${pageContext.request.contextPath}/EditarPorID" method="post">
+<form action="${pageContext.request.contextPath}/editarPorID" method="post">
     <label for="nome">Nome novo:</label>
     <input type="text" id="nome" name="nome" required><br>
     <label for="id">ID:</label>

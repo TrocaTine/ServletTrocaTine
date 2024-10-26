@@ -100,12 +100,12 @@
     %>
 </table>
 <div class="button-container">
-    <button class="button" onclick="location.href='jsp/comunidade/InserirComunidade.jsp'">Inserir Comunidade</button>
-    <button class="button" onclick="location.href='jsp/comunidade/ExcluirComunidadePorID.jsp'">Excluir Comunidade por ID</button>
-    <button class="button" onclick="location.href='jsp/comunidade/ExcluirComunidadePorNome.jsp'">Excluir Comunidade por Nome</button>
-    <button class="button" onclick="location.href='jsp/comunidade/BuscarComunidadePorID.jsp'">Buscar Comunidade por ID</button>
-    <button class="button" onclick="location.href='jsp/comunidade/BuscarComunidadePorNome.jsp'">Buscar Comunidade por Nome</button>
-    <button class="button" onclick="location.href='jsp/comunidade/EditarComunidadePorId.jsp'">Editar Comunidade por ID</button>
+    <button class="button" onclick="location.href='jsp/comunidade/inserirComunidade.jsp'">Inserir Comunidade</button>
+    <button class="button" onclick="location.href='jsp/comunidade/excluirComunidadePorID.jsp'">Excluir Comunidade por ID</button>
+    <button class="button" onclick="location.href='jsp/comunidade/excluirComunidadePorNome.jsp'">Excluir Comunidade por Nome</button>
+    <button class="button" onclick="location.href='jsp/comunidade/buscarComunidadePorID.jsp'">Buscar Comunidade por ID</button>
+    <button class="button" onclick="location.href='jsp/comunidade/buscarComunidadePorNome.jsp'">Buscar Comunidade por Nome</button>
+    <button class="button" onclick="location.href='jsp/comunidade/editarComunidadePorId.jsp'">Editar Comunidade por ID</button>
 
 </div>
 </body>
