@@ -20,33 +20,42 @@ public class EditarComunidadePorId extends HttpServlet {
         String nomeComunidade = request.getParameter("nome");
         String criadorComunidade = request.getParameter("criador");
         String descricaoComunidade = request.getParameter("descricao");
-        String qntComunidade = request.getParameter("qnt_integrantes");
-        String fotoComunidade = request.getParameter("foto_perfil");
-        Comunidade comunidade = new Comunidade(Integer.parseInt(idComunidade), nomeComunidade, criadorComunidade, descricaoComunidade, Integer.parseInt(qntComunidade), Integer.parseInt(fotoComunidade));
-
+        String qntComunidade = request.getParameter("qntIntegrantes"); // Nome ajustado
+        String fotoComunidade = request.getParameter("fotoPerfil"); // Nome ajustado
 
         // Verifique se os parâmetros são válidos
-        if (nomeComunidade == null || idComunidade == null || qntComunidade == null || fotoComunidade == null || descricaoComunidade == null || criadorComunidade == null) {
+        if (idComunidade == null || nomeComunidade == null || criadorComunidade == null ||
+                descricaoComunidade == null || qntComunidade == null || fotoComunidade == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos os campos são obrigatórios.");
             return;
         }
 
         try {
-            // Inserir categoria no banco de dados
+            // Criar objeto Comunidade
+            Comunidade comunidade = new Comunidade(
+                    Integer.parseInt(idComunidade),
+                    nomeComunidade,
+                    criadorComunidade,
+                    descricaoComunidade,
+                    Integer.parseInt(qntComunidade),
+                    Integer.parseInt(fotoComunidade)
+            );
+
+            // Atualizar comunidade no banco de dados
             ComunidadeDAO comunidadeDAO = new ComunidadeDAO();
             boolean certo = comunidadeDAO.editarComunidadePorId(comunidade);
 
             if (certo) {
                 request.getSession().setAttribute("successMessage", "Comunidade editada com sucesso!");
-                response.sendRedirect("jsp/categoria/editarComunidadePorId.jsp");
+                response.sendRedirect(request.getContextPath() + "/comunidade");
             } else {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar comunidade!.");
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar comunidade.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar comunidade.");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro SQL exception ao editar comunidade.");
         } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID ou valores numéricos inválidos.");
         }
     }
 }

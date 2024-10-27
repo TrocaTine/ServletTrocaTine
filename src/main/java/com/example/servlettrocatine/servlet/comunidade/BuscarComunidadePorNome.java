@@ -1,6 +1,8 @@
 package com.example.servlettrocatine.servlet.comunidade;
 
+import com.example.servlettrocatine.DAO.CategoriaDAO;
 import com.example.servlettrocatine.DAO.ComunidadeDAO;
+import com.example.servlettrocatine.model.Categoria;
 import com.example.servlettrocatine.model.Comunidade;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -24,7 +26,7 @@ public class BuscarComunidadePorNome extends HttpServlet {
         try {
             List<Comunidade> comunidade = comunidadeDAO.buscarComunidadePorNome(nomeComunidade);
             for (Comunidade comu : comunidade) {
-                if (comu == null) {
+                if (comunidade.isEmpty()) {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND, "Comunidade não encontrada.");
                     return;
                 }

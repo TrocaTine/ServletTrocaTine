@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.example.servlettrocatine.model.Categoria" %> <!-- Importe a classe correta para Categoria -->
+<%@ page import="com.example.servlettrocatine.model.Categoria" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.servlettrocatine.model.Comunidade" %>
 <html>
 <head>
-    <title>Buscar Categoria por Nome</title>
+    <title>Buscar Comunidade por Nome</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -64,13 +64,19 @@
     </style>
 </head>
 <body>
-<h1>Buscar Categoria por Nome</h1>
+<h1>Buscar Comunidade por Nome</h1>
 
 <!-- Formulário de busca -->
 <form action="${pageContext.request.contextPath}/buscarComunidadePorNome" method="GET">
     <input type="text" name="nome" placeholder="Digite o NOME da comunidade" required>
     <input type="submit" value="Buscar">
 </form>
+
+<%
+    // Recupera a lista de comunidades do atributo da requisição
+    List<Comunidade> comunidades = (List<Comunidade>) request.getAttribute("comunidades");
+    if (comunidades != null) {
+%>
 <table>
     <tr>
         <th>ID</th>
@@ -80,30 +86,33 @@
         <th>Quantidade de Integrantes</th>
         <th>Foto de Perfil</th>
     </tr>
-<%
-    // Recupera a categoria buscada do atributo da requisição
-    List<Comunidade> comunidades = (List<Comunidade>)request.getAttribute("comunidades");
-    if (comunidades != null && comunidades.isEmpty()) {
-        for(Comunidade comunidade : comunidades){
-%>
+    <%
+        if (!comunidades.isEmpty()) {
+            for (Comunidade comunidade : comunidades) {
+    %>
     <tr>
-        <td><%= comunidade.getId()%></td>
-        <td><%= comunidade.getNome()%></td>
-        <td><%= comunidade.getCriador()%></td>
-        <td><%= comunidade.getDescricao()%></td>
-        <td><%= comunidade.getQntIntegrantes()%></td>
-        <td><%= comunidade.getFotoPerfil()%></td>
+        <td><%= comunidade.getId() %></td>
+        <td><%= comunidade.getNome() %></td>
+        <td><%= comunidade.getCriador() %></td>
+        <td><%= comunidade.getDescricao() %></td>
+        <td><%= comunidade.getQntIntegrantes() %></td>
+        <td><%= comunidade.getFotoPerfil() %></td>
     </tr>
-
-<%
-    }
-} else {
-%>
-<p>Nenhuma comunidade encontrada com o Nome informado.</p>
-<%
-    }
-%>
+    <%
+        }
+    } else {
+    %>
+    <tr>
+        <td colspan="6">Nenhuma comunidade encontrada com o Nome informado.</td>
+    </tr>
+    <%
+        }
+    } else {
+    %>
+    <p>Nenhuma comunidade foi pesquisada ainda.</p>
+    <%
+        }
+    %>
 </table>
 </body>
 </html>
-

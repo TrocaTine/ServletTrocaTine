@@ -43,7 +43,7 @@ public class ComunidadeDAO {
 
     // Método para editar uma comunidade pelo ID
     public boolean editarComunidadePorId(Comunidade comunidade) throws SQLException {
-        String sql = "UPDATE comunidade SET nome = ?, criador = ?, descricao = ?, quantidade_integrantes = ?, foto_perfil = ? WHERE id = ?";
+        String sql = "UPDATE comunidade SET nome = ?, criador = ?, descricao = ?, qnt_integrantes = ?, foto_perfil = ? WHERE id = ?";
 
         try {
             Connection conn = conexao.conectar();
