@@ -5,17 +5,19 @@ public class Adm {
     private String nome;
     private String email;
     private String senha;
+    private int idUsuario;
 
     // Construtor padrão
     public Adm() {
     }
 
     // Construtor com parâmetros
-    public Adm(int id, String nome, String email, String senha) {
+    public Adm(int id, String nome, String email, String senha, int idUsuario) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.idUsuario = idUsuario;
     }
 
     // Getters e Setters
@@ -51,6 +53,10 @@ public class Adm {
         this.senha = senha;
     }
 
+    public int getIdUsuario() { return idUsuario; }
+
+    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
+
     @Override
     public String toString() {
         return "Adm{" +
@@ -58,6 +64,7 @@ public class Adm {
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
+                ", idUsuario=" + idUsuario +
                 '}';
     }
 }

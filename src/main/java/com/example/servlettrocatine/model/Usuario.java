@@ -36,6 +36,31 @@ public class Usuario {
         this.idEndereco = idEndereco;
     }
 
+    public Usuario(int id, String nome, String telefone, String senha, String email, String cpf, String dtNascimento) {
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.senha = senha;
+        this.email = email;
+        this.cpf = cpf;
+        this.dtNascimento = dtNascimento;
+    }
+
+    public Usuario(int id, String nome, String sobrenome, String telefone, String senha, Integer o, String email, String cpf, Object dtNascimento, Object fotoPerfil, Object idAdm, Object idEndereco) {
+        this.id = id;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.telefone = telefone;
+        this.senha = senha;
+        this.trocadinhas = Integer.parseInt(null);
+        this.email = email;
+        this.cpf = cpf;
+        this.dtNascimento = null;
+        this.fotoPerfil = null;
+        this.idAdm = Integer.parseInt(null);
+        this.idEndereco = Integer.parseInt(null);
+    }
+
     // Getters e Setters
     public int getId() {
         return id;

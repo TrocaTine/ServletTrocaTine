@@ -11,44 +11,43 @@ public class TagDAO {
     // Instância do gerenciador de conexões para lidar com as conexões ao banco de dados
     private final Conexao conexao = new Conexao();
 
-    // Método para inserir uma nova tag e retornar o ID gerado
-    public int inserirTagRetornaId(Tag tag) throws SQLException {
-        String sql = "INSERT INTO tag (genero, cor, tamanho, qualidade) VALUES (?, ?, ?, ?)";
-        int generatedId = -1;
+    public List<Tag> listarTodasTags() throws SQLException {
+        String sql = "SELECT * FROM tag";
+        List<Tag> tags = new ArrayList<>();
 
         try (Connection conn = conexao.conectar();
-             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            pstmt.setString(1, tag.getGenero());
-            pstmt.setString(2, tag.getCor());
-            pstmt.setString(3, tag.getTamanho());
-            pstmt.setString(4, tag.getQualidade());
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
 
-            int affectedRows = pstmt.executeUpdate();
-
-            if (affectedRows > 0) {
-                try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        generatedId = generatedKeys.getInt(1);
-                    }
-                }
+            // Executa a consulta e cria uma lista de objetos Tag
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String genero = rs.getString("genero");
+                String cor = rs.getString("cor");
+                String tamanho = rs.getString("tamanho");
+                String qualidade = rs.getString("qualidade");
+                int id_produto = rs.getInt("idtipo_produto");
+                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Consider replacing with a logger
         }
 
-        return generatedId;
+        return tags; // Retorna a lista de tags
     }
 
     // Método para inserir uma nova tag sem retornar o ID
     public boolean inserirTag(Tag tag) throws SQLException {
-        String sql = "INSERT INTO tag (genero, cor, tamanho, qualidade) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tag (id, genero, cor, tamanho, qualidade, idtipo_produto) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, tag.getGenero());
-            pstmt.setString(2, tag.getCor());
-            pstmt.setString(3, tag.getTamanho());
-            pstmt.setString(4, tag.getQualidade());
+            pstmt.setInt(1, tag.getId());
+            pstmt.setString(2, tag.getGenero());
+            pstmt.setString(3, tag.getCor());
+            pstmt.setString(4, tag.getTamanho());
+            pstmt.setString(5, tag.getQualidade());
+            pstmt.setInt(6, tag.getIdTipo_produto());
 
             pstmt.executeUpdate();
             return true;
@@ -60,7 +59,7 @@ public class TagDAO {
 
     // Método para editar uma tag existente com base no seu ID
     public boolean editarTagPorId(int id, Tag novaTag) throws SQLException {
-        String sql = "UPDATE tag SET genero = ?, cor = ?, tamanho = ?, qualidade = ? WHERE id = ?";
+        String sql = "UPDATE tag SET genero = ?, cor = ?, tamanho = ?, qualidade = ?, idtipo_produto = ? WHERE id = ?";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -68,7 +67,8 @@ public class TagDAO {
             pstmt.setString(2, novaTag.getCor());
             pstmt.setString(3, novaTag.getTamanho());
             pstmt.setString(4, novaTag.getQualidade());
-            pstmt.setInt(5, id);
+            pstmt.setInt(5, novaTag.getIdTipo_produto());
+            pstmt.setInt(6, id);
 
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -92,7 +92,8 @@ public class TagDAO {
                 String cor = rs.getString("cor");
                 String tamanho = rs.getString("tamanho");
                 String qualidade = rs.getString("qualidade");
-                tags.add(new Tag(id, genero, cor, tamanho, qualidade));
+                int id_produto = rs.getInt("idtipo_produto");
+                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Consider replacing with a logger
@@ -116,7 +117,8 @@ public class TagDAO {
                 String genero = rs.getString("genero");
                 String cor = rs.getString("cor");
                 String tamanho = rs.getString("tamanho");
-                tags.add(new Tag(id, genero, cor, tamanho, qualidade));
+                int id_produto = rs.getInt("idtipo_produto");
+                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Consider replacing with a logger
@@ -140,7 +142,8 @@ public class TagDAO {
                 String genero = rs.getString("genero");
                 String tamanho = rs.getString("tamanho");
                 String qualidade = rs.getString("qualidade");
-                tags.add(new Tag(id, genero, cor, tamanho, qualidade));
+                int id_produto = rs.getInt("idtipo_produto");
+                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Consider replacing with a logger
@@ -164,7 +167,8 @@ public class TagDAO {
                 String genero = rs.getString("genero");
                 String cor = rs.getString("cor");
                 String qualidade = rs.getString("qualidade");
-                tags.add(new Tag(id, genero, cor, tamanho, qualidade));
+                int id_produto = rs.getInt("idtipo_produto");
+                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Consider replacing with a logger
@@ -188,7 +192,8 @@ public class TagDAO {
                 String cor = rs.getString("cor");
                 String tamanho = rs.getString("tamanho");
                 String qualidade = rs.getString("qualidade");
-                tag = new Tag(id, genero, cor, tamanho, qualidade);
+                int id_produto = rs.getInt("idtipo_produto");
+                tag = new Tag(id, genero, cor, tamanho, qualidade, id_produto);
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Consider replacing with a logger

@@ -45,10 +45,10 @@
 <h1>Escolha qual tabela você quer acessar:</h1>
 <div class="button-container">
     <a href="../categoria" >Categoria</a>
-    <a href="adm" >Administrador</a>
+    <a href="../adms" >Administrador</a>
     <a href="../comunidade" >Comunidade</a>
-    <a href="tag" >Tag</a>
-    <a href="cadastro" >Cadastro</a>
+    <a href="../tags" >Tag</a>
+    <a href="../usuario" >Cadastro</a>
 </div>
 </body>
 </html>

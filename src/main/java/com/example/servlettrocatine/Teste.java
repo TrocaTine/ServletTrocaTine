@@ -1,20 +1,15 @@
 package com.example.servlettrocatine;
 
-import com.example.servlettrocatine.DAO.ComunidadeDAO;
-import com.example.servlettrocatine.model.Comunidade;
+import com.example.servlettrocatine.DAO.TagDAO;
+import com.example.servlettrocatine.model.Tag;
+
 
 public class Teste {
     public static void main(String[] args) {
-        ComunidadeDAO dao = new ComunidadeDAO();
-        Comunidade comunidade = new Comunidade(
-                1,
-                "Java",
-                "Daniel",
-                "Um grupo de estudos de Java",
-                2,
-                1);
+        TagDAO dao = new TagDAO();
+        Tag tag = new Tag(6, "Menino", "Vermelho", "G", "Bom", 1);
         try{
-            dao.editarComunidadePorId(comunidade);
+            dao.inserirTag(tag);
         }catch(Exception e){
             e.printStackTrace();
         }

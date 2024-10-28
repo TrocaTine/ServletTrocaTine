@@ -1,0 +1,122 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.servlettrocatine.model.Tag" %>
+<html>
+<head>
+    <title>Listar Todas as Tags</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1 {
+            color: #ffa201;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #55aca0;
+            color: #fff;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .no-data {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+        }
+        .button-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .button {
+            background-color: #55aca0;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #ffa201;
+        }
+        .btn-back {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #ffa201;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #ffa201;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .btn-back:hover {
+            background-color: #ffa201;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<h1>Lista de Todas as Tags</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Gênero</th>
+        <th>Cor</th>
+        <th>Tamanho</th>
+        <th>Qualidade</th>
+        <th>ID Categoria</th>
+    </tr>
+    <%
+        List<Tag> tags = (List<Tag>) request.getAttribute("tags");
+        if (tags != null && !tags.isEmpty()) {
+            for (Tag tag : tags) {
+    %>
+    <tr>
+        <td><%= tag.getId() %></td>
+        <td><%= tag.getGenero() %></td>
+        <td><%= tag.getCor() %></td>
+        <td><%= tag.getTamanho() %></td>
+        <td><%= tag.getQualidade() %></td>
+        <td><%= tag.getIdTipo_produto() %></td>
+    </tr>
+    <%
+        }
+    } else {
+    %>
+    <tr>
+        <td colspan="6" class="no-data">Nenhuma tag encontrada.</td>
+    </tr>
+    <%
+        }
+    %>
+</table>
+<div class="button-container">
+    <button class="button" onclick="location.href='jsp/tag/inserirTag.jsp'">Adicionar Tag</button>
+    <button class="button" onclick="location.href='jsp/tag/excluirTagPorId.jsp'">Excluir Tag</button>
+    <button class="button" onclick="location.href='jsp/tag/buscarTag.jsp'">Buscar Tag por ID</button>
+    <button class="button" onclick="location.href='jsp/tag/editarTagPorId.jsp'">Editar Tag</button>
+    <br>
+    <a href="${pageContext.request.contextPath}/jsp/pagCrud.jsp" class="btn-back">Voltar para à página do CRUD</a>
+</div>
+</body>
+</html>

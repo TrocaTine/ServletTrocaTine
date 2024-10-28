@@ -1,6 +1,7 @@
-package com.example.servlettrocatine.servlet.usuario;
+package com.example.servlettrocatine.servlet.adm;
 
-import com.example.servlettrocatine.DAO.UsuarioDAO;
+import com.example.servlettrocatine.DAO.AdmDAO;
+import com.example.servlettrocatine.model.Adm;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,10 +9,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
-@WebServlet(name = "ExcluirUsuarioPorId", value = "/excluirUsuarioPorId")
-public class ExcluirUsuarioPorId extends HttpServlet {
+@WebServlet(name = "ExcluirAdmPorID", value = "/excluirAdm")
+public class ExcluirAdm extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Coletar dados do formulário
@@ -24,19 +24,16 @@ public class ExcluirUsuarioPorId extends HttpServlet {
         }
 
         try {
-            // Inserir usuário no banco de dados
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
-            boolean certo = usuarioDAO.excluirUsuarioPorId(Integer.parseInt(idParam));
+            // Inserir categoria no banco de dados
+            AdmDAO admDAO = new AdmDAO();
+            boolean certo = admDAO.excluirAdmPorId(Integer.parseInt(idParam));
 
             if (certo) {
-                request.getSession().setAttribute("successMessage", "Usuário excluida com sucesso!");
-                response.sendRedirect("jsp/usuario/excluirUsuarioPorId.jsp");
+                request.getSession().setAttribute("successMessage", "Categoria excluida com sucesso!");
+                response.sendRedirect("jsp/adm/excluirAdm.jsp");
             } else {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao excluir usuário.");
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao excluir categoria.");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao excluir usuário.");
         } catch (NumberFormatException e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
         }
