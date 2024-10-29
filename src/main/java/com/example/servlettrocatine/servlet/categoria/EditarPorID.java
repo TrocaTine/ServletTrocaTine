@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "EditarPorID", value = "/editarPorID")
+@WebServlet(name = "EditarCatPorID", value = "/editarCatPorId")
 public class EditarPorID extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
