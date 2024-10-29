@@ -45,7 +45,7 @@
 </head>
 <body>
 <h1>Excluir Comunidade</h1>
-<form action="${pageContext.request.contextPath}/excluirComunidadePorID" method="post">
+<form action="../excluirComunidadePorID" method="post">
     <label for="id">ID:</label>
     <input type="number" id="id" name="id" required><br>
     <input type="submit" value="Excluir Comunidade">

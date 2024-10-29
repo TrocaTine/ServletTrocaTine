@@ -60,6 +60,22 @@
         .button:hover {
             background-color: #ffa201; /* Cor do botão ao passar o mouse */
         }
+        .btn-back {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #ffa201;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #ffa201;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .btn-back:hover {
+            background-color: #ffa201;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -102,6 +118,8 @@
     <button class="button" onclick="location.href='jsp/adm/excluirAdm.jsp'">Excluir Administrador</button>
     <button class="button" onclick="location.href='jsp/adm/buscarAdm.jsp'">Buscar Administrador</button>
     <button class="button" onclick="location.href='jsp/adm/editarAdm.jsp'">Editar Administrador</button>
+    <br>
+    <a href="${pageContext.request.contextPath}/jsp/pagCrud.jsp" class="btn-back">Voltar para à página do CRUD</a>
 </div>
 </body>
 </html>

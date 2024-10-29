@@ -31,7 +31,7 @@ public class ExcluirPorID extends HttpServlet {
 
             if (certo) {
                 request.getSession().setAttribute("successMessage", "Categoria excluida com sucesso!");
-                response.sendRedirect("jsp/categoria/excluirCategoria.jsp");
+                response.sendRedirect("jsp/categoria/excluidoComSucesso.jsp");
             } else {
                 response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao excluir categoria.");
             }

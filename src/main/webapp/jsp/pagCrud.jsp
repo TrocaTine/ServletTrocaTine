@@ -38,8 +38,29 @@
             background-color: #ff8800;
             transform: translateY(2px);
         }
+        .btn-back {
+            display: flex;
+            justify-content: flex-start;
+            background-color: #f0f0f0;
+            width: 25px;
+            color: #ffa201;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #ffa201;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .btn-back:hover {
+            background-color: #ffa201;
+            color: #fff;
+        }
     </style>
 </head>
+<a href="${pageContext.request.contextPath}/jsp/login.jsp" class="btn-back">Voltar</a>
+
 <body>
 <h1>Bem-vindo ao CRUD do TrocaTine!</h1>
 <h1>Escolha qual tabela você quer acessar:</h1>
@@ -49,6 +70,8 @@
     <a href="../comunidade" >Comunidade</a>
     <a href="../tags" >Tag</a>
     <a href="../usuario" >Cadastro</a>
+
+
 </div>
 </body>
 </html>

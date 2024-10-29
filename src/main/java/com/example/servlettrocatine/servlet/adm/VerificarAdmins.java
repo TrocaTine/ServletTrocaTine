@@ -16,7 +16,7 @@ public class VerificarAdmins extends HttpServlet {
         String senha = request.getParameter("senha");
         AdmDAO adminDAO = new AdmDAO();
         if (adminDAO.verificarAdmin(usuario, senha)) {
-            response.sendRedirect("AreaRestrita/dashboard.html");
+            response.sendRedirect("jsp/pagCrud.jsp");
         } else {
             request.setAttribute("erroLogin", "Usuário ou senha incorretos");
             request.getRequestDispatcher("jsp/login.jsp").forward(request, response);

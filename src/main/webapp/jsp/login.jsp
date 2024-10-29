@@ -19,7 +19,6 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding:0;">
-
         <div class="container-fluid" style="background-color: #55aca0; padding: 10px">
             <img src="../Assets/Logo-nuvem.png" class="navbar-brand logo" alt="" />
             <button
@@ -42,6 +41,7 @@
                         <a class="nav-link link-light ancora" href="#">Landing Page</a>
                     </li>
                 </ul>
+                <a href="../index.html" class="btn btn-outline-light">Sair</a> <!-- Botão de Sair -->
             </div>
         </div>
     </nav>
@@ -56,7 +56,7 @@
                 <div class="mb-3">
                     <label for="user" class="form-label">Nome do Usuário</label>
                     <!-- Campo de texto para o usuário -->
-                    <input type="text" class="form-control" id="user" name="user" required>
+                    <input type="text" class="form-control" id="user" name="user" required pattern="^[A-Z][a-z]+ [A-Z][a-z]+$" title="O nome deve ser no formato: Nome Sobrenome (ex: João Silva)">
                 </div>
                 <div class="mb-3">
                     <label for="senha" class="form-label">Senha</label>
@@ -67,12 +67,12 @@
                 <!-- Mensagem de erro em vermelho, se existir -->
                 <div class="text-center" style="color: red;">
                     <%
-                    String erroLogin = (String) request.getAttribute("erroLogin");
-                    if (erroLogin != null) {
+                        String erroLogin = (String) request.getAttribute("erroLogin");
+                        if (erroLogin != null) {
                     %>
                     <p><%= erroLogin %></p>
                     <%
-                    }
+                        }
                     %>
                 </div>
 
