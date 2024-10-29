@@ -52,7 +52,7 @@
         <h1 class="text-center mt-4">Login da Área Restrita</h1>
         <div class="d-flex justify-content-center">
             <!-- Formulário de login -->
-            <form class="forms" action="../VerificarAdms" method="post" style="margin-top: 30px">
+            <form class="forms" action="..//VerificarAdms" method="post" style="margin-top: 30px">
                 <div class="mb-3">
                     <label for="user" class="form-label">Nome do Usuário</label>
                     <!-- Campo de texto para o usuário -->
