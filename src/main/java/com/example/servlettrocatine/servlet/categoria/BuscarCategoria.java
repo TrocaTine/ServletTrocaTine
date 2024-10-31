@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.io.IOException;
 
 @WebServlet(name = "BuscarPorID", value = "/buscarPorID")
-public class BuscarPorID extends HttpServlet {
+public class BuscarCategoria extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idParam = request.getParameter("id");

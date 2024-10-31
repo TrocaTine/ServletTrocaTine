@@ -82,8 +82,6 @@
 <div class="container">
     <h1>Adicionar Administrador</h1>
     <form action="${pageContext.request.contextPath}/inserirAdm" method="post">
-        <label for="id">ID:</label>
-        <input type="number" id="id" name="id" required>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
         <label for="email">Email:</label>

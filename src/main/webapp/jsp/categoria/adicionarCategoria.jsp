@@ -48,8 +48,6 @@
 <form action="${pageContext.request.contextPath}/adicionarPorID" method="post">
   <label for="nome">Nome:</label>
   <input type="text" id="nome" name="nome" required><br>
-  <label for="id">ID:</label>
-  <input type="number" id="id" name="id" required><br>
   <input type="submit" value="Adicionar">
 </form>
 

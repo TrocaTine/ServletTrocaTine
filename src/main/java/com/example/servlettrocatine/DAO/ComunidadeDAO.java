@@ -18,19 +18,18 @@ public class ComunidadeDAO {
 
     // Método para inserir uma nova comunidade no banco de dados
     public boolean inserirComunidade(Comunidade comunidade){
-        String sql = "INSERT INTO comunidade (id, nome, criador, descricao, qnt_integrantes, foto_perfil) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO comunidade (nome, criador, descricao, qnt_integrantes, foto_perfil) VALUES (?, ?, ?, ?, ?)";
 
         try {
             // Conectando ao banco de dados
             Connection conn = conexao.conectar();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             // Definindo os parâmetros da query
-            pstmt.setInt(1, comunidade.getId());
-            pstmt.setString(2, comunidade.getNome());
-            pstmt.setString(3, comunidade.getCriador());
-            pstmt.setString(4, comunidade.getDescricao());
-            pstmt.setInt(5, comunidade.getQntIntegrantes()); // Ajustado para usar o método correto
-            pstmt.setInt(6, comunidade.getFotoPerfil());
+            pstmt.setString(1, comunidade.getNome());
+            pstmt.setString(2, comunidade.getCriador());
+            pstmt.setString(3, comunidade.getDescricao());
+            pstmt.setInt(4, comunidade.getQntIntegrantes()); // Ajustado para usar o método correto
+            pstmt.setInt(5, comunidade.getFotoPerfil());
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -113,7 +112,6 @@ public class ComunidadeDAO {
                 ResultSet rs = pstmt.executeQuery();
                 while (rs.next()) {
                     Comunidade comunidade = new Comunidade();
-                    comunidade.setId(rs.getInt("id"));
                     comunidade.setNome(rs.getString("nome"));
                     comunidade.setCriador(rs.getString("criador"));
                     comunidade.setDescricao(rs.getString("descricao"));

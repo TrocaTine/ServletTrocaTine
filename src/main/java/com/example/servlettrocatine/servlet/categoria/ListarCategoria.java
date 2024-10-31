@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "Listar", value = "/categoria")
-public class Listar extends HttpServlet {
+public class ListarCategoria extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CategoriaDAO categoriaDAO = new CategoriaDAO();

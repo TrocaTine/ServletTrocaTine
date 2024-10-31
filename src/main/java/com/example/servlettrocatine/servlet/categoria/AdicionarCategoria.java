@@ -1,7 +1,6 @@
 package com.example.servlettrocatine.servlet.categoria;
 
 import com.example.servlettrocatine.DAO.CategoriaDAO;
-import com.example.servlettrocatine.model.Categoria;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,23 +11,22 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "AdicionarPorID", value = "/adicionarPorID")
-public class AdicionarPorID extends HttpServlet {
+public class AdicionarCategoria extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Coletar dados do formulário
         String nome = request.getParameter("nome");
-        String idParam = request.getParameter("id");
 
         // Verifique se os parâmetros são válidos
-        if (nome == null || idParam == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Nome e ID são obrigatórios.");
+        if (nome == null) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Nome é obrigatório.");
             return;
         }
 
         try {
             // Inserir categoria no banco de dados
             CategoriaDAO categoriaDAO = new CategoriaDAO();
-            boolean certo = categoriaDAO.inserirCategoria(nome, Integer.parseInt(idParam));
+            boolean certo = categoriaDAO.inserirCategoria(nome);
 
             if (certo) {
                 request.getSession().setAttribute("successMessage", "Categoria adicionada com sucesso!");
@@ -39,8 +37,6 @@ public class AdicionarPorID extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao inserir categoria.");
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
         }
     }
 }

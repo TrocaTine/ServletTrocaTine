@@ -15,21 +15,19 @@ public class UsuarioDAO {
     Conexao conexao = new Conexao();
    // Método para inserir um novo usuário no banco de dados
    public boolean inserirUsuario(Usuario usuario) throws SQLException {
-       String sql = "INSERT INTO usuario (id, nome, telefone, senha, trocadinhas, email, cpf, dt_nascimento, " +
-               "foto_perfil, idendereco) VALUES (?,?,?,?,?,?,?,?,?,?)";
+       String sql = "INSERT INTO usuario (nome, telefone, senha, trocadinhas, email, cpf, dt_nascimento, " +
+               "foto_perfil, idendereco) VALUES (?,?,?,?,?,?,?,?,?)";
        try (Connection conn = conexao.conectar();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-           pstmt.setInt(1, usuario.getId()); // id como String
-           pstmt.setString(2, usuario.getNome()); // nome
-           pstmt.setString(3, usuario.getTelefone()); // telefone
-           pstmt.setString(4, usuario.getSenha()); // senha
-           pstmt.setInt(5, 10);
-           pstmt.setString(6, usuario.getEmail()); // email
-           pstmt.setString(7, usuario.getCpf()); // cpf
-           pstmt.setDate(8, java.sql.Date.valueOf(usuario.getDtNascimento())); // dt_nascimento como String
-           pstmt.setNull(9, java.sql.Types.VARCHAR); // foto_perfil como nulo
-           pstmt.setNull(10, 0); // idendereco como nulo
+           pstmt.setString(1, usuario.getNome()); // nome
+           pstmt.setString(2, usuario.getTelefone()); // telefone
+           pstmt.setString(3, usuario.getSenha()); // senha
+           pstmt.setInt(4, 5);
+           pstmt.setString(5, usuario.getEmail()); // email
+           pstmt.setString(6, usuario.getCpf()); // cpf
+           pstmt.setDate(7, java.sql.Date.valueOf(usuario.getDtNascimento())); // dt_nascimento como String
+           pstmt.setNull(8, java.sql.Types.VARCHAR); // foto_perfil como nulo
+           pstmt.setNull(9, 0); // idendereco como nulo
 
            pstmt.executeUpdate();
            return true;

@@ -1,8 +1,6 @@
 package com.example.servlettrocatine.servlet.usuario;
 
-import com.example.servlettrocatine.DAO.CategoriaDAO;
 import com.example.servlettrocatine.DAO.UsuarioDAO;
-import com.example.servlettrocatine.model.Categoria;
 import com.example.servlettrocatine.model.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

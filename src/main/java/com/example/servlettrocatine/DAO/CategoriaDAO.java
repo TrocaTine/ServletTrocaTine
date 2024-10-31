@@ -18,15 +18,14 @@ public class CategoriaDAO {
     Conexao conexao = new Conexao();
 
     // Método para inserir uma nova categoria no banco de dados
-    public boolean inserirCategoria(String nome, int id) throws SQLException {
-        String sql = "INSERT INTO tipo_produto (tipo_produto, id) VALUES (?, ?)";
+    public boolean inserirCategoria(String nome) throws SQLException {
+        String sql = "INSERT INTO tipo_produto (tipo_produto) VALUES (?)";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // Prepara e executa a instrução SQL para inserir a categoria
             pstmt.setString(1, nome);
-            pstmt.setInt(2, id);
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {

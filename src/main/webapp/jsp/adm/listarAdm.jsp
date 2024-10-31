@@ -3,7 +3,7 @@
 <%@ page import="com.example.servlettrocatine.model.Adm" %>
 <html>
 <head>
-    <title>Listar Categoria</title>
+    <title>Listar Adm</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -79,7 +79,7 @@
     </style>
 </head>
 <body>
-<h1>Listar Categoria</h1>
+<h1>Listar Adm</h1>
 <table>
     <tr>
         <th>ID</th>
@@ -90,7 +90,7 @@
 
     </tr>
     <%
-        // Recupera a lista de categorias do atributo da requisição
+        // Recupera a lista de adms do atributo da requisição
         List<Adm> adms = (List<Adm>) request.getAttribute("adms");
         if (adms != null && !adms.isEmpty()) {
             for (Adm adm : adms) {

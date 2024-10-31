@@ -11,43 +11,17 @@ public class TagDAO {
     // Instância do gerenciador de conexões para lidar com as conexões ao banco de dados
     private final Conexao conexao = new Conexao();
 
-    public List<Tag> listarTodasTags() throws SQLException {
-        String sql = "SELECT * FROM tag";
-        List<Tag> tags = new ArrayList<>();
-
-        try (Connection conn = conexao.conectar();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
-
-            // Executa a consulta e cria uma lista de objetos Tag
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String genero = rs.getString("genero");
-                String cor = rs.getString("cor");
-                String tamanho = rs.getString("tamanho");
-                String qualidade = rs.getString("qualidade");
-                int id_produto = rs.getInt("idtipo_produto");
-                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Consider replacing with a logger
-        }
-
-        return tags; // Retorna a lista de tags
-    }
-
     // Método para inserir uma nova tag sem retornar o ID
     public boolean inserirTag(Tag tag) throws SQLException {
-        String sql = "INSERT INTO tag (id, genero, cor, tamanho, qualidade, idtipo_produto) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tag (genero, cor, tamanho, qualidade, idtipo_produto) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, tag.getId());
-            pstmt.setString(2, tag.getGenero());
-            pstmt.setString(3, tag.getCor());
-            pstmt.setString(4, tag.getTamanho());
-            pstmt.setString(5, tag.getQualidade());
-            pstmt.setInt(6, tag.getIdTipo_produto());
+            pstmt.setString(1, tag.getGenero());
+            pstmt.setString(2, tag.getCor());
+            pstmt.setString(3, tag.getTamanho());
+            pstmt.setString(4, tag.getQualidade());
+            pstmt.setInt(5, tag.getIdTipo_produto());
 
             pstmt.executeUpdate();
             return true;
@@ -215,4 +189,32 @@ public class TagDAO {
             return false;
         }
     }
+
+    public List<Tag> listarTodasTags() throws SQLException {
+        String sql = "SELECT * FROM tag";
+        List<Tag> tags = new ArrayList<>();
+
+        try (Connection conn = conexao.conectar();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            // Executa a consulta e cria uma lista de objetos Tag
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String genero = rs.getString("genero");
+                String cor = rs.getString("cor");
+                String tamanho = rs.getString("tamanho");
+                String qualidade = rs.getString("qualidade");
+                int id_produto = rs.getInt("idtipo_produto");
+                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Consider replacing with a logger
+        }
+
+        return tags; // Retorna a lista de tags
+    }
+
+
 }
+

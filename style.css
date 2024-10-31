@@ -6,6 +6,9 @@
     --color-lightgray: #cccccc;
     --color-beige: #f1e6d7;
     --color-body: white;
+    --color-homeGradient: linear-gradient(45deg, #55aca0, #59b4a7, #5db9ad, #63c5b8, #5ebdb0, #5dbaae , #63c5b8);
+    --color-fire: linear-gradient(to left, #55aca0, #4a958b, #3b7970);
+    --color-headerElements: #6bd5c7;
 }
 *{
     margin: 0;
@@ -18,9 +21,28 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 body .background{
-    background-color: var(--color-blue);
+    background: var(--color-homeGradient);
+}
+
+.scroll-watcher{
+    height: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background: var(--color-fire);
+    width: 100%;
+    margin-bottom: 25px;
+    scale: 0 1;
+    transform-origin: left;
+    animation: scroll-watcher linear;
+    animation-timeline: scroll();
+}
+
+@keyframes scroll-watcher{
+    to { scale: 1 1; }
 }
 
 .nuvens{
@@ -28,19 +50,65 @@ body .background{
     position: relative;
     bottom: -5px;
 }
+#camisa{
+    width: 215px;
+    right: 150px;
+    transform: rotate(15deg);
+    top: 800px;
+    box-shadow: 1px solid black;
+    position: absolute;
+}
+#cabide{
+    width: 230px;
+    right: 75px;
+    top: 425px;
+    transform: rotate(-10deg);
+    box-shadow: 1px solid black;
+    position: absolute;
+}
+#botao{
+    position: absolute;
+    width: 230px;
+    left: 35px;
+    transform: rotate(13deg);
+    top: 600px;
+}
+#urso{
+    width: 230px;
+    left: -60px;
+    transform: rotate(13deg);
+    top: 150px;
+    box-shadow: 1px solid black;
+    position: absolute;
+}
+#macacao{
+    width: 200px;
+    right: 50px;
+    transform: rotate(-30deg);
+    top: 20px;
+    box-shadow: 1px solid black;
+    position: absolute;
+}
+#mae{
+    margin-right: 30px;
+    width: 500px;
+}
 
-.header{
+.header {
     width: 100%;
     height: 100px;
-    position: fixed; top: 0;
+    position: fixed; 
     font-size: 150%;
-    background: #55ACA0;
     display: flex;
     z-index: 999;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.005s ease;
+    transition: 0.15s;
 }
 .header #img-banner{
-    width: 165px;
-    height: 75px;
+    margin-left: 75px;
+    width: 195px;
+    height: 50px;
 }
 .header nav{
     width: 100%;
@@ -48,7 +116,10 @@ body .background{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 50px;
+}
+.header nav ul{
+    width: 75%;
+    padding-top: 10px;
 }
 .header nav ul li{
     display: inline-flex;
@@ -60,31 +131,23 @@ body .background{
 .header nav ul li a{
     text-decoration: none;
     color: white;
-    transition: 0.5s;
+    transition: 0.25s;
     font-weight: bold;
 }
 .header nav ul li a:hover{
-    color: #ffa201;
+    color: var(--color-headerElements);
 }
 
 .home{
+    margin: 200px 0;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 50px;
-    padding-left: 150px;
+    justify-content: center;
     height: 550px;
-    position: relative;
 }
 .home .content{
     display: flex;
     flex-direction: column;
-    width: 50%;
-}
-.home .content h1{
-    margin: 0;
-    padding-bottom: 5px;
-    font-size: 4em;
+    align-items: center;
 }
 .home .content button.conhecer-app{
     margin-top: 15px;
@@ -106,33 +169,47 @@ body .background{
     color: white;
     transition: 0.05s;
 }
-.home .celular {
-    width: 30%;
+
+
+
+
+.phoneContainer {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-top: 200px;
-    position: relative;
-    margin-right: 75px;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
-.home .celular .img{
-    z-index: 10;
-}
-.home .celular .shadow{
-    z-index: 1;
+.phoneLeft, .phoneMiddle, .phoneRight {
     position: relative;
-    top: -110px;
+    transition: 0.5;
+    opacity: 1;
 }
-.home .celular .star1{
-    position: relative;
-    top: 65px; 
-    left: -200px;
+.phoneLeft {
+    z-index: 997;
+    right: -75px;
+    top: -715px;
+    transform: rotate(7.5deg);
 }
-.home .celular .star2{
-    width: 30px;
+.phoneMiddle {
+    z-index: 998;
+    top: -700px;
+}
+.phoneRight {
+    z-index: 997;
+    right: 75px;
+    top: -715px;
+    transform: rotate(-7.5deg);
+}
+.scale-for-hover:hover {
+    scale: 1.1;
+    transition: 0.5s;
+}
+
+
+#phone-product{
     position: relative;
-    top: 50px; 
-    left: -150px;
+    bottom: -3px;
 }
 
 .sobre-nos{
@@ -192,7 +269,7 @@ body .background{
     height: 100%;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     z-index: -1;
-    background-image: url(Assets/banner3.png);
+    background-image: url(src/main/webapp/Assets/banner3.png);
     background-position: center; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -237,7 +314,7 @@ body .background{
     margin: 0 100px 0 100px
 }
 .sustentabilidade .content .arvore1{
-    background-image: url(Assets/tree.png);
+    background-image: url(src/main/webapp/Assets/tree.png);
     background-position: center; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -248,7 +325,7 @@ body .background{
 .sustentabilidade .content .arvore2{
     position: relative;
     top: -85px;
-    background-image: url(Assets/tree.png);
+    background-image: url(src/main/webapp/Assets/tree.png);
     background-position: center; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -297,7 +374,7 @@ body .background{
 .sustentabilidade .content .s2 .predio1{
     height: 200px;
     width: 50%;
-    background-image: url(Assets/buildings.png);
+    background-image: url(src/main/webapp/Assets/buildings.png);
     background-position: center; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -358,44 +435,90 @@ body .background{
     border: none;
 }
 .equipe .membros #Geovanna .blob {
-    background-image: url(Assets/fotos-membros/Geovanna.png);
+    background-image: url(src/main/webapp/Assets/fotos-membros/Geovanna.png);
 }
 .equipe .membros #Bianca .blob {
-    background-image: url(Assets/fotos-membros/Bianca.png);
+    background-image: url(src/main/webapp/Assets/fotos-membros/Bianca.png);
 }
 .equipe .membros #Gabriela .blob {
-    background-image: url(Assets/fotos-membros/Gabriela.png);
+    background-image: url(src/main/webapp/Assets/fotos-membros/Gabriela.png);
 }
 .equipe .membros #Sarah .blob {
-    background-image: url(Assets/fotos-membros/Sarah.png);
+    background-image: url(src/main/webapp/Assets/fotos-membros/Sarah.png);
 }
 .equipe .membros #Lucas .blob {
-    background-image: url(Assets/fotos-membros/Lucas.png);
+    background-image: url(src/main/webapp/Assets/fotos-membros/Lucas.png);
 }
 .equipe .membros #Rafael .blob {
-    background-image: url(Assets/fotos-membros/Rafael.png);
+    background-image: url(src/main/webapp/Assets/fotos-membros/Rafael.png);
 }
 .equipe .membros #Lucca .blob {
-    background-image: url(Assets/fotos-membros/Lucca.png);
+    background-image: url(src/main/webapp/Assets/fotos-membros/Lucca.png);
 }
 .equipe .membros #Daniel .blob {
-    background-image: url(Assets/fotos-membros/Daninho.png);
+    background-image: url(src/main/webapp/Assets/fotos-membros/Daniel.png);
 }
 .equipe .membros #Gabriel .blob {
-    background-image: url(Assets/fotos-membros/Gabriel.png);
+    background-image: url(src/main/webapp/Assets/fotos-membros/Gabriel.png);
 }
 .equipe .membros #Carlos .blob {
-    background-image: url(Assets/fotos-membros/Carlos.png);
+    background-image: url(src/main/webapp/Assets/fotos-membros/Carlos.png);
 }
 .equipe .membros #Kaique .blob {
-    background-image: url(Assets/fotos-membros/Kaique.png);
+    background-image: url(src/main/webapp/Assets/fotos-membros/Kaique.png);
 }
 
-.footer{
+footer{
     background-color: white;
+    margin-top: -200px;
+    height: 100px;
 }
-.footer img{
+
+footer .midia{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    bottom: -340px;
+    z-index: 900;
+    margin-left: 50px;
+}
+footer .midia a img{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin-left: 17.5px;
+    margin-right: 5px;
+}
+footer > div > a{
+    height: 30px;
+    font-size: 200%;
+    text-decoration: none;
+    color: #101010;
+    display: flex;
+    font-weight: 500;
+}
+footer a p{
+    position: relative;
+    top: -10px;
+    transition: 0.7s;
+}
+footer a p:hover{
+    color: var(--color-orange);
+    transition: 0.5s;
+}
+footer img.nuvem{
+    src: 'Assets/TrocatineLogoBranca.png';
     width: 100%;
     position: relative;
     top: 5px;
+}
+
+#logoHeader{
+    height: 200px;
+    src: 'Assets/TrocatineLogoBranca.png';
+    scale: 0.5;
+    position: relative;
+    bottom: -100px;
+    right: -200px;
+    z-index: 990;
 }

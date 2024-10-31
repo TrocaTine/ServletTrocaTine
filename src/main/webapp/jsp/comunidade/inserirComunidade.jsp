@@ -53,8 +53,6 @@
 <body>
 <h1>Inserir Comunidade</h1>
   <form action="${pageContext.request.contextPath}/inserirComunidade" method="post" enctype="multipart/form-data">
-    <label for="id">ID:</label>
-    <input type="number" name="id" id="id">
     <label for="nome">Nome:</label>
     <input type="text" name="nome" id="nome">
     <label for="criador">Criador:</label>

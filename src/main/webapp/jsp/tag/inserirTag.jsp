@@ -82,8 +82,6 @@
 <div class="container">
   <h1>Adicionar Tag</h1>
   <form action="${pageContext.request.contextPath}/inserirTag" method="post">
-    <label for="id">ID:</label>
-    <input type="number" id="id" name="id" required>
     <label for="cor">Cor:</label>
     <input type="text" id="cor" name="cor" required>
     <label for="genero">Genero:</label>

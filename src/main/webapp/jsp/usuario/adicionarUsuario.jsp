@@ -58,8 +58,6 @@
   <input type="text" id="cpf" name="cpf" required><br>
   <label for="dt_nascimento">Data nascimento:</label>
   <input type="text" id="dt_nascimento" name="dt_nascimento" required><br>
-  <label for="id">ID:</label>
-  <input type="number" id="id" name="id" required><br>
   <input type="submit" value="AdicionarUsuario">
 </form>
 

@@ -19,16 +19,15 @@ public class AdmDAO {
     // Insere um novo administrador no banco de dados.
     // Retorna true se a operação for bem-sucedida, caso contrário, false.
     public boolean inserirAdm(Adm adm) {
-        String sql = "INSERT INTO adm (id, nome, email, senha, idusuario) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO adm (nome, email, senha, idusuario) VALUES (?, ?, ?, ?)";
         Connection conn = conexao.conectar();
 
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, adm.getId());
-            pstmt.setString(2, adm.getNome());
-            pstmt.setString(3, adm.getEmail());
-            pstmt.setString(4, adm.getSenha());
-            pstmt.setInt(5, adm.getIdUsuario());
+            pstmt.setString(1, adm.getNome());
+            pstmt.setString(2, adm.getEmail());
+            pstmt.setString(3, adm.getSenha());
+            pstmt.setInt(4, adm.getIdUsuario());
 
             pstmt.executeUpdate();
             return true;
