@@ -8,12 +8,18 @@ body {
 h1 {
     color: #ffa201;
 }
+.table-container {
+    max-height: 400px; /* Defina a altura máxima desejada */
+    overflow-y: auto; /* Adiciona rolagem vertical */
+    margin-top: 20px;
+    border: 1px solid #ddd; /* Adiciona uma borda ao redor do container */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #fff; /* Fundo do container da tabela */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
 }
 th, td {
     padding: 12px;
