@@ -65,13 +65,11 @@
 <h1>Bem-vindo ao CRUD do TrocaTine!</h1>
 <h1>Escolha qual tabela você quer acessar:</h1>
 <div class="button-container">
-    <a href="../categoria" >Categoria</a>
     <a href="../adms" >Administrador</a>
+    <a href="../categoria" >Categoria</a>
     <a href="../comunidade" >Comunidade</a>
     <a href="../tags" >Tag</a>
-    <a href="../usuario" >Cadastro</a>
-
-
+    <a href="../usuario" >Usuário</a>
 </div>
 </body>
 </html>

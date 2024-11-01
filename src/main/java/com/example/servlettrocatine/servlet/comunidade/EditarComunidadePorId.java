@@ -38,7 +38,7 @@ public class EditarComunidadePorId extends HttpServlet {
                     criadorComunidade,
                     descricaoComunidade,
                     Integer.parseInt(qntComunidade),
-                    Integer.parseInt(fotoComunidade)
+                    fotoComunidade
             );
 
             // Atualizar comunidade no banco de dados

@@ -6,14 +6,14 @@ public class Comunidade {
     private String criador;
     private String descricao;
     private int qntIntegrantes;
-    private int fotoPerfil;
+    private String fotoPerfil;
 
     // Construtor padrão
     public Comunidade() {
     }
 
     // Construtor com parâmetros
-    public Comunidade(int id, String nome, String criador, String descricao, int qntIntegrantes, int fotoPerfil) {
+    public Comunidade(int id, String nome, String criador, String descricao, int qntIntegrantes, String fotoPerfil) {
         this.id = id;
         this.nome = nome;
         this.criador = criador;
@@ -59,11 +59,11 @@ public class Comunidade {
         this.qntIntegrantes = qntIntegrantes;
     }
 
-    public int getFotoPerfil() {
+    public String getFotoPerfil() {
         return fotoPerfil;
     }
 
-    public void setFotoPerfil(int fotoPerfil) {
+    public void setFotoPerfil(String fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
     }
 

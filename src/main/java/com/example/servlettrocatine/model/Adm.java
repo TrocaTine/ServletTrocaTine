@@ -8,7 +8,7 @@ public class Adm {
     private int idUsuario;
 
     // Construtor padrão
-    public Adm() {
+    public Adm(String nome, String email, String senha, int idUsuario) {
     }
 
     // Construtor com parâmetros

@@ -5,6 +5,7 @@
 <head>
     <title>Listar Usuário</title>
     <style>
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -60,15 +61,21 @@
         .button:hover {
             background-color: #ffa201; /* Cor do botão ao passar o mouse */
         }
-        input[type="submit"], .btn-back {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #55aca0;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .btn-back {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #ffa201;
             text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #ffa201;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .btn-back:hover {
+            background-color: #ffa201;
+            color: #fff;
         }
     </style>
 </head>

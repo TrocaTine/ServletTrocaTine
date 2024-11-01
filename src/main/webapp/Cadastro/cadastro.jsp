@@ -36,7 +36,7 @@
     
                     <label for="password">Senha</label>
                     <input type="password" id="password" name="password">
-                    <a href="#">Login área restrita</a>
+                    <a href="../jsp/login.jsp">Login área restrita</a>
     
                     <button type="submit">Cadastrar</button>
                 </form>

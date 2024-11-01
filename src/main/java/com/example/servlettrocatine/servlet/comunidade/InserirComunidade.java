@@ -21,7 +21,7 @@ public class InserirComunidade extends HttpServlet {
         String criador = request.getParameter("criador");
         String descricao = request.getParameter("descricao");
         int qntIntegrantes = Integer.parseInt(request.getParameter("qntIntegrantes"));
-        Comunidade comunidade = new Comunidade(id, nome, criador, descricao, qntIntegrantes, 2);
+        Comunidade comunidade = new Comunidade(id, nome, criador, descricao, qntIntegrantes, "");
 
         comunidadeDAO.inserirComunidade(comunidade);
 
