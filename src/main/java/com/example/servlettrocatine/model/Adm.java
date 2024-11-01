@@ -10,18 +10,12 @@ public class Adm {
     private int idUsuario;
 
     // Construtor padrão
-    public Adm() {
+    public Adm(String nome, String email, String senha, int idUsuario) {
     }
 
     // Construtor com parâmetros
     public Adm(int id, String nome, String email, String senha, int idUsuario) {
         this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.idUsuario = idUsuario;
-    }
-    public Adm(String nome, String email, String senha, int idUsuario) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -34,6 +28,8 @@ public class Adm {
         this.senha = cripto.getSenha();
         this.idUsuario = idUsuario;
     }
+
+
 
     // Getters e Setters
     public int getId() {

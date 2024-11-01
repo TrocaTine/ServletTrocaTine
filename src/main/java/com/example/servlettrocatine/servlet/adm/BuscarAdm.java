@@ -16,7 +16,8 @@ public class BuscarAdm extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idComunidade = request.getParameter("id");
         if (idComunidade == null || idComunidade.isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID não fornecido.");
+            request.setAttribute("erro", "ID não fornecido.");
+            request.getRequestDispatcher("../erro400.jsp").forward(request, response);
             return;
         }
 
@@ -24,14 +25,16 @@ public class BuscarAdm extends HttpServlet {
         try {
             id = Integer.parseInt(idComunidade);
         } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
+            request.setAttribute("erro", e.getMessage());
+            request.getRequestDispatcher("../erro400.jsp").forward(request, response);
             return;
         }
 
         AdmDAO AdmDAO = new AdmDAO();
         Adm adm = AdmDAO.buscarAdmPorId(id);
         if (adm == null) {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Administrador não encontrada.");
+            request.setAttribute("erro", "Administrador não encontrada.");
+            request.getRequestDispatcher("../erro400.jsp").forward(request, response);
             return;
         }
         request.setAttribute("adm", adm);
