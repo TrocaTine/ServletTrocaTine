@@ -92,7 +92,7 @@
         <input type="password" id="senha" name="senha" required>
         <label for="idUsuario">idUsuario:</label>
         <input type="number" id="idUsuario" name="idUsuario" required>
-        <input type="submit" value="Adicionar">
+        <input type="submit" value="Editar">
     </form>
     <a href="${pageContext.request.contextPath}/adms" class="btn-back">Voltar para a Lista de Administradores</a>
 </div>

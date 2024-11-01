@@ -1,7 +1,9 @@
 package com.example.servlettrocatine.servlet.comunidade;
 
 import com.example.servlettrocatine.DAO.ComunidadeDAO;
+import com.example.servlettrocatine.DAO.LogDAO;
 import com.example.servlettrocatine.model.Comunidade;
+import com.example.servlettrocatine.model.Log;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,6 +25,8 @@ public class EditarComunidadePorId extends HttpServlet {
         String qntComunidade = request.getParameter("qntIntegrantes"); // Nome ajustado
         String fotoComunidade = request.getParameter("fotoPerfil"); // Nome ajustado
 
+        int idAdm = (Integer) request.getSession().getAttribute("idAdm");
+
         // Verifique se os parâmetros são válidos
         if (idComunidade == null || nomeComunidade == null || criadorComunidade == null ||
                 descricaoComunidade == null || qntComunidade == null || fotoComunidade == null) {
@@ -38,14 +42,19 @@ public class EditarComunidadePorId extends HttpServlet {
                     criadorComunidade,
                     descricaoComunidade,
                     Integer.parseInt(qntComunidade),
-                    Integer.parseInt(fotoComunidade)
+                    fotoComunidade
             );
 
             // Atualizar comunidade no banco de dados
             ComunidadeDAO comunidadeDAO = new ComunidadeDAO();
             boolean certo = comunidadeDAO.editarComunidadePorId(comunidade);
 
-            if (certo) {
+            Log log = new Log("Editar", "Comunidade", "update comunidade set nome = "+ nomeComunidade +", criador = "+ criadorComunidade +", descricao = "+
+                    descricaoComunidade +", qnt_integrantes = "+ qntComunidade +", foto_perfil = "+ fotoComunidade +" where id = "+  idComunidade, idAdm);
+            LogDAO logDAO = new LogDAO();
+            boolean logCerto = logDAO.inserirLog(log);
+
+            if (certo && logCerto) {
                 request.getSession().setAttribute("successMessage", "Comunidade editada com sucesso!");
                 response.sendRedirect(request.getContextPath() + "/comunidade");
             } else {

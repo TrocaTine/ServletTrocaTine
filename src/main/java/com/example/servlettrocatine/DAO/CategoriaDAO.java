@@ -19,7 +19,7 @@ public class CategoriaDAO {
 
     // Método para inserir uma nova categoria no banco de dados
     public boolean inserirCategoria(String nome) throws SQLException {
-        String sql = "INSERT INTO tipo_produto (tipo_produto) VALUES (?)";
+        String sql = "INSERT INTO categoria (tipo_produto) VALUES (?)";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -36,7 +36,7 @@ public class CategoriaDAO {
 
     // Método para editar uma categoria existente com base no ID
     public boolean editarCategoriaPorId(String nome, int id) throws SQLException {
-        String sql = "UPDATE tipo_produto SET tipo_produto = ? WHERE id = ?";
+        String sql = "UPDATE categoria SET tipo_produto = ? WHERE id = ?";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -56,7 +56,7 @@ public class CategoriaDAO {
 
     // Método para buscar uma categoria no banco de dados pelo ID
     public Categoria buscarCategoriaPorId(int id) throws SQLException {
-        String sql = "SELECT * FROM tipo_produto WHERE id = ?";
+        String sql = "SELECT * FROM categoria WHERE id = ?";
 
         Categoria categoria = null;
 
@@ -82,7 +82,7 @@ public class CategoriaDAO {
 
     // Método para excluir uma categoria do banco de dados pelo ID
     public boolean excluirCategoriaPorId(int id) throws SQLException {
-        String sql = "DELETE FROM tipo_produto WHERE id = ?";
+        String sql = "DELETE FROM categoria WHERE id = ?";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -99,7 +99,7 @@ public class CategoriaDAO {
     }
 
     public List<Categoria> listarCategorias() throws SQLException {
-        String sql = "SELECT * FROM tipo_produto";
+        String sql = "SELECT * FROM categoria";
         List<Categoria> categorias = new ArrayList<>();
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

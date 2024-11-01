@@ -1,6 +1,8 @@
 package com.example.servlettrocatine.servlet.tag;
 
+import com.example.servlettrocatine.DAO.LogDAO;
 import com.example.servlettrocatine.DAO.TagDAO;
+import com.example.servlettrocatine.model.Log;
 import com.example.servlettrocatine.model.Tag;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,7 +23,9 @@ public class InserirTag extends HttpServlet {
         String tamanho = request.getParameter("tamanho");
         String qualidade = request.getParameter("qualidade");
         String idtipo_produto = request.getParameter("idtipo_produto");
-        String id = request.getParameter("id");
+
+        int idAdm = (Integer) request.getSession().getAttribute("idAdm");
+
 
         // Validar se todos os campos estão preenchidos
         if (genero == null || cor == null || tamanho == null || qualidade == null ||
@@ -32,13 +36,19 @@ public class InserirTag extends HttpServlet {
 
         try {
             // Criar a nova tag com os dados do formulário
-            Tag novaTag = new Tag(Integer.parseInt(id), genero, cor, tamanho, qualidade, Integer.parseInt(idtipo_produto)); // ID será gerado pelo banco
+            Tag novaTag = new Tag (genero, cor, tamanho, qualidade, Integer.parseInt(idtipo_produto)); // ID será gerado pelo banco
 
             // Inserir a nova tag no banco de dados
             TagDAO tagDAO = new TagDAO();
             boolean sucesso = tagDAO.inserirTag(novaTag);
 
-            if (sucesso) {
+            Log log = new Log("Inserir", "Adm", "insert into tag (genero, cor, tamanho, qualidade, " +
+                    "idtipo_produto) values ('" + genero + "', '" + cor + "', '" + tamanho + "', '" + qualidade +
+                    "', " + idtipo_produto + ")", idAdm);
+            LogDAO logDAO = new LogDAO();
+            boolean logCerto = logDAO.inserirLog(log);
+
+            if (sucesso && logCerto) {
                 request.getSession().setAttribute("successMessage", "Tag adicionada com sucesso!");
                 response.sendRedirect("jsp/tag/inserirTag.jsp");
             } else {

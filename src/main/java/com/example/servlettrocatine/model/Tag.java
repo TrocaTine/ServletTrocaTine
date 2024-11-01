@@ -18,6 +18,14 @@ public class Tag {
         this.idTipo_produto = idTipo_produto;
     }
 
+    public Tag(String genero, String cor, String tamanho, String qualidade, int idTipo_produto) {
+        this.genero = genero;
+        this.cor = cor;
+        this.tamanho = tamanho;
+        this.qualidade = qualidade;
+        this.idTipo_produto = idTipo_produto;
+    }
+
     // Getters and Setters
     public int getId() {
         return id;

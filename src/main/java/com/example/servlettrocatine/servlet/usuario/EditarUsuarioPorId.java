@@ -1,6 +1,8 @@
 package com.example.servlettrocatine.servlet.usuario;
 
+import com.example.servlettrocatine.DAO.LogDAO;
 import com.example.servlettrocatine.DAO.UsuarioDAO;
+import com.example.servlettrocatine.model.Log;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,10 +23,12 @@ public class EditarUsuarioPorId extends HttpServlet {
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
         String dt_nascimento = request.getParameter("dt_nascimento");
-        String id = request.getParameter("id");
+        String idParam = request.getParameter("id");
+
+        int idAdm = (Integer) request.getSession().getAttribute("idAdm");
 
         // Verifique se os parâmetros são válidos
-        if (nome == null || id == null) {
+        if (nome == null || idParam == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Nome e ID são obrigatórios.");
             return;
         }
@@ -32,9 +36,13 @@ public class EditarUsuarioPorId extends HttpServlet {
         try {
             // Inserir usuário no banco de dados
             UsuarioDAO usuarioDAO = new UsuarioDAO();
-            boolean certo = usuarioDAO.editarUsuarioPorId( Integer.parseInt(id), nome, telefone, senha, email, cpf, dt_nascimento);
+            boolean certo = usuarioDAO.editarUsuarioPorId( Integer.parseInt(idParam), nome, telefone, senha, email, cpf, dt_nascimento);
+            Log log = new Log("Editar", "Usuario", "update usuario set nome = '"+ nome +"', telefone = '"+ telefone +"', senha = '"+ senha +"', email = '"+ email +"', cpf = '"+ cpf +"', dt_nascimento = '"+ dt_nascimento +"' where id = "+ idParam, idAdm);
+            LogDAO logDAO = new LogDAO();
+            boolean logCerto = logDAO.inserirLog(log);
 
-            if (certo) {
+
+            if (certo && logCerto) {
                 request.getSession().setAttribute("successMessage", "Usuário editado com sucesso!");
                 response.sendRedirect("jsp/usuario/editarUsuarioPorId.jsp");
             } else {

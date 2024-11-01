@@ -1,5 +1,7 @@
 package com.example.servlettrocatine.model;
 
+import com.example.servlettrocatine.DAO.SenhaHash;
+
 public class Adm {
     private int id;
     private String nome;
@@ -17,6 +19,19 @@ public class Adm {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.idUsuario = idUsuario;
+    }
+    public Adm(String nome, String email, String senha, int idUsuario) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.idUsuario = idUsuario;
+    }
+
+    public Adm(String nome, String email, SenhaHash cripto, int idUsuario) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = cripto.getSenha();
         this.idUsuario = idUsuario;
     }
 

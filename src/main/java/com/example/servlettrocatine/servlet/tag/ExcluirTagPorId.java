@@ -1,6 +1,8 @@
 package com.example.servlettrocatine.servlet.tag;
 
+import com.example.servlettrocatine.DAO.LogDAO;
 import com.example.servlettrocatine.DAO.TagDAO;
+import com.example.servlettrocatine.model.Log;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,6 +19,8 @@ public class ExcluirTagPorId extends HttpServlet {
         // Coletar o parâmetro ID da requisição
         String idParam = request.getParameter("id");
 
+        int idAdm = (Integer) request.getSession().getAttribute("idAdm");
+
         // Validar se o parâmetro ID está presente e não é vazio
         if (idParam == null || idParam.isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID é obrigatório para excluir a tag.");
@@ -30,8 +34,11 @@ public class ExcluirTagPorId extends HttpServlet {
             // Excluir a tag no banco de dados
             TagDAO tagDAO = new TagDAO();
             boolean sucesso = tagDAO.excluirTagPorId(id);
+            Log log = new Log("Excluir", "Tag", "delete from adm where id = "+ idParam, idAdm);
+            LogDAO logDAO = new LogDAO();
+            boolean logCerto = logDAO.inserirLog(log);
 
-            if (sucesso) {
+            if (sucesso && logCerto) {
                 request.getSession().setAttribute("successMessage", "Tag excluída com sucesso!");
                 response.sendRedirect("tags");
             } else {

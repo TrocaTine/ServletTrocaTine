@@ -29,7 +29,7 @@ public class ComunidadeDAO {
             pstmt.setString(2, comunidade.getCriador());
             pstmt.setString(3, comunidade.getDescricao());
             pstmt.setInt(4, comunidade.getQntIntegrantes()); // Ajustado para usar o método correto
-            pstmt.setInt(5, comunidade.getFotoPerfil());
+            pstmt.setString(5, comunidade.getFotoPerfil());
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class ComunidadeDAO {
                 pstmt.setString(2, comunidade.getCriador());
                 pstmt.setString(3, comunidade.getDescricao());
                 pstmt.setInt(4, comunidade.getQntIntegrantes()); // Ajustado para usar o método correto
-                pstmt.setInt(5, comunidade.getFotoPerfil());
+                pstmt.setString(5, comunidade.getFotoPerfil());
                 pstmt.setInt(6, comunidade.getId()); // Adicionado para atualizar pelo ID
 
                 // Executa a atualização e retorna o sucesso
@@ -86,7 +86,7 @@ public class ComunidadeDAO {
                             rs.getString("criador"),
                             rs.getString("descricao"),
                             rs.getInt("qnt_integrantes"),
-                            rs.getInt("foto_perfil")
+                            rs.getString("foto_perfil")
                     );
                 }
             }
@@ -116,7 +116,7 @@ public class ComunidadeDAO {
                     comunidade.setCriador(rs.getString("criador"));
                     comunidade.setDescricao(rs.getString("descricao"));
                     comunidade.setQntIntegrantes(rs.getInt("qnt_integrantes"));
-                    comunidade.setFotoPerfil(rs.getInt("foto_perfil"));
+                    comunidade.setFotoPerfil(rs.getString("foto_perfil"));
                     comunidades.add(comunidade);
                 }
             }
@@ -188,7 +188,7 @@ public class ComunidadeDAO {
                             rs.getString("criador"),
                             rs.getString("descricao"),
                             rs.getInt("qnt_integrantes"),
-                            rs.getInt("foto_perfil")
+                            rs.getString("foto_perfil")
                     ));
                 }
             }

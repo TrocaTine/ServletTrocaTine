@@ -18,6 +18,7 @@ public class BuscarTagPorId extends HttpServlet {
         // Coletar o parâmetro de ID da requisição
         String idParam = request.getParameter("id");
 
+
         // Verificar se o parâmetro 'id' é válido
         if (idParam == null || idParam.isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "O ID é obrigatório.");

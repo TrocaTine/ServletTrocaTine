@@ -1,6 +1,8 @@
 package com.example.servlettrocatine.servlet.comunidade;
 
 import com.example.servlettrocatine.DAO.ComunidadeDAO;
+import com.example.servlettrocatine.DAO.LogDAO;
+import com.example.servlettrocatine.model.Log;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,6 +17,9 @@ public class ExcluirComunidadePorId extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idComunidade = request.getParameter("id");
+
+        int idAdm = (Integer) request.getSession().getAttribute("idAdm");
+
         if (idComunidade == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID é obrigatório.");
             return;
@@ -22,8 +27,11 @@ public class ExcluirComunidadePorId extends HttpServlet {
         try {
             ComunidadeDAO comunidadeDAO = new ComunidadeDAO();
             boolean certo = comunidadeDAO.excluirComunidadePorId(Integer.parseInt(idComunidade));
+            Log log = new Log("Excluir", "Comunidade", "delete from comunidade  where id = "+  idComunidade, idAdm);
+            LogDAO logDAO = new LogDAO();
+            boolean logCerto = logDAO.inserirLog(log);
 
-            if (certo) {
+            if (certo && logCerto) {
                 request.getSession().setAttribute("successMessage", "Comunidade excluida com sucesso!");
                 response.sendRedirect("jsp/comunidade/excluirComunidadePorID.jsp");
             } else {

@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -15,13 +16,17 @@ public class VerificarAdmins extends HttpServlet {
         String usuario = request.getParameter("user");
         String senha = request.getParameter("senha");
         AdmDAO adminDAO = new AdmDAO();
-        if (adminDAO.verificarAdmin(usuario, senha)) {
-            response.sendRedirect("jsp/pagCrud.jsp");
-        } else {
-            request.setAttribute("erroLogin", "Usuário ou senha incorretos");
-            request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
 
+            int idAdm = adminDAO.verificarAdmin(usuario, senha); // Obtém o ID do administrador
+
+            if (idAdm != -1) {
+                HttpSession session = request.getSession();
+                session.setAttribute("idAdm", idAdm); // Armazena o idAdm na sessão
+                response.sendRedirect("jsp/pagCrud.jsp");
+            } else {
+                // Caso o ID não seja encontrado (não deveria ocorrer)
+                request.setAttribute("erroLogin", "Usuário ou senha incorretos");
+                response.sendRedirect("jsp/login.jsp");
+            }
         }
-
-    }
 }

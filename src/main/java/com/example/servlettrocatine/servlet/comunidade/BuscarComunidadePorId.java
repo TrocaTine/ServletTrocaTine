@@ -15,6 +15,7 @@ import java.sql.SQLException;
 public class BuscarComunidadePorId extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idComunidade = request.getParameter("id");
+
         if (idComunidade == null || idComunidade.isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID não fornecido.");
             return;

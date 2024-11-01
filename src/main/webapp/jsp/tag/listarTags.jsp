@@ -4,76 +4,7 @@
 <html>
 <head>
     <title>Listar Todas as Tags</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            margin: 20px;
-            padding: 20px;
-        }
-        h1 {
-            color: #ffa201;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #55aca0;
-            color: #fff;
-        }
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-        .no-data {
-            text-align: center;
-            color: #888;
-            font-style: italic;
-        }
-        .button-container {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .button {
-            background-color: #55aca0;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 5px;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #ffa201;
-        }
-        .btn-back {
-            display: inline-block;
-            background-color: #f0f0f0;
-            color: #ffa201;
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid #ffa201;
-            border-radius: 5px;
-            font-size: 16px;
-            margin-top: 10px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .btn-back:hover {
-            background-color: #ffa201;
-            color: #fff;
-        }
-    </style>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estiloListar.css">
 </head>
 <body>
 <h1>Lista de Todas as Tags</h1>

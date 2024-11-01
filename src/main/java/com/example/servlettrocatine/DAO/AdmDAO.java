@@ -39,7 +39,7 @@ public class AdmDAO {
         }
     }
 
-    public boolean verificarAdmin(String user, String senha) {
+    public int verificarAdmin(String user, String senha) {
         conexao.conectar();
         try {
             conexao.pstmt = conexao.conn.prepareStatement("SELECT * FROM Adm WHERE nome = ? AND senha = ?");
@@ -48,17 +48,19 @@ public class AdmDAO {
             conexao.rs = conexao.pstmt.executeQuery();
 
             if (conexao.rs.next()) {
-                return true; // Login correto
+                return conexao.rs.getInt("id"); // Login correto
             } else {
-                return false; // Login incorreto
+                return -1; // Login incorreto
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return -1;
         } finally {
             conexao.desconectar();
         }
     }
+
+
     // Edita a senha de um administrador com base no ID.
     // Retorna true se a operação for bem-sucedida, caso contrário, false.
     public boolean editarAdmPorId(Adm adm) {

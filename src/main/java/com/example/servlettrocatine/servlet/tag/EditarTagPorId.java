@@ -1,6 +1,8 @@
 package com.example.servlettrocatine.servlet.tag;
 
+import com.example.servlettrocatine.DAO.LogDAO;
 import com.example.servlettrocatine.DAO.TagDAO;
+import com.example.servlettrocatine.model.Log;
 import com.example.servlettrocatine.model.Tag;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,6 +25,8 @@ public class EditarTagPorId extends HttpServlet {
         String qualidade = request.getParameter("qualidade");
         String idtipo_produto = request.getParameter("idtipo_produto");
 
+        int idAdm = (Integer) request.getSession().getAttribute("idAdm");
+
         // Validar se o ID e os outros parâmetros estão presentes
         if (idParam == null || idParam.isEmpty() || genero == null || cor == null || tamanho == null || qualidade == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos os campos são obrigatórios.");
@@ -39,8 +43,16 @@ public class EditarTagPorId extends HttpServlet {
             // Atualizar a tag no banco de dados
             TagDAO tagDAO = new TagDAO();
             boolean sucesso = tagDAO.editarTagPorId(id, novaTag);
+            Log log = new Log("Editar", "Tag", "update tag set nome = '" + novaTag.getGenero() +
+                    "', cor = '" + novaTag.getCor() + "', tamanho = '" + novaTag.getTamanho() + "', qualidade = '" +
+                    novaTag.getQualidade() + "', idtipo_produto = " + novaTag.getIdTipo_produto() + " where id = " +
+                    id, idAdm);
 
-            if (sucesso) {
+            LogDAO logDAO = new LogDAO();
+            boolean logCerto = logDAO.inserirLog(log);
+
+
+            if (sucesso && logCerto) {
                 request.getSession().setAttribute("successMessage", "Tag atualizada com sucesso!");
                 response.sendRedirect("jsp/tag/editarTag.jsp");
             } else {

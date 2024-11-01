@@ -1,7 +1,10 @@
 package com.example.servlettrocatine.servlet.adm;
 
 import com.example.servlettrocatine.DAO.AdmDAO;
+import com.example.servlettrocatine.DAO.LogDAO;
+import com.example.servlettrocatine.DAO.SenhaHash;
 import com.example.servlettrocatine.model.Adm;
+import com.example.servlettrocatine.model.Log;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,7 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import java.security.NoSuchAlgorithmException;
 
 @WebServlet(name = "InserirAdm", value = "/inserirAdm")
 public class InserirAdm extends HttpServlet {
@@ -20,10 +23,19 @@ public class InserirAdm extends HttpServlet {
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
+        SenhaHash cripto;
+        try {
+            cripto = new SenhaHash(senha);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+
         String idUsuario = request.getParameter("idUsuario");
 
+        int idAdm = (Integer) request.getSession().getAttribute("idAdm");
+
         // Verifique se os parâmetros são válidos
-        if (nome == null || idParam == null || email == null || senha == null || idUsuario == null) {
+        if (nome == null || email == null || senha == null || idUsuario == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos os campos são obrigatórios.");
             return;
         }
@@ -31,10 +43,15 @@ public class InserirAdm extends HttpServlet {
         try {
             // Inserir categoria no banco de dados
             AdmDAO admDAO = new AdmDAO();
-            Adm adm = new Adm(Integer.parseInt(idParam), nome, email, senha, Integer.parseInt(idUsuario));
+            Adm adm = new Adm(nome, email, cripto.getSenha(), Integer.parseInt(idUsuario));
             boolean certo = admDAO.inserirAdm(adm);
 
-            if (certo) {
+            Log log = new Log("Inserir", "Adm", "insert into adm (nome, email, senha, idusuario) values ('" + nome + "', '" + email + "', '" + cripto.getSenha() + "', " + idUsuario + ")"
+            , idAdm);
+            LogDAO logDAO = new LogDAO();
+            boolean logCerto = logDAO.inserirLog(log);
+
+            if (certo && logCerto) {
                 request.getSession().setAttribute("successMessage", "Admin adicionada com sucesso!");
                 response.sendRedirect("jsp/adm/adicionarAdm.jsp");
             } else {
