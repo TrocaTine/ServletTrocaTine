@@ -11,6 +11,10 @@ public class Adm {
 
     // Construtor padrão
     public Adm(String nome, String email, String senha, int idUsuario) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.idUsuario = idUsuario;
     }
 
     // Construtor com parâmetros
