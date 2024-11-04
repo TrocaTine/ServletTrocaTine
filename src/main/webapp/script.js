@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", animatePhones);
 });
 
+
 document.addEventListener('gesturestart', function(e) {
     e.preventDefault(); 
 });
