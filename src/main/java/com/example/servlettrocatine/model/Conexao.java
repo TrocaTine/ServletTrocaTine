@@ -12,9 +12,10 @@ public class Conexao {
     // Método para conectar ao banco de dados
     public Connection conectar() {
         try {
-            // Obtendo os valores das variáveis de ambiente
-            Dotenv dotenv = Dotenv.configure().directory("C:\\Users\\kaiquesouza-ieg\\OneDrive - Instituto Germinare\\Atividades\\Inter\\POO\\ServletTrocaTine\\ServletTrocaTine\\.env").load();
-            // "../../../../.env" <- path absoluto (caso precise)
+            Dotenv dotenv = Dotenv.configure()
+                    .ignoreIfMalformed()
+                    .ignoreIfMissing()
+                    .load();
 
             // Obtendo as variáveis de ambiente do arquivo .env
             String driver = dotenv.get("DB_DRIVER");
