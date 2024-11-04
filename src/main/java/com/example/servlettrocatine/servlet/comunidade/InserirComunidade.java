@@ -33,7 +33,9 @@ public class InserirComunidade extends HttpServlet {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos os campos são obrigatórios.");
             return;
         }
+
         boolean certo = comunidadeDAO.inserirComunidade(comunidade);
+
         Log log = new Log("Inserir", "Comunidade", "insert into comunidade (nome, criador, descricao, qnt_integrantes, foto) values ('" + nome + "', '" + criador + "', '" + descricao + "', " + qntIntegrantes + ", '" + foto + "')",
                 idAdm);
         LogDAO logDAO = new LogDAO();
@@ -41,12 +43,9 @@ public class InserirComunidade extends HttpServlet {
 
         if (certo && logCerto) {
             request.getSession().setAttribute("successMessage", "Categoria adicionada com sucesso!");
-            response.sendRedirect("jsp/categoria/adicionarCategoria.jsp");
+            response.sendRedirect("jsp/comunidade/inserirComunidade.jsp");
         } else {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao inserir categoria.");
         }
-
-
-
     }
 }

@@ -61,8 +61,8 @@
     <input type="text" name="descricao" id="descricao">
     <label for="qntIntegrantes">Quantidade de integrantes:</label>
     <input type="number" name="qntIntegrantes" id="qntIntegrantes">
-    <label for="fotoPerfil">Foto do Perfil:</label>
-    <input type="file" name="fotoPerfil" id="fotoPerfil" accept="image/*">
+    <label for="foto">Foto do Perfil:</label>
+    <input type="text" name="foto" id="foto">
     <input type="submit" value="Inserir">
   </form>
 <a href="${pageContext.request.contextPath}/comunidade" class="btn-back">Voltar para a Lista de Comunidades</a>

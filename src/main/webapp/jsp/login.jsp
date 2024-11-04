@@ -67,10 +67,10 @@
                 <!-- Mensagem de erro em vermelho, se existir -->
                 <div class="text-center" style="color: red;">
                     <%
-                        String erroLogin = (String) request.getAttribute("erroLogin");
-                        if (erroLogin != null) {
+                        String ErroLogin = (String) request.getAttribute("ErroLogin");
+                        if (ErroLogin != null) {
                     %>
-                    <p><%= erroLogin %></p>
+                    <p><%= ErroLogin %></p>
                     <%
                         }
                     %>
