@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
+  <title>Dashboard</title>
   <style>
     body{
       overflow-y: hidden;
@@ -137,12 +137,12 @@
 </head>
 <body>
 <header>
-
-  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding:0;">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 0; margin: 0; width: 100%;">
     <div
             class="container-fluid"
-            style="background-color: #55aca0; padding: 10px">
-      <img src="../Assets/TrocatineLogoBranca.png" style="margin-left: 50px; scale: 1.5;" class="navbar-brand logo" alt="" />
+            style="background-color: #55aca0; padding: 10px"
+    >
+      <img src="../Assets/TrocatineLogoBranca.png" style="height: 65px; width: 215px; margin: 0 50px 0 50px" class="navbar-brand logo" alt="" />
       <button
               class="navbar-toggler"
               type="button"
@@ -160,17 +160,16 @@
       >
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link link-light ancora" aria-current="page" href="#"
+            <a class="nav-link link-light ancora" aria-current="page" href="dashboard.html"
             >Dashboard</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link link-light ancora" href="servlet.html">Crud</a>
+            <a class="nav-link link-light ancora" href="#">Servlet</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link-light ancora" aria-disabled="true" href="../index.html"
-            >Landing Page</a
-            >
+            <a class="nav-link link-light ancora" aria-disabled="true"
+               href="../index.html" >Landing Page</a>
           </li>
         </ul>
       </div>
@@ -179,10 +178,6 @@
 </header>
 
 <main>
-  <div class="button-container">
-    <a href="../index.html" style="display: flex; justify-content: flex-start; scale: 0.25" class="sair" > Sair </a>
-
-  </div>
   <h1>Bem vindo à área restrita</h1>
   <p>Um espaço exclusivo onde você pode acessar e gerenciar informações essenciais através de nossa dashboard interativa. Aqui, utilizamos a tecnologia de Servlets para garantir que todos os dados sejam processados de forma eficiente e segura.</p>
 

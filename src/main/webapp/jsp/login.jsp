@@ -33,15 +33,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse myFlexEnd" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link link-light ancora" href="dashboard.html">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-light ancora" href="../index.html">Landing Page</a>
-                    </li>
-                </ul>
-                <a href="../index.html" class="btn btn-outline-light">Sair</a> <!-- Botão de Sair -->
+                <a href="../index.html" class="btn btn-outline-light" style="margin-right: 15px;">Sair</a> <!-- Botão de Sair -->
             </div>
         </div>
     </nav>
