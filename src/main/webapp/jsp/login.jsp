@@ -20,7 +20,7 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding:0;">
         <div class="container-fluid" style="background-color: #55aca0; padding: 10px">
-            <img src="../Assets/Logo-nuvem.png" class="navbar-brand logo" alt="" />
+            <img src="../Assets/TrocatineLogoBranca.png" style="margin: 0 50px 0 50px; height: 65px;" class="navbar-brand logo" alt="" />
             <button
                     class="navbar-toggler"
                     type="button"
@@ -35,10 +35,10 @@
             <div class="collapse navbar-collapse myFlexEnd" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-light ancora" href="#">Dashboard</a>
+                        <a class="nav-link link-light ancora" href="dashboard.html">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light ancora" href="#">Landing Page</a>
+                        <a class="nav-link link-light ancora" href="../index.html">Landing Page</a>
                     </li>
                 </ul>
                 <a href="../index.html" class="btn btn-outline-light">Sair</a> <!-- Botão de Sair -->
