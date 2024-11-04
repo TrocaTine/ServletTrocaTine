@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (scrollY > 0) {
             header.style.backgroundColor = '#373a37f7';
             header.style.height = '90px';
-            headerImg.src = "Assets/TrocatineLogo.png";
+            headerImg.src = "Assets/TrocaTineLogo.png";
             signInButtom.classList.add('signIn-active');
             signInButtom.classList.remove('signIn-unactive');
             
