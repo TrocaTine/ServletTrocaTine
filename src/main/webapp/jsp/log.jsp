@@ -41,5 +41,6 @@
         }
     %>
 </table>
+    <a href="${pageContext.request.contextPath}/jsp/pagCrud.jsp" class="btn-back">Voltar para à página do CRUD</a>
 </body>
 </html>
