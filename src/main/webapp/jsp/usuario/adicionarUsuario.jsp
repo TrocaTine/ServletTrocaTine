@@ -49,11 +49,11 @@
   <label for="nome">Nome:</label>
   <input type="text" id="nome" name="nome" required><br>
   <label for="telefone">Telefone:</label>
-  <input type="text" id="telefone" name="telefone" required><br>
+  <input type="tel" id="telefone" name="telefone" required><br>
   <label for="senha">Senha:</label>
-  <input type="text" id="senha" name="senha" required><br>
+  <input type="password" id="senha" name="senha" required><br>
   <label for="email">E-mail:</label>
-  <input type="text" id="email" name="email" required><br>
+  <input type="email" id="email" name="email" required><br>
   <label for="cpf">CPF:</label>
   <input type="text" id="cpf" name="cpf" required><br>
   <label for="dt_nascimento">Data nascimento:</label>
