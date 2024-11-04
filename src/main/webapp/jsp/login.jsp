@@ -56,7 +56,7 @@
                 <div class="mb-3">
                     <label for="user" class="form-label">Nome do Usuário</label>
                     <!-- Campo de texto para o usuário -->
-                    <input type="text" class="form-control" id="user" name="user" required pattern="^[A-Z][a-z]+ [A-Z][a-z]+$" title="O nome deve ser no formato: Nome Sobrenome (ex: João Silva)">
+                    <input type="text" class="form-control" id="user" name="user" title="O nome deve ser no formato: Nome Sobrenome (ex: João Silva)">
                 </div>
                 <div class="mb-3">
                     <label for="senha" class="form-label">Senha</label>
