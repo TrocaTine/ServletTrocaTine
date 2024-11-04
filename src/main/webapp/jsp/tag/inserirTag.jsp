@@ -85,9 +85,9 @@
     <label for="cor">Cor:</label>
     <input type="text" id="cor" name="cor" required>
     <label for="genero">Genero:</label>
-    <input type="text" id="genero" name="genero" required>
+    <input type="text" id="genero" name="genero" placeholder="Menino ou Menina ou Unissex" required>
     <label for="tamanho">Tamanho:</label>
-    <input type="text" id="tamanho" name="tamanho" required>
+    <input type="text" id="tamanho" name="tamanho" placeholder="P, G, GG, U" required>
     <label for="qualidade">Qualidade:</label>
     <input type="text" id="qualidade" name="qualidade" required>
     <label for="idtipo_produto">Id Categoria:</label>

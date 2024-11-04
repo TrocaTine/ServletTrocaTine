@@ -11,9 +11,12 @@ import java.security.NoSuchAlgorithmException;
 
 public class Teste {
     public static void main(String[] args) {
-
-        Comunidade adm = new Comunidade("Teste", "Teste", "teste", 2, "foto");
-        ComunidadeDAO admDAO = new ComunidadeDAO();
-        admDAO.inserirComunidade(adm);
+        AdmDAO admDAO = new AdmDAO();
+        try {
+            SenhaHash senhaHash = new SenhaHash("senha123");
+            System.out.println(senhaHash.getSenha());
+            } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+        }
     }
 }

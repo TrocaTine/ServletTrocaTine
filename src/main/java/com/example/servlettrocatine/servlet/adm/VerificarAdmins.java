@@ -17,6 +17,7 @@ public class VerificarAdmins extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String usuario = request.getParameter("user");
         String senha = request.getParameter("senha");
+
         SenhaHash cripto;
         try {
             cripto = new SenhaHash(senha);
