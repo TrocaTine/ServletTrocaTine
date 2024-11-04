@@ -8,7 +8,8 @@
     --color-body: white;
     --color-homeGradient: linear-gradient(45deg, #55aca0, #59b4a7, #5db9ad, #63c5b8, #5ebdb0, #5dbaae , #63c5b8);
     --color-fire: linear-gradient(to left, #55aca0, #4a958b, #3b7970);
-    --color-headerElements: #6bd5c7;
+    --color-headerElements: #ffa201;
+    --color-signIn: var(--color-orange);
 }
 *{
     margin: 0;
@@ -17,14 +18,26 @@
 }
 body{
     background-color: var(--color-body);
+    opacity: 1;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    transition: 0.5s;
 }
 body .background{
     background: var(--color-homeGradient);
+}
+
+.blur15px{
+    filter: blur(15px);
+}
+.blur10px{
+    filter: blur(10px);
+}
+.blur3px{
+    backdrop-filter: blur(3px);
 }
 
 .scroll-watcher{
@@ -121,6 +134,7 @@ body .background{
     width: 75%;
     padding-top: 10px;
 }
+
 .header nav ul li{
     display: inline-flex;
     justify-content: center;
@@ -133,9 +147,39 @@ body .background{
     color: white;
     transition: 0.25s;
     font-weight: bold;
+    padding: 5px 15px 5px 15px;
 }
-.header nav ul li a:hover{
+.header nav ul li a:hover:not(#signIn){
     color: var(--color-headerElements);
+}
+
+a.signIn-active{
+    color: white;
+    transition: 0.25s;
+    background-color: var(--color-signIn);
+    border-radius: 10px;
+}
+a.signIn-active:hover{
+    color: white;
+    background: #c87f01;
+    transition: 0.25s;
+    scale: 1.05;
+}
+a.signIn-active:active{
+    color: white;
+    background: #d5b901;
+    transition: 0.25s;
+    scale: 1.00;
+}
+
+a.signIn-unactive{
+    background: #252525cf;
+    border-radius: 10px;
+    transition: 0.25s;
+    backdrop-filter: blur(5px);
+}
+a.signIn-unactive:hover{
+    scale: 1.05;
 }
 
 .home{
@@ -385,7 +429,7 @@ body .background{
 }
 
 .equipe{
-    margin-top: 150px;
+    margin: 150px 0 50px;
     padding-left: 150px;
     padding-right: 150px;
 }
@@ -409,15 +453,16 @@ body .background{
     margin-bottom: 150px;
 }
 .equipe .membros .nome{
+    transition: 0.75s;
     color: var(--color-blue);
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 15px;
 }
 .equipe .membros .cargo{
-    color: var(--color-midgray);
+    transition: 0.75s;
+    color: var(var(--color-lightgray));
     font-size: 1.35em;
-    font-weight: bold;
 }
 .equipe .membros > div {
     display: flex;
@@ -469,6 +514,7 @@ body .background{
 }
 
 footer{
+    transition: 0.25s;
     background-color: white;
     margin-top: -200px;
     height: 100px;
@@ -476,9 +522,10 @@ footer{
 
 footer .midia{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: relative;
-    bottom: -340px;
+    bottom: -225px;
+    left: -35px;
     z-index: 900;
     margin-left: 50px;
 }
@@ -486,39 +533,49 @@ footer .midia a img{
     width: 30px;
     height: 30px;
     border-radius: 5px;
-    margin-left: 17.5px;
     margin-right: 5px;
 }
 footer > div > a{
+    padding: 10px 15px 40px 15px;
     height: 30px;
+    width: 215px;
     font-size: 200%;
     text-decoration: none;
-    color: #101010;
+    color: white;
     display: flex;
     font-weight: 500;
+
+    scale: 0.8;
+}
+a#instagram{
+    background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    border-radius: 5px;
+}
+a#github{
+    background: black;
+    border-radius: 5px;
+    position: relative;
+    right: -3px;
+    width: 175px;
+}
+a#github img{
+    scale: 1.15;
 }
 footer a p{
     position: relative;
     top: -10px;
-    transition: 0.7s;
+    transition: 0.25s;
 }
-footer a p:hover{
-    color: var(--color-orange);
-    transition: 0.5s;
+footer a{
+    transition: 0.25s;
+}
+footer a:hover{
+    scale: 0.9;
+    transition: 0.25s;
 }
 footer img.nuvem{
     src: 'Assets/TrocatineLogoBranca.png';
     width: 100%;
     position: relative;
     top: 5px;
-}
-
-#logoHeader{
-    height: 200px;
-    src: 'Assets/TrocatineLogoBranca.png';
-    scale: 0.5;
-    position: relative;
-    bottom: -100px;
-    right: -200px;
-    z-index: 990;
 }
