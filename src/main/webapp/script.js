@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const team = document.getElementById('team');
     const signInButtom = document.getElementById('signIn');
     var r = document.querySelector(':root');
+    headerImg.src = "Assets/TrocaTineLogoBranca.png";
 
 
     const initialRotations = {
