@@ -10,8 +10,7 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-FROM tomcat:10.1.28-jdk2
-1
+FROM tomcat:10.1.28-jdk21
 
 ENV DB_USER=avnadmin
 ENV DB_PASSWORD=AVNS_-QThPRlWRVnrd9qqvXk
