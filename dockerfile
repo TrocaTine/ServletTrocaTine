@@ -20,4 +20,4 @@ ENV DB_DRIVER=org.postgresql.Driver
 
 COPY --from=build /app/target/ServletTrocaTine-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ServletTrocaTine.war
 
-EXPOSE 8080
+EXPOSE 8005
