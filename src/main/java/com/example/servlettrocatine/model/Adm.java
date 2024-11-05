@@ -1,21 +1,11 @@
 package com.example.servlettrocatine.model;
 
-import com.example.servlettrocatine.DAO.SenhaHash;
-
 public class Adm {
     private int id;
     private String nome;
     private String email;
     private String senha;
     private int idUsuario;
-
-    // Construtor padrão
-    public Adm(String nome, String email, String senha, int idUsuario) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.idUsuario = idUsuario;
-    }
 
     // Construtor com parâmetros
     public Adm(int id, String nome, String email, String senha, int idUsuario) {
@@ -26,10 +16,11 @@ public class Adm {
         this.idUsuario = idUsuario;
     }
 
-    public Adm(String nome, String email, SenhaHash cripto, int idUsuario) {
+    // Construtor padrão
+    public Adm(String nome, String email, String senha, int idUsuario) {
         this.nome = nome;
         this.email = email;
-        this.senha = cripto.getSenha();
+        this.senha = senha;
         this.idUsuario = idUsuario;
     }
 

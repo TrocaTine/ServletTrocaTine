@@ -22,7 +22,7 @@ public class LogDAO {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String operacao = rs.getString("operacao");
+                String operacao = rs.getString("tipo_operacao");
                 String tabela = rs.getString("tabela");
                 String data_hora = rs.getString("data_hora");
                 String query = rs.getString("query");
@@ -37,7 +37,7 @@ public class LogDAO {
     }
 
     public boolean inserirLog(Log log) {
-        String sql = "INSERT INTO log (operacao, tabela, query, idadm) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO log (tipo_operacao, tabela, query, idadm) VALUES (?, ?, ?, ?)";
         Connection conn = conexao.conectar();
 
         try {

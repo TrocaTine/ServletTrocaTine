@@ -2,7 +2,6 @@ package com.example.servlettrocatine.servlet.adm;
 
 import com.example.servlettrocatine.DAO.AdmDAO;
 import com.example.servlettrocatine.DAO.LogDAO;
-import com.example.servlettrocatine.DAO.SenhaHash;
 import com.example.servlettrocatine.model.Adm;
 import com.example.servlettrocatine.model.Log;
 import jakarta.servlet.ServletException;
@@ -12,7 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
 @WebServlet(name = "EditarPorID", value = "/editarAdm")
 public class EditarAdm extends HttpServlet {
@@ -24,12 +22,7 @@ public class EditarAdm extends HttpServlet {
         String senha = request.getParameter("senha");
         String idParam = request.getParameter("id");
         String idUsuario = request.getParameter("idUsuario");
-        SenhaHash cripto;
-        try {
-            cripto = new SenhaHash(senha);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
+
         int idAdm = (Integer) request.getSession().getAttribute("idAdm");
 
         // Verifique se os parâmetros são válidos
@@ -41,10 +34,10 @@ public class EditarAdm extends HttpServlet {
         try {
             // Inserir categoria no banco de dados
             AdmDAO admDAO = new AdmDAO();
-            Adm adm = new Adm(Integer.parseInt(idParam), nome, email, cripto.getSenha(), Integer.parseInt(idUsuario));
+            Adm adm = new Adm(Integer.parseInt(idParam), nome, email, senha, Integer.parseInt(idUsuario));
             boolean certo = admDAO.editarAdmPorId(adm);
             Log log = new Log("Editar", "Adm", "update adm set nome = "+ nome +", email = "+ email + ", senha = "
-                    + cripto.getSenha() + ", idusuario = "+ idUsuario +"  WHERE id = " + idParam + " AND idusuario = " + idUsuario
+                    + senha + ", idusuario = "+ idUsuario +"  WHERE id = " + idParam + " AND idusuario = " + idUsuario
                     , idAdm);
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);

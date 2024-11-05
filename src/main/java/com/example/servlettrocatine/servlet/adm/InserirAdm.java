@@ -2,7 +2,6 @@ package com.example.servlettrocatine.servlet.adm;
 
 import com.example.servlettrocatine.DAO.AdmDAO;
 import com.example.servlettrocatine.DAO.LogDAO;
-import com.example.servlettrocatine.DAO.SenhaHash;
 import com.example.servlettrocatine.model.Adm;
 import com.example.servlettrocatine.model.Log;
 import jakarta.servlet.ServletException;
@@ -12,8 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
 
 @WebServlet(name = "InserirAdm", value = "/inserirAdm")
 public class InserirAdm extends HttpServlet {
@@ -26,7 +23,6 @@ public class InserirAdm extends HttpServlet {
             String senha = request.getParameter("senha");
             String idUsuario = request.getParameter("idUsuario");
 
-            SenhaHash cripto = new SenhaHash(senha);
             int idAdm = (Integer) request.getSession().getAttribute("idAdm");
 
             // Verifique se os parâmetros são válidos
@@ -37,9 +33,9 @@ public class InserirAdm extends HttpServlet {
             try {
                 // Inserir categoria no banco de dados
                 AdmDAO admDAO = new AdmDAO();
-                Adm adm = new Adm(nome, email, cripto.getSenha(), Integer.parseInt(idUsuario));
+                Adm adm = new Adm(nome, email, senha, Integer.parseInt(idUsuario));
                 boolean certo = admDAO.inserirAdm(adm);
-                Log log = new Log("Inserir", "Adm", "insert into Adm (nome, email, senha, idUsuario) values ('"+ nome +"', '"+ email +"', '"+ cripto.getSenha() +"', '"+ idUsuario +"')", idAdm);
+                Log log = new Log("Inserir", "Adm", "insert into Adm (nome, email, senha, idUsuario) values ('"+ nome +"', '"+ email +"', '"+ senha +"', '"+ idUsuario +"')", idAdm);
                 LogDAO logDAO = new LogDAO();
                 boolean logCerto = logDAO.inserirLog(log);
 
@@ -57,9 +53,6 @@ public class InserirAdm extends HttpServlet {
         } catch (InternalError e) {
             request.setAttribute("erro", e.getMessage());
             request.getRequestDispatcher("../erro400.jsp").forward(request, response);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
         }
-
     }
 }

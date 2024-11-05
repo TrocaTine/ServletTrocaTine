@@ -1,7 +1,6 @@
 package com.example.servlettrocatine.servlet.adm;
 
 import com.example.servlettrocatine.DAO.AdmDAO;
-import com.example.servlettrocatine.DAO.SenhaHash;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,7 +9,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
 @WebServlet("/VerificarAdms")
 public class VerificarAdmins extends HttpServlet {
@@ -18,15 +16,9 @@ public class VerificarAdmins extends HttpServlet {
         String usuario = request.getParameter("user");
         String senha = request.getParameter("senha");
 
-        SenhaHash cripto;
-        try {
-            cripto = new SenhaHash(senha);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
         AdmDAO adminDAO = new AdmDAO();
 
-            int idAdm = adminDAO.verificarAdmin(usuario, cripto.getSenha()); // pega o ID do administrador
+            int idAdm = adminDAO.verificarAdmin(usuario, senha); // pega o ID do administrador
 
             if (idAdm != -1) {
             HttpSession session = request.getSession();
