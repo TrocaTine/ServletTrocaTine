@@ -26,14 +26,14 @@ public class VerificarAdmins extends HttpServlet {
         }
         AdmDAO adminDAO = new AdmDAO();
 
-            int idAdm = adminDAO.verificarAdmin(usuario, cripto.getSenha()); // Obtém o ID do administrador
+            int idAdm = adminDAO.verificarAdmin(usuario, cripto.getSenha()); // pega o ID do administrador
 
             if (idAdm != -1) {
             HttpSession session = request.getSession();
-            session.setAttribute("idAdm", idAdm); // Armazena o idAdm na sessão
+            session.setAttribute("idAdm", idAdm); // guarda o idAdm na sessão
             response.sendRedirect("jsp/pagCrud.jsp");
             } else {
-            // Caso o ID não seja encontrado
+            // se o ID não seja encontrado
             request.setAttribute("ErroLogin", "Usuário ou senha incorretos");
             request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
             }
