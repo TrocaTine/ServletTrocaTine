@@ -12,14 +12,11 @@ public class Conexao {
     // Método para conectar ao banco de dados
     public Connection conectar() {
         try {
-            // Obtendo os valores das variáveis de ambiente
-            Dotenv dotenv = Dotenv.configure().directory("C:\\Users\\carlosgonzalez-ieg\\IdeaProjects\\ServletTrocaTine\\.env").load();
-
             // Obtendo as variáveis de ambiente do arquivo .env
-            String driver = dotenv.get("DB_DRIVER");
-            String url = dotenv.get("DB_URL");
-            String user = dotenv.get("DB_USER");
-            String password = dotenv.get("DB_PASSWORD");
+            String driver = System.getenv("DB_DRIVER");
+            String url = System.getenv("DB_URL");
+            String user = System.getenv("DB_USER");
+            String password = System.getenv("DB_PASSWORD");
 
             // Informando qual driver de conexão será utilizado pelo DriverManager
             Class.forName(driver);
