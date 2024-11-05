@@ -12,11 +12,10 @@ public class Conexao {
     // Método para conectar ao banco de dados
     public Connection conectar() {
         try {
-            Dotenv dotenv = Dotenv.load();
-            String url = dotenv.get("DB_URL");
-            String user = dotenv.get("DB_USER");
-            String password = dotenv.get("DB_PASSWORD");
-            String driver = dotenv.get("DB_DRIVER");
+            String url = System.getenv("DB_URL");
+            String user = System.getenv("DB_USER");
+            String password = System.getenv("DB_PASSWORD");
+            String driver = System.getenv("DB_DRIVER");
 
             Class.forName(driver);
             conn = DriverManager.getConnection(url, user, password);
