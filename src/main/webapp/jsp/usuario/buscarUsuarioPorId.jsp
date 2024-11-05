@@ -88,24 +88,26 @@
 %>
 <table>
     <tr>
+        <th>ID</th>
         <th>Nome</th>
+        <th>Sobrenome</th>
         <th>Telefone</th>
         <th>Senha</th>
         <th>Trocadinhas</th>
         <th>E-mail</th>
         <th>CPF</th>
         <th>Data nascimento</th>
-        <th>ID</th>
     </tr>
     <tr>
+        <td><%= usuario.getId() %></td>
         <td><%= usuario.getNome() %></td>
+        <td><%= usuario.getSobrenome() %></td>
         <td><%= usuario.getTelefone() %></td>
         <td><%= usuario.getSenha() %></td>
         <td><%= usuario.getTrocadinhas() %></td>
         <td><%= usuario.getEmail() %></td>
         <td><%= usuario.getCpf() %></td>
         <td><%= usuario.getDtNascimento() %></td>
-        <td><%= usuario.getId() %></td>
     </tr>
 </table>
 <%

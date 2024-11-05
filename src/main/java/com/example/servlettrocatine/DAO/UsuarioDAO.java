@@ -1,9 +1,7 @@
 package com.example.servlettrocatine.DAO;
 
 
-import com.example.servlettrocatine.model.Categoria;
 import com.example.servlettrocatine.model.Conexao;
-import com.example.servlettrocatine.model.Endereco;
 import com.example.servlettrocatine.model.Usuario;
 
 import java.sql.*;
@@ -15,19 +13,18 @@ public class UsuarioDAO {
     Conexao conexao = new Conexao();
    // Método para inserir um novo usuário no banco de dados
    public boolean inserirUsuario(Usuario usuario) throws SQLException {
-       String sql = "INSERT INTO usuario (nome, telefone, senha, trocadinhas, email, cpf, dt_nascimento, " +
-               "foto_perfil, idendereco) VALUES (?,?,?,?,?,?,?,?,?)";
+       String sql = "INSERT INTO usuario (nome, sobrenome, telefone, senha, trocadinhas, email, cpf, dt_nascimento, idendereco) VALUES (?,?,?,?,?,?,?,?,?)";
        try (Connection conn = conexao.conectar();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
            pstmt.setString(1, usuario.getNome()); // nome
-           pstmt.setString(2, usuario.getTelefone()); // telefone
-           pstmt.setString(3, usuario.getSenha()); // senha
-           pstmt.setInt(4, 5);
-           pstmt.setString(5, usuario.getEmail()); // email
-           pstmt.setString(6, usuario.getCpf()); // cpf
-           pstmt.setDate(7, java.sql.Date.valueOf(usuario.getDtNascimento())); // dt_nascimento como String
-           pstmt.setNull(8, java.sql.Types.VARCHAR); // foto_perfil como nulo
-           pstmt.setNull(9, 0); // idendereco como nulo
+           pstmt.setString(2, usuario.getSobrenome());
+           pstmt.setString(3, usuario.getTelefone()); // telefone
+           pstmt.setString(4, usuario.getSenha()); // senha
+           pstmt.setInt(5, 5); //número inicial de moedas do site
+           pstmt.setString(6, usuario.getEmail()); // email
+           pstmt.setString(7, usuario.getCpf()); // cpf
+           pstmt.setDate(8, java.sql.Date.valueOf(usuario.getDtNascimento())); // dt_nascimento como String
+           pstmt.setInt(9, usuario.getIdEndereco()); // idendereco é pego do jsp
 
            pstmt.executeUpdate();
            return true;
@@ -39,41 +36,22 @@ public class UsuarioDAO {
        }
    }
 
-    // Método para inserir um endereço e retornar o ID gerado
-    public int inserirEnderecoRetornaId(Endereco endereco) throws SQLException {
-        String sql = "INSERT INTO endereco (cidade, rua, cep, complemento, numero, estado) VALUES (?,?,?,?,?,?)";
-        try (Connection conn = conexao.conectar();
-             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
-            pstmt.setString(1, endereco.getCidade());
-            pstmt.setString(2, endereco.getRua());
-            pstmt.setString(3, endereco.getCep());
-            pstmt.setString(4, endereco.getComplemento());
-            pstmt.setString(5, endereco.getNumero());
-            pstmt.setString(6, endereco.getEstado());
-
-            pstmt.executeUpdate();
-            try (ResultSet rs = pstmt.getGeneratedKeys()) {
-                if (rs.next()) {
-                    return rs.getInt(1); // Retorna o ID gerado
-                }
-            }
-        } catch (SQLException e) {
-            throw new SQLException("Erro ao inserir endereço: " + e.getMessage(), e);
-        }
-        return -1; // Retorna -1 se não obteve o ID
-    }
-
     // Método para editar um usuário existente com base no ID
-    public boolean editarUsuarioPorId(int id, String nome, String telefone, String senha, String email, String cpf, String data_nascimento) throws SQLException {
-        String sql = "UPDATE usuario SET nome = ? WHERE id = ?";
+    public boolean editarUsuarioPorId(int id, String nome, String sobrenome, String telefone, String senha, String email, String cpf, String data_nascimento, int i) throws SQLException {
+        String sql = "UPDATE usuario SET nome = ?, sobrenome = ?, telefone = ?, senha = ?, email = ?, cpf = ?, dt_nascimento =?,  WHERE id = ?";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // Define os novos valores para o tipo de produto
             pstmt.setString(1, nome);
-            pstmt.setInt(2, id);
+            pstmt.setString(2, sobrenome);
+            pstmt.setString(3, telefone);
+            pstmt.setString(4, senha);
+            pstmt.setString(5, email);
+            pstmt.setString(6, cpf);
+            pstmt.setString(7, data_nascimento);
+            pstmt.setInt(8, id);
 
             // Executa a atualização e verifica se linhas foram afetadas
             int rowsAffected = pstmt.executeUpdate();
@@ -122,6 +100,7 @@ public class UsuarioDAO {
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setTrocadinhas(rs.getInt("trocadinhas"));
                 usuario.setEmail(rs.getString("email"));
+                usuario.setDtNascimento(rs.getString("dt_nascimento"));
                 usuario.setCpf(rs.getString("cpf"));
             }
         } catch (SQLException e) {
@@ -150,6 +129,7 @@ public class UsuarioDAO {
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setTrocadinhas(rs.getInt("trocadinhas"));
                 usuario.setEmail(rs.getString("email"));
+                usuario.setDtNascimento(rs.getString("dt_nascimento"));
                 usuario.setCpf(rs.getString("cpf"));
             }
         } catch (SQLException e) {
@@ -173,12 +153,14 @@ public class UsuarioDAO {
                 Usuario usuario = new Usuario();
                 usuario.setId(rs.getInt("id"));
                 usuario.setNome(rs.getString("nome"));
+                usuario.setSobrenome(rs.getString("sobrenome"));
                 usuario.setTelefone(rs.getString("telefone"));
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setTrocadinhas(rs.getInt("trocadinhas"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setCpf(rs.getString("cpf"));
                 usuario.setDtNascimento(rs.getString("dt_nascimento"));
+                usuario.setIdEndereco(rs.getInt("idendereco"));
                 usuarios.add(usuario);
 
             }

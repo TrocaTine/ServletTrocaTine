@@ -15,7 +15,7 @@
     <input type="text" id="sobrenome" name="sobrenome" required>
 
     <label for="telefone">Telefone:</label>
-    <input type="tel" id="telefone" name="telefone" required>
+    <input type="text" id="telefone" name="telefone" required>
 
     <label for="senha">Senha:</label>
     <input type="password" id="senha" name="senha" required>
@@ -27,10 +27,10 @@
     <input type="text" id="cpf" name="cpf" required>
 
     <label for="dt_nascimento">Data nascimento:</label>
-    <input type="text" id="dt_nascimento" name="dt_nascimento" required>
+    <input type="text" id="dt_nascimento" name="dt_nascimento" placeholder="yyyy-mm-dd" required>
 
     <label for="idendereco">Endereço:</label>
-    <input type="text" id="idendereco" name="idendereco" required>
+    <input type="text" id="idendereco" name="idendereco">
 
     <input type="submit" value="Adicionar Usuario">
   </form>

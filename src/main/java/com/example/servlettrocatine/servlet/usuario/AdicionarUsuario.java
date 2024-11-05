@@ -27,14 +27,14 @@ public class AdicionarUsuario extends HttpServlet {
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
         String dt_nascimento = request.getParameter("dt_nascimento");
-        int idEndereco = Integer.parseInt(request.getParameter("idEndereco"));
-        Usuario usuario = new Usuario(nome, sobrenome, telefone, senha, email, cpf, dt_nascimento, idEndereco);
+        int idendereco = Integer.parseInt(request.getParameter("idendereco"));
+        Usuario usuario = new Usuario(nome, sobrenome, telefone, senha, email, cpf, dt_nascimento, idendereco);
 
         int idAdm = (Integer) request.getSession().getAttribute("idAdm");
 
         try {
             boolean certo = usuarioDAO.inserirUsuario(usuario);
-            Log log = new Log("Inserir", "Usuario", "insert into usuario (nome, telefone, senha, email, cpf, dt_nascimento) values ('" + nome + "', '" + telefone + "', '" + senha + "', '" + email + "', '" + cpf + "', '" + dt_nascimento + "')", idAdm);
+            Log log = new Log("Inserir", "Usuario", "Usuário adicionado nome: "+ nome + " sobrenome: " + sobrenome + "telefone: " + telefone + " email: " + email + " cpf: " + cpf + " dt_nascimento: " + dt_nascimento + " idEndereco: " + idendereco,idAdm);
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);
 

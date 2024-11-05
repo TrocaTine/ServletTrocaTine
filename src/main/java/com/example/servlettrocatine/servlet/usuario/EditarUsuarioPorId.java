@@ -18,12 +18,14 @@ public class EditarUsuarioPorId extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Coletar dados do formulário
         String nome = request.getParameter("nome");
+        String sobrenome = request.getParameter("sobrenome");
         String telefone = request.getParameter("telefone");
         String senha = request.getParameter("senha");
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
         String dt_nascimento = request.getParameter("dt_nascimento");
         String idParam = request.getParameter("id");
+        String idEndereco = request.getParameter("idendereco");
 
         int idAdm = (Integer) request.getSession().getAttribute("idAdm");
 
@@ -36,7 +38,7 @@ public class EditarUsuarioPorId extends HttpServlet {
         try {
             // Inserir usuário no banco de dados
             UsuarioDAO usuarioDAO = new UsuarioDAO();
-            boolean certo = usuarioDAO.editarUsuarioPorId( Integer.parseInt(idParam), nome, telefone, senha, email, cpf, dt_nascimento);
+            boolean certo = usuarioDAO.editarUsuarioPorId( Integer.parseInt(idParam), nome, sobrenome, telefone, senha, email, cpf, dt_nascimento, Integer.parseInt(idEndereco));
             Log log = new Log("Editar", "Usuario", "update usuario set nome = '"+ nome +"', telefone = '"+ telefone +"', senha = '"+ senha +"', email = '"+ email +"', cpf = '"+ cpf +"', dt_nascimento = '"+ dt_nascimento +"' where id = "+ idParam, idAdm);
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);
