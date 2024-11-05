@@ -6,7 +6,7 @@ public class Tag {
     private String cor;
     private String tamanho;
     private String qualidade;
-    private int idTipo_produto; // Assuming you also have this field
+    private int idCategoria; // Assuming you also have this field
 
     // Constructor with all fields
     public Tag(int id, String genero, String cor, String tamanho, String qualidade, int idTipo_produto) {
@@ -15,15 +15,15 @@ public class Tag {
         this.cor = cor;
         this.tamanho = tamanho;
         this.qualidade = qualidade;
-        this.idTipo_produto = idTipo_produto;
+        this.idCategoria = idTipo_produto;
     }
 
-    public Tag(String genero, String cor, String tamanho, String qualidade, int idTipo_produto) {
+    public Tag(String genero, String cor, String tamanho, String qualidade, int idCategoria) {
         this.genero = genero;
         this.cor = cor;
         this.tamanho = tamanho;
         this.qualidade = qualidade;
-        this.idTipo_produto = idTipo_produto;
+        this.idCategoria = idCategoria;
     }
 
     // Getters and Setters
@@ -63,11 +63,11 @@ public class Tag {
         this.qualidade = qualidade;
     }
 
-    public int getIdTipo_produto() {
-        return idTipo_produto;
+    public int getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setIdTipo_produto(int idTipo_produto) {
-        this.idTipo_produto = idTipo_produto;
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
     }
 }

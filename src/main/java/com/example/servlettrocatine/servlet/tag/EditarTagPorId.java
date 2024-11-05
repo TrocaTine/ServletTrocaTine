@@ -43,10 +43,7 @@ public class EditarTagPorId extends HttpServlet {
             // Atualizar a tag no banco de dados
             TagDAO tagDAO = new TagDAO();
             boolean sucesso = tagDAO.editarTagPorId(id, novaTag);
-            Log log = new Log("Editar", "Tag", "update tag set nome = '" + novaTag.getGenero() +
-                    "', cor = '" + novaTag.getCor() + "', tamanho = '" + novaTag.getTamanho() + "', qualidade = '" +
-                    novaTag.getQualidade() + "', idtipo_produto = " + novaTag.getIdTipo_produto() + " where id = " +
-                    id, idAdm);
+            Log log = new Log("Editar", "Tag", "Atualização de tag com ID" +  id + " realizada", idAdm);
 
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);

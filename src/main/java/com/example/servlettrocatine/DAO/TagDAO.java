@@ -13,7 +13,7 @@ public class TagDAO {
 
     // Método para inserir uma nova tag sem retornar o ID
     public boolean inserirTag(Tag tag) throws SQLException {
-        String sql = "INSERT INTO tag (genero, cor, tamanho, qualidade, idtipo_produto) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tag (genero, cor, tamanho, qualidade, idtcategoria) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -21,7 +21,7 @@ public class TagDAO {
             pstmt.setString(2, tag.getCor());
             pstmt.setString(3, tag.getTamanho());
             pstmt.setString(4, tag.getQualidade());
-            pstmt.setInt(5, tag.getIdTipo_produto());
+            pstmt.setInt(5, tag.getIdCategoria());
 
             pstmt.executeUpdate();
             return true;
@@ -33,7 +33,7 @@ public class TagDAO {
 
     // Método para editar uma tag existente com base no seu ID
     public boolean editarTagPorId(int id, Tag novaTag) throws SQLException {
-        String sql = "UPDATE tag SET genero = ?, cor = ?, tamanho = ?, qualidade = ?, idtipo_produto = ? WHERE id = ?";
+        String sql = "UPDATE tag SET genero = ?, cor = ?, tamanho = ?, qualidade = ?, idtcategoria = ? WHERE id = ?";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -41,7 +41,7 @@ public class TagDAO {
             pstmt.setString(2, novaTag.getCor());
             pstmt.setString(3, novaTag.getTamanho());
             pstmt.setString(4, novaTag.getQualidade());
-            pstmt.setInt(5, novaTag.getIdTipo_produto());
+            pstmt.setInt(5, novaTag.getIdCategoria());
             pstmt.setInt(6, id);
 
             return pstmt.executeUpdate() > 0;
@@ -50,107 +50,6 @@ public class TagDAO {
             return false;
         }
     }
-
-    // Método para buscar tags pelo gênero e retornar uma lista
-    public List<Tag> buscarTagPorGenero(String genero) throws SQLException {
-        String sql = "SELECT * FROM tag WHERE genero = ?";
-        List<Tag> tags = new ArrayList<>();
-
-        try (Connection conn = conexao.conectar();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, genero);
-            ResultSet rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String cor = rs.getString("cor");
-                String tamanho = rs.getString("tamanho");
-                String qualidade = rs.getString("qualidade");
-                int id_produto = rs.getInt("idtipo_produto");
-                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Consider replacing with a logger
-        }
-
-        return tags;
-    }
-
-    // Método para buscar tags pela qualidade e retornar uma lista
-    public List<Tag> buscarTagPorQualidade(String qualidade) throws SQLException {
-        String sql = "SELECT * FROM tag WHERE qualidade = ?";
-        List<Tag> tags = new ArrayList<>();
-
-        try (Connection conn = conexao.conectar();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, qualidade);
-            ResultSet rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String genero = rs.getString("genero");
-                String cor = rs.getString("cor");
-                String tamanho = rs.getString("tamanho");
-                int id_produto = rs.getInt("idtipo_produto");
-                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Consider replacing with a logger
-        }
-
-        return tags;
-    }
-
-    // Método para buscar tags pela cor e retornar uma lista
-    public List<Tag> buscarTagPorCor(String cor) throws SQLException {
-        String sql = "SELECT * FROM tag WHERE cor = ?";
-        List<Tag> tags = new ArrayList<>();
-
-        try (Connection conn = conexao.conectar();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, cor);
-            ResultSet rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String genero = rs.getString("genero");
-                String tamanho = rs.getString("tamanho");
-                String qualidade = rs.getString("qualidade");
-                int id_produto = rs.getInt("idtipo_produto");
-                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Consider replacing with a logger
-        }
-
-        return tags;
-    }
-
-    // Método para buscar tags pelo tamanho e retornar uma lista
-    public List<Tag> buscarTagPorTamanho(String tamanho) throws SQLException {
-        String sql = "SELECT * FROM tag WHERE tamanho = ?";
-        List<Tag> tags = new ArrayList<>();
-
-        try (Connection conn = conexao.conectar();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, tamanho);
-            ResultSet rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String genero = rs.getString("genero");
-                String cor = rs.getString("cor");
-                String qualidade = rs.getString("qualidade");
-                int id_produto = rs.getInt("idtipo_produto");
-                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Consider replacing with a logger
-        }
-
-        return tags;
-    }
-
     // Método para buscar uma tag pelo ID e retornar o objeto Tag
     public Tag buscarTagPorId(int id) throws SQLException {
         String sql = "SELECT * FROM tag WHERE id = ?";
@@ -166,8 +65,8 @@ public class TagDAO {
                 String cor = rs.getString("cor");
                 String tamanho = rs.getString("tamanho");
                 String qualidade = rs.getString("qualidade");
-                int id_produto = rs.getInt("idtipo_produto");
-                tag = new Tag(id, genero, cor, tamanho, qualidade, id_produto);
+                int idcategoria = rs.getInt("idcategoria");
+                tag = new Tag(id, genero, cor, tamanho, qualidade, idcategoria);
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Consider replacing with a logger
@@ -205,8 +104,8 @@ public class TagDAO {
                 String cor = rs.getString("cor");
                 String tamanho = rs.getString("tamanho");
                 String qualidade = rs.getString("qualidade");
-                int id_produto = rs.getInt("idtipo_produto");
-                tags.add(new Tag(id, genero, cor, tamanho, qualidade, id_produto));
+                int idcategoria = rs.getInt("idcategoria");
+                tags.add(new Tag(id, genero, cor, tamanho, qualidade, idcategoria));
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Consider replacing with a logger

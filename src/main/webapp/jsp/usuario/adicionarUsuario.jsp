@@ -48,6 +48,8 @@
 <form action="${pageContext.request.contextPath}/adicionarUsuario" method="post">
   <label for="nome">Nome:</label>
   <input type="text" id="nome" name="nome" required><br>
+  <label for="sobrenome">Sobrenome:</label>
+  <input type="text" id="sobrenome" name="sobrenome" required><br>
   <label for="telefone">Telefone:</label>
   <input type="tel" id="telefone" name="telefone" required><br>
   <label for="senha">Senha:</label>
@@ -58,6 +60,8 @@
   <input type="text" id="cpf" name="cpf" required><br>
   <label for="dt_nascimento">Data nascimento:</label>
   <input type="text" id="dt_nascimento" name="dt_nascimento" required><br>
+  <label for="idendereco">Endereço:</label>
+  <input type="text" id="idendereco" name="idendereco" required><br>
   <input type="submit" value="AdicionarUsuario">
 </form>
 

@@ -21,12 +21,14 @@ public class AdicionarUsuario extends HttpServlet {
         // Coletar dados do formulário
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         String nome = request.getParameter("nome");
+        String sobrenome = request.getParameter("sobrenome");
         String telefone = request.getParameter("telefone");
         String senha = request.getParameter("senha");
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
         String dt_nascimento = request.getParameter("dt_nascimento");
-        Usuario usuario = new Usuario(nome, telefone, senha, email, cpf, dt_nascimento);
+        int idEndereco = Integer.parseInt(request.getParameter("idEndereco"));
+        Usuario usuario = new Usuario(nome, sobrenome, telefone, senha, email, cpf, dt_nascimento, idEndereco);
 
         int idAdm = (Integer) request.getSession().getAttribute("idAdm");
 

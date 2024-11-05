@@ -80,7 +80,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Editar Administrador</h1>
+    <h1>Editar Tag</h1>
     <form action="${pageContext.request.contextPath}/editarTagPorId" method="post">
         <label for="id">ID:</label>
         <input type="number" id="id" name="id" required>
@@ -92,8 +92,8 @@
         <input type="text" id="tamanho" name="tamanho" required>
         <label for="qualidade">Qualidade:</label>
         <input type="text" id="qualidade" name="qualidade" required>
-        <label for="idtipo_produto">Id Categoria:</label>
-        <input type="number" id="idtipo_produto" name="idtipo_produto" required>
+        <label for="idcategoria">Id Categoria:</label>
+        <input type="number" id="idcategoria" name="idcategoria" required>
         <input type="submit" value="Adicionar">
     </form>
     <a href="${pageContext.request.contextPath}/tags" class="btn-back">Voltar para a Lista de Tags</a>

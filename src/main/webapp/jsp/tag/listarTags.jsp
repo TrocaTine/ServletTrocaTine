@@ -28,7 +28,7 @@
         <td><%= tag.getCor() %></td>
         <td><%= tag.getTamanho() %></td>
         <td><%= tag.getQualidade() %></td>
-        <td><%= tag.getIdTipo_produto() %></td>
+        <td><%= tag.getIdCategoria() %></td>
     </tr>
     <%
         }

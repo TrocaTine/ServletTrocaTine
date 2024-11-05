@@ -61,13 +61,15 @@ public class Usuario {
         this.idEndereco = Integer.parseInt(null);
     }
 
-    public Usuario(String nome, String telefone, String senha, String email, String cpf, String dtNascimento) {
+    public Usuario(String nome, String sobrenome, String telefone, String senha, String email, String cpf, String dtNascimento, int idEndereco) {
         this.nome = nome;
+        this.sobrenome = sobrenome;
         this.telefone = telefone;
         this.senha = senha;
         this.email = email;
         this.cpf = cpf;
         this.dtNascimento = dtNascimento;
+        this.idEndereco = idEndereco;
     }
 
     // Getters e Setters

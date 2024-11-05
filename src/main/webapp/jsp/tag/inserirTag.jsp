@@ -90,8 +90,8 @@
     <input type="text" id="tamanho" name="tamanho" placeholder="P, G, GG, U" required>
     <label for="qualidade">Qualidade:</label>
     <input type="text" id="qualidade" name="qualidade" required>
-    <label for="idtipo_produto">Id Categoria:</label>
-    <input type="number" id="idtipo_produto" name="idtipo_produto" required>
+    <label for="idcategoria">Id Categoria:</label>
+    <input type="number" id="idtcategoria" name="idcategoria" required>
     <input type="submit" value="Adicionar">
   </form>
   <a href="${pageContext.request.contextPath}/tags" class="btn-back">Voltar para a Lista de Tags</a>
