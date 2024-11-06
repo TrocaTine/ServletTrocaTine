@@ -5,6 +5,7 @@
 <head>
     <title>Buscar Admin por ID</title>
     <style>
+        /* Estilos para a página */
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -79,8 +80,11 @@
     // Recupera o administrador buscado do atributo da requisição
     Adm adm = (Adm) request.getAttribute("adm");
     String errorMessage = (String) request.getAttribute("errorMessage");
+
+    // Verifica se o administrador foi encontrado
     if (adm != null) {
 %>
+<!-- Exibe os detalhes do administrador -->
 <table>
     <tr>
         <th>ID</th>
@@ -98,8 +102,10 @@
     </tr>
 </table>
 <%
+    // Caso não tenha sido encontrado, exibe a mensagem de erro
 } else if (errorMessage != null) {
 %>
+<!-- Exibe a mensagem de erro -->
 <p class="error-message"><%= errorMessage %></p>
 <%
     }

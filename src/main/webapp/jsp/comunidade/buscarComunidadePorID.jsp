@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.example.servlettrocatine.model.Categoria" %> <!-- Importe a classe correta para Categoria -->
 <%@ page import="java.util.List" %>
-<%@ page import="com.example.servlettrocatine.model.Comunidade" %>
+<%@ page import="com.example.servlettrocatine.model.Comunidade" %> <!-- Importe a classe correta para Comunidade -->
+
 <html>
 <head>
     <title>Buscar Categoria por ID</title>
@@ -64,6 +65,7 @@
     </style>
 </head>
 <body>
+
 <h1>Buscar Categoria por ID</h1>
 
 <!-- Formulário de busca -->
@@ -73,10 +75,13 @@
 </form>
 
 <%
-    // Recupera a categoria buscada do atributo da requisição
+    // Recupera a comunidade buscada do atributo da requisição
     Comunidade comunidade = (Comunidade) request.getAttribute("comunidades");
+
+    // Se a comunidade foi encontrada, exibe os dados dela
     if (comunidade != null) {
 %>
+<!-- Exibe os dados da comunidade em uma tabela -->
 <table>
     <tr>
         <th>ID</th>
@@ -87,20 +92,22 @@
         <th>Foto de Perfil</th>
     </tr>
     <tr>
-        <td><%= comunidade.getId()%></td>
-        <td><%= comunidade.getNome()%></td>
-        <td><%= comunidade.getCriador()%></td>
-        <td><%= comunidade.getDescricao()%></td>
-        <td><%= comunidade.getQntIntegrantes()%></td>
-        <td><%= comunidade.getFotoPerfil()%></td>
+        <td><%= comunidade.getId() %></td>
+        <td><%= comunidade.getNome() %></td>
+        <td><%= comunidade.getCriador() %></td>
+        <td><%= comunidade.getDescricao() %></td>
+        <td><%= comunidade.getQntIntegrantes() %></td>
+        <td><%= comunidade.getFotoPerfil() %></td>
     </tr>
 </table>
 <%
 } else {
 %>
+<!-- Caso não seja encontrada nenhuma comunidade, exibe uma mensagem -->
 <p>Nenhuma comunidade encontrada com o ID informado.</p>
 <%
     }
 %>
+
 </body>
 </html>

@@ -43,16 +43,18 @@
         }
     </style>
     <script>
+        // Redireciona automaticamente após 3 segundos
         setTimeout(function() {
-            window.location.href = '../../categoria';
+            window.location.href = '../../categoria'; // URL do CRUD de Categoria
         }, 3000);
     </script>
 </head>
 <body>
 <div class="message">
-    <h1>Comunidade excluida com sucesso!</h1>
-    <p>Você será redirecionado para Crud-COMUNIDADE em breve.</p>
-    <a href="../../comunidade">Voltar para Crud-COMUNIDADE</a>
+    <h1>Comunidade excluída com sucesso!</h1>
+    <p>Você será redirecionado para o CRUD de COMUNIDADE em breve.</p>
+    <!-- Link para voltar ao CRUD de Comunidade -->
+    <a href="../../comunidade">Voltar para CRUD de Comunidade</a>
 </div>
 </body>
 </html>

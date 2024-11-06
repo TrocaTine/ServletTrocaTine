@@ -3,6 +3,7 @@
 <head>
     <title>Editar Administrador</title>
     <style>
+        /* Estilos para a página */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f2f5;
@@ -79,21 +80,36 @@
     </style>
 </head>
 <body>
+<!-- Container principal da página -->
 <div class="container">
     <h1>Editar Administrador</h1>
+    <!-- Formulário para editar os dados do administrador -->
     <form action="${pageContext.request.contextPath}/editarAdm" method="post">
+        <!-- Campo para ID do administrador -->
         <label for="id">ID:</label>
         <input type="number" id="id" name="id" required>
+
+        <!-- Campo para nome do administrador -->
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
+
+        <!-- Campo para email do administrador -->
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
+
+        <!-- Campo para senha do administrador -->
         <label for="senha">Senha:</label>
         <input type="password" id="senha" name="senha" required>
+
+        <!-- Campo para ID do usuário associado -->
         <label for="idUsuario">idUsuario:</label>
         <input type="number" id="idUsuario" name="idUsuario" required>
+
+        <!-- Botão para submeter o formulário -->
         <input type="submit" value="Editar">
     </form>
+
+    <!-- Link para retornar à lista de administradores -->
     <a href="${pageContext.request.contextPath}/adms" class="btn-back">Voltar para a Lista de Administradores</a>
 </div>
 </body>

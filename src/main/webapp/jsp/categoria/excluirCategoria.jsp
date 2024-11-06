@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Editar Categoria</title>
+    <title>Excluir Categoria</title>
     <style>
+        /* Estilos para a página */
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -16,6 +17,8 @@
         form {
             margin-bottom: 30px;
         }
+
+        /* Estilos para os campos de entrada */
         input[type="text"], input[type="number"] {
             padding: 10px;
             font-size: 16px;
@@ -24,6 +27,8 @@
             border-radius: 5px;
             margin-bottom: 10px;
         }
+
+        /* Estilos para os botões */
         input[type="submit"], .btn-back {
             padding: 10px 20px;
             font-size: 16px;
@@ -34,9 +39,13 @@
             cursor: pointer;
             text-decoration: none;
         }
+
+        /* Estilos de hover para os botões */
         input[type="submit"]:hover, .btn-back:hover {
             background-color: #ffa201;
         }
+
+        /* Estilo para o botão de voltar */
         .btn-back {
             display: inline-block;
             margin-top: 20px;
@@ -44,7 +53,11 @@
     </style>
 </head>
 <body>
+
+<!-- Título da página -->
 <h1>Excluir Categoria</h1>
+
+<!-- Formulário de exclusão de categoria -->
 <form action="${pageContext.request.contextPath}/excluirPorID" method="post">
     <label for="id">ID:</label>
     <input type="number" id="id" name="id" required><br>

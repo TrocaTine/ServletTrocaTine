@@ -1,7 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <!-- Título da página -->
     <title>Editar Tag</title>
+
+    <!-- Estilo da página -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -79,23 +82,41 @@
     </style>
 </head>
 <body>
+<!-- Contêiner principal -->
 <div class="container">
     <h1>Editar Tag</h1>
+
+    <!-- Formulário para editar tag -->
     <form action="${pageContext.request.contextPath}/editarTagPorId" method="post">
+        <!-- Campo para ID -->
         <label for="id">ID:</label>
         <input type="number" id="id" name="id" required>
+
+        <!-- Campo para Cor -->
         <label for="cor">Cor:</label>
         <input type="text" id="cor" name="cor" required>
+
+        <!-- Campo para Gênero -->
         <label for="genero">Genero:</label>
         <input type="text" id="genero" name="genero" required>
+
+        <!-- Campo para Tamanho -->
         <label for="tamanho">Tamanho:</label>
         <input type="text" id="tamanho" name="tamanho" required>
+
+        <!-- Campo para Qualidade -->
         <label for="qualidade">Qualidade:</label>
         <input type="text" id="qualidade" name="qualidade" required>
+
+        <!-- Campo para ID Categoria -->
         <label for="idcategoria">Id Categoria:</label>
         <input type="number" id="idcategoria" name="idcategoria" required>
+
+        <!-- Botão de envio -->
         <input type="submit" value="Adicionar">
     </form>
+
+    <!-- Botão para voltar à lista de tags -->
     <a href="${pageContext.request.contextPath}/tags" class="btn-back">Voltar para a Lista de Tags</a>
 </div>
 </body>

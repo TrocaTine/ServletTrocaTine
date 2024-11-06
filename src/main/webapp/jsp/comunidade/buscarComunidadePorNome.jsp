@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.example.servlettrocatine.model.Categoria" %>
+<%@ page import="com.example.servlettrocatine.model.Categoria" %> <!-- Importe a classe correta para Categoria -->
 <%@ page import="java.util.List" %>
-<%@ page import="com.example.servlettrocatine.model.Comunidade" %>
+<%@ page import="com.example.servlettrocatine.model.Comunidade" %> <!-- Importe a classe correta para Comunidade -->
+
 <html>
 <head>
     <title>Buscar Comunidade por Nome</title>
@@ -75,8 +76,11 @@
 <%
     // Recupera a lista de comunidades do atributo da requisição
     List<Comunidade> comunidades = (List<Comunidade>) request.getAttribute("comunidades");
+
+    // Se a lista de comunidades não for nula, exibe os resultados
     if (comunidades != null) {
 %>
+<!-- Exibe os dados das comunidades em uma tabela -->
 <table>
     <tr>
         <th>ID</th>
@@ -87,6 +91,7 @@
         <th>Foto de Perfil</th>
     </tr>
     <%
+        // Verifica se a lista de comunidades não está vazia antes de exibir os resultados
         if (!comunidades.isEmpty()) {
             for (Comunidade comunidade : comunidades) {
     %>
@@ -102,6 +107,7 @@
         }
     } else {
     %>
+    <!-- Caso nenhuma comunidade seja encontrada, exibe uma mensagem -->
     <tr>
         <td colspan="6">Nenhuma comunidade encontrada com o Nome informado.</td>
     </tr>
@@ -109,10 +115,12 @@
         }
     } else {
     %>
+    <!-- Caso a lista de comunidades seja nula, exibe uma mensagem -->
     <p>Nenhuma comunidade foi pesquisada ainda.</p>
     <%
         }
     %>
 </table>
+
 </body>
 </html>

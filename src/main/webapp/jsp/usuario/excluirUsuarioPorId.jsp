@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Excluir Usuário</title>
+    <!-- Estilos para a página -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,14 +55,20 @@
     </style>
 </head>
 <body>
+<!-- Título da página -->
 <h1>Excluir Usuário</h1>
+
+<!-- Formulário para excluir usuário -->
 <form action="${pageContext.request.contextPath}/excluirUsuarioPorId" method="post">
+    <!-- Campo para o ID do usuário -->
     <label for="id">ID:</label>
     <input type="number" id="id" name="id" required><br>
+
+    <!-- Botão para enviar o formulário -->
     <input type="submit" value="Excluir Usuário">
 </form>
 
-<!-- Botão para voltar à lista de usuários -->
+<!-- Link para voltar à lista de usuários -->
 <a href="${pageContext.request.contextPath}/usuario" class="btn-back">Voltar para a Lista de Usuários</a>
 
 </body>

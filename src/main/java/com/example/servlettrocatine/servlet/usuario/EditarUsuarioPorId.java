@@ -14,8 +14,11 @@ import java.sql.SQLException;
 
 @WebServlet(name = "EditarUsuarioPorId", value = "/editarUsuarioPorId")
 public class EditarUsuarioPorId extends HttpServlet {
+
+    // Método que lida com a requisição POST para editar um usuário pelo ID
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         // Coletar dados do formulário
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
@@ -27,33 +30,43 @@ public class EditarUsuarioPorId extends HttpServlet {
         String idParam = request.getParameter("id");
         String idEndereco = request.getParameter("idendereco");
 
+        // Recuperar o ID do administrador da sessão
         int idAdm = (Integer) request.getSession().getAttribute("idAdm");
 
-        // Verifique se os parâmetros são válidos
+        // Verificar se os parâmetros essenciais (nome, id e idEndereco) estão presentes
         if (nome == null || idParam == null || idEndereco == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Nome ,ID e ID do endereço são obrigatórios.");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Nome, ID e ID do endereço são obrigatórios.");
             return;
         }
 
         try {
-            // Inserir usuário no banco de dados
+            // Criar uma instância do DAO para editar o usuário
             UsuarioDAO usuarioDAO = new UsuarioDAO();
-            boolean certo = usuarioDAO.editarUsuarioPorId( Integer.parseInt(idParam), nome, sobrenome, telefone, senha, email, cpf, dt_nascimento, Integer.parseInt(idEndereco));
-            Log log = new Log("Editar", "Usuario", "update usuario set nome = '"+ nome +"', telefone = '"+ telefone +"', senha = '"+ senha +"', email = '"+ email +"', cpf = '"+ cpf +"', dt_nascimento = '"+ dt_nascimento +"', idendereco = "+ idEndereco + " where id = "+ idParam, idAdm);
+            boolean certo = usuarioDAO.editarUsuarioPorId(
+                    Integer.parseInt(idParam), nome, sobrenome, telefone, senha, email, cpf, dt_nascimento, Integer.parseInt(idEndereco)
+            );
+
+            // Criar o log para registrar a ação de edição
+            Log log = new Log("Editar", "Usuario",
+                    "update usuario set nome = '"+ nome +"', telefone = '"+ telefone +"', senha = '"+ senha +"', email = '"+ email +"', cpf = '"+ cpf +"', dt_nascimento = '"+ dt_nascimento +"', idendereco = "+ idEndereco + " where id = "+ idParam,
+                    idAdm);
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);
 
-
+            // Se a edição e o log forem bem-sucedidos, redirecionar para a página de edição com sucesso
             if (certo && logCerto) {
                 request.getSession().setAttribute("successMessage", "Usuário editado com sucesso!");
                 response.sendRedirect("jsp/usuario/editarUsuarioPorId.jsp");
             } else {
+                // Caso ocorra algum erro ao editar o usuário, retornar erro 500
                 response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar usuário.");
             }
         } catch (SQLException e) {
+            // Caso ocorra algum erro no banco de dados, retornar erro 500
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar usuário.");
         } catch (NumberFormatException e) {
+            // Caso ocorra erro ao converter os IDs para inteiro, retornar erro 400
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
         }
     }

@@ -2,7 +2,10 @@
 <%@ page import="com.example.servlettrocatine.model.Tag" %>
 <html>
 <head>
+    <!-- Título da página -->
     <title>Buscar Admin por ID</title>
+
+    <!-- Estilo da página -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -66,6 +69,7 @@
     </style>
 </head>
 <body>
+<!-- Cabeçalho -->
 <h1>Buscar Tag por ID</h1>
 
 <!-- Formulário de busca -->
@@ -75,11 +79,15 @@
 </form>
 
 <%
-    // Recupera o administrador buscado do atributo da requisição
+    // Recupera a tag buscada do atributo da requisição
     Tag tag = (Tag) request.getAttribute("tag");
     String errorMessage = (String) request.getAttribute("errorMessage");
+
+    // Verifica se uma tag foi encontrada
     if (tag != null) {
 %>
+
+<!-- Exibe os detalhes da tag -->
 <table>
     <tr>
         <th>ID</th>
@@ -98,10 +106,14 @@
         <td><%= tag.getIdCategoria() %></td>
     </tr>
 </table>
+
 <%
 } else if (errorMessage != null) {
 %>
+
+<!-- Exibe uma mensagem de erro caso a tag não tenha sido encontrada -->
 <p class="error-message"><%= errorMessage %></p>
+
 <%
     }
 %>

@@ -9,28 +9,33 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "ListarQuerys", value = "/log")
+@WebServlet(name = "ListarQuerys", value = "/log") // Mapeia a URL "/log" para este servlet
 public class ListarLog extends HttpServlet {
+
+    // Método que lida com requisições POST para listar os logs
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // Cria uma instância do DAO para manipulação de dados de log
         LogDAO logDAO = new LogDAO();
 
         try {
-            // Lista os usuários e as armazena no atributo da requisição
+            // Lista todos os logs e armazena no atributo da requisição
             request.setAttribute("log", logDAO.listarLog());
 
-            // Redireciona para uma página JSP para exibir os usuários
+            // Redireciona para a página JSP que irá exibir os logs
             request.getRequestDispatcher("jsp/log.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
-            // Você pode redirecionar para uma página de erro, se desejar
+            // Caso ocorra um erro, envia um erro 500 (Internal Server Error) ao usuário
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao listar query.");
         }
     }
 
+    // Método que lida com requisições GET, chamando o método doPost
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Chama o método doPost para lidar com a requisição
+        // Chama o método doPost para lidar com a requisição GET também
         doPost(request, response);
     }
 }

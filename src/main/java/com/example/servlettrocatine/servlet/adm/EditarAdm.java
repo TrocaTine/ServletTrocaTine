@@ -12,43 +12,71 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+/**
+ * Servlet responsável por editar informações de um administrador.
+ * Mapeada para a URL "/editarAdm".
+ */
 @WebServlet(name = "EditarPorID", value = "/editarAdm")
 public class EditarAdm extends HttpServlet {
+
+    /**
+     * Método doPost para processar a requisição POST.
+     * Atualiza informações de um administrador e registra a operação no log.
+     */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Coletar dados do formulário
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        // Coleta os dados do formulário enviados na requisição
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         String idParam = request.getParameter("id");
         String idUsuario = request.getParameter("idUsuario");
 
+        // Obtém o ID do administrador atual a partir da sessão
         int idAdm = (Integer) request.getSession().getAttribute("idAdm");
 
-        // Verifique se os parâmetros são válidos
+        // Valida se todos os campos obrigatórios foram preenchidos
         if (nome == null || idParam == null || email == null || senha == null || idUsuario == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos os campos são obrigatórios.");
             return;
         }
 
         try {
-            // Inserir categoria no banco de dados
+            // Cria uma instância de AdmDAO para manipulação do banco de dados
             AdmDAO admDAO = new AdmDAO();
+
+            // Cria um objeto Adm com os dados recebidos
             Adm adm = new Adm(Integer.parseInt(idParam), nome, email, senha, Integer.parseInt(idUsuario));
+
+            // Chama o método para editar o administrador no banco de dados
             boolean certo = admDAO.editarAdmPorId(adm);
-            Log log = new Log("Editar", "Adm", "update adm set nome = "+ nome +", email = "+ email + ", senha = "
-                    + senha + ", idusuario = "+ idUsuario +"  WHERE id = " + idParam + " AND idusuario = " + idUsuario
-                    , idAdm);
+
+            // Cria uma operação de log para registrar a atualização
+            Log log = new Log(
+                    "Editar",
+                    "Adm",
+                    "update adm set nome = " + nome + ", email = " + email + ", senha = " + senha +
+                            ", idusuario = " + idUsuario + " WHERE id = " + idParam + " AND idusuario = " + idUsuario,
+                    idAdm
+            );
+
+            // Cria uma instância de LogDAO e insere o log no banco de dados
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);
 
+            // Verifica se a atualização e o log foram realizados com sucesso
             if (certo && logCerto) {
-                request.getSession().setAttribute("successMessage", "Categoria editada com sucesso!");
+                // Define uma mensagem de sucesso na sessão e redireciona para a página de edição
+                request.getSession().setAttribute("successMessage", "Administrador editado com sucesso!");
                 response.sendRedirect("jsp/adm/editarAdm.jsp");
             } else {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar categoria.");
+                // Envia um erro de servidor se a edição falhar
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar administrador.");
             }
         } catch (NumberFormatException e) {
+            // Trata exceção de formato inválido para o ID
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
         }
     }

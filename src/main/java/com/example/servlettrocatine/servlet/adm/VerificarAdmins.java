@@ -10,25 +10,41 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+/**
+ * Servlet responsável por verificar as credenciais de um administrador.
+ * Se bem-sucedido, cria uma sessão para o administrador.
+ */
 @WebServlet("/VerificarAdms")
 public class VerificarAdmins extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    /**
+     * Método doPost para processar a requisição de login do administrador.
+     * Verifica o usuário e senha fornecidos e redireciona de acordo com o resultado.
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        // Coleta o nome de usuário e a senha do formulário
         String usuario = request.getParameter("user");
         String senha = request.getParameter("senha");
 
+        // Cria uma instância de AdmDAO para verificar as credenciais
         AdmDAO adminDAO = new AdmDAO();
 
-            int idAdm = adminDAO.verificarAdmin(usuario, senha); // pega o ID do administrador
+        // Verifica o ID do administrador no banco de dados
+        int idAdm = adminDAO.verificarAdmin(usuario, senha);
 
-            if (idAdm != -1) {
+        if (idAdm != -1) {
+            // Se as credenciais estiverem corretas, cria uma sessão para o administrador
             HttpSession session = request.getSession();
-            session.setAttribute("idAdm", idAdm); // guarda o idAdm na sessão
+            session.setAttribute("idAdm", idAdm); // Armazena o idAdm na sessão
+
+            // Redireciona para a página de CRUD
             response.sendRedirect("jsp/pagCrud.jsp");
-            } else {
-            // se o ID não seja encontrado
+        } else {
+            // Se o ID não for encontrado, retorna erro de login
             request.setAttribute("ErroLogin", "Usuário ou senha incorretos");
             request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
-            }
-
+        }
     }
 }

@@ -13,21 +13,25 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "editarComunidadePorID", value = "/editarComunidadePorID")
+@WebServlet(name = "editarComunidadePorID", value = "/editarComunidadePorID") // Mapeia a URL para este servlet
 public class EditarComunidadePorId extends HttpServlet {
+
+    // Método que lida com requisições POST para editar uma comunidade
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Coletar dados do formulário
+
+        // Coleta os dados do formulário da requisição
         String idComunidade = request.getParameter("id");
         String nomeComunidade = request.getParameter("nome");
         String criadorComunidade = request.getParameter("criador");
         String descricaoComunidade = request.getParameter("descricao");
-        String qntComunidade = request.getParameter("qntIntegrantes"); // Nome ajustado
-        String fotoComunidade = request.getParameter("fotoPerfil"); // Nome ajustado
+        String qntComunidade = request.getParameter("qntIntegrantes"); // Quantidade de integrantes da comunidade
+        String fotoComunidade = request.getParameter("fotoPerfil"); // Foto da comunidade
 
+        // Obtém o ID do administrador da sessão
         int idAdm = (Integer) request.getSession().getAttribute("idAdm");
 
-        // Verifique se os parâmetros são válidos
+        // Verifica se todos os parâmetros necessários foram fornecidos
         if (idComunidade == null || nomeComunidade == null || criadorComunidade == null ||
                 descricaoComunidade == null || qntComunidade == null || fotoComunidade == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos os campos são obrigatórios.");
@@ -35,7 +39,7 @@ public class EditarComunidadePorId extends HttpServlet {
         }
 
         try {
-            // Criar objeto Comunidade
+            // Cria o objeto Comunidade com os dados fornecidos
             Comunidade comunidade = new Comunidade(
                     Integer.parseInt(idComunidade),
                     nomeComunidade,
@@ -45,16 +49,21 @@ public class EditarComunidadePorId extends HttpServlet {
                     fotoComunidade
             );
 
-            // Atualizar comunidade no banco de dados
+            // Atualiza a comunidade no banco de dados
             ComunidadeDAO comunidadeDAO = new ComunidadeDAO();
             boolean certo = comunidadeDAO.editarComunidadePorId(comunidade);
 
-            Log log = new Log("Editar", "Comunidade", "update comunidade set nome = "+ nomeComunidade +", criador = "+ criadorComunidade +", descricao = "+
-                    descricaoComunidade +", qnt_integrantes = "+ qntComunidade +", foto_perfil = "+ fotoComunidade +" where id = "+  idComunidade, idAdm);
+            // Cria o log de edição
+            Log log = new Log("Editar", "Comunidade", "update comunidade set nome = " + nomeComunidade +
+                    ", criador = " + criadorComunidade + ", descricao = " + descricaoComunidade +
+                    ", qnt_integrantes = " + qntComunidade + ", foto_perfil = " + fotoComunidade +
+                    " where id = " + idComunidade, idAdm);
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);
 
+            // Verifica se tanto a atualização da comunidade quanto o log foram bem-sucedidos
             if (certo && logCerto) {
+                // Define a mensagem de sucesso na sessão e redireciona para a lista de comunidades
                 request.getSession().setAttribute("successMessage", "Comunidade editada com sucesso!");
                 response.sendRedirect(request.getContextPath() + "/comunidade");
             } else {
@@ -62,8 +71,10 @@ public class EditarComunidadePorId extends HttpServlet {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            // Retorna erro em caso de problemas com o banco de dados
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro SQL exception ao editar comunidade.");
         } catch (NumberFormatException e) {
+            // Retorna erro se houver um problema com a conversão de dados numéricos
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID ou valores numéricos inválidos.");
         }
     }
