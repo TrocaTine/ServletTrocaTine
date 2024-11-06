@@ -50,7 +50,7 @@ body .background{
     scale: 0 1;
     transform-origin: left;
     animation: scroll-watcher linear;
-    animation-timeline: scroll();
+    animation-timeline: scroll(); /* Ignorar erros aqui */
 }
 @keyframes scroll-watcher{
     to { scale: 1 1; }
@@ -483,25 +483,25 @@ a.signIn-unactive:hover{
     background-image: url(Assets/fotos-membros/Sarah.png);
 }
 .equipe .membros #Lucas .blob {
-    background-image: url(Assets/fotos-membros/lucas.png);
+    background-image: url(Assets/fotos-membros/Lucas.png);
 }
 .equipe .membros #Rafael .blob {
-    background-image: url(Assets/fotos-membros/rafael.png);
+    background-image: url(Assets/fotos-membros/Rafael.png);
 }
 .equipe .membros #Lucca .blob {
-    background-image: url(Assets/fotos-membros/lucca.png);
+    background-image: url(Assets/fotos-membros/Lucca.png);
 }
 .equipe .membros #Daniel .blob {
-    background-image: url(Assets/fotos-membros/daniel.png);
+    background-image: url(Assets/fotos-membros/Daniel.png);
 }
 .equipe .membros #Gabriel .blob {
-    background-image: url(Assets/fotos-membros/gabriel.png);
+    background-image: url(Assets/fotos-membros/Gabriel.png);
 }
 .equipe .membros #Carlos .blob {
-    background-image: url(Assets/fotos-membros/carlos.png);
+    background-image: url(Assets/fotos-membros/Carlos.png);
 }
 .equipe .membros #Kaique .blob {
-    background-image: url(Assets/fotos-membros/kaique.png);
+    background-image: url(Assets/fotos-membros/Kaique.png);
 }
 footer{
     transition: 0.25s;
