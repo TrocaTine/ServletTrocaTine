@@ -49,7 +49,7 @@
     </style>
 </head>
 <body>
-<h1>Excluir Usuário</h1>
+<h1>Excluir Adm</h1>
 
 <!-- Formulário para excluir um administrador -->
 <form action="${pageContext.request.contextPath}/excluirAdm" method="post">
