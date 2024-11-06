@@ -66,6 +66,17 @@
             color: red;
             margin-top: 20px;
         }
+        /* Estilos para o botão de voltar */
+        input[type="submit"], .btn-back {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #55aca0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -117,5 +128,8 @@
 <%
     }
 %>
+
+<!-- Botão de voltar -->
+<a href="${pageContext.request.contextPath}/adms" class="btn-back">Voltar para a Lista de Adms</a>
 </body>
 </html>
