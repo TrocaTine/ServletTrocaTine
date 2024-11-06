@@ -1,13 +1,13 @@
 package com.example.servlettrocatine.model;
 
 public class Adm {
-    private int id;
-    private String nome;
-    private String email;
-    private String senha;
-    private int idUsuario;
+    private int id; // Identificador único do administrador
+    private String nome; // Nome do administrador
+    private String email; // Email do administrador
+    private String senha; // Senha do administrador
+    private int idUsuario; // ID do usuário associado ao administrador
 
-    // Construtor com parâmetros
+    // Construtor com parâmetros para inicializar todos os atributos
     public Adm(int id, String nome, String email, String senha, int idUsuario) {
         this.id = id;
         this.nome = nome;
@@ -16,7 +16,7 @@ public class Adm {
         this.idUsuario = idUsuario;
     }
 
-    // Construtor padrão
+    // Construtor padrão para inicializar o administrador sem ID
     public Adm(String nome, String email, String senha, int idUsuario) {
         this.nome = nome;
         this.email = email;
@@ -24,41 +24,44 @@ public class Adm {
         this.idUsuario = idUsuario;
     }
 
-
-
-    // Getters e Setters
+    // Getters e Setters para acessar e modificar os atributos
     public int getId() {
-        return id;
+        return id; // Retorna o ID do administrador
     }
 
     public String getNome() {
-        return nome;
+        return nome; // Retorna o nome do administrador
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome; // Define o nome do administrador
     }
 
     public String getEmail() {
-        return email;
+        return email; // Retorna o email do administrador
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email; // Define o email do administrador
     }
 
     public String getSenha() {
-        return senha;
+        return senha; // Retorna a senha do administrador
     }
 
     public void setSenha(String senha) {
-        this.senha = senha;
+        this.senha = senha; // Define a senha do administrador
     }
 
-    public int getIdUsuario() { return idUsuario; }
+    public int getIdUsuario() {
+        return idUsuario; // Retorna o ID do usuário associado ao administrador
+    }
 
-    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario; // Define o ID do usuário associado ao administrador
+    }
 
+    // Método toString para retornar uma representação em String do objeto
     @Override
     public String toString() {
         return "Adm{" +
@@ -67,6 +70,6 @@ public class Adm {
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
                 ", idUsuario=" + idUsuario +
-                '}';
+                '}'; // Retorna uma descrição legível do administrador
     }
 }

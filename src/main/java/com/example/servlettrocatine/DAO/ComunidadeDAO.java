@@ -1,7 +1,5 @@
 package com.example.servlettrocatine.DAO;
 
-
-
 import com.example.servlettrocatine.model.Comunidade;
 import com.example.servlettrocatine.model.Conexao;
 
@@ -17,19 +15,21 @@ public class ComunidadeDAO {
     Conexao conexao = new Conexao();
 
     // Método para inserir uma nova comunidade no banco de dados
-    public boolean inserirComunidade(Comunidade comunidade){
+    public boolean inserirComunidade(Comunidade comunidade) {
         String sql = "INSERT INTO comunidade (nome, criador, descricao, qnt_integrantes, foto_perfil) VALUES (?, ?, ?, ?, ?)";
 
         try {
             // Conectando ao banco de dados
             Connection conn = conexao.conectar();
             PreparedStatement pstmt = conn.prepareStatement(sql);
+
             // Definindo os parâmetros da query
             pstmt.setString(1, comunidade.getNome());
             pstmt.setString(2, comunidade.getCriador());
             pstmt.setString(3, comunidade.getDescricao());
-            pstmt.setInt(4, comunidade.getQntIntegrantes()); // Ajustado para usar o método correto
+            pstmt.setInt(4, comunidade.getQntIntegrantes());
             pstmt.setString(5, comunidade.getFotoPerfil());
+
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -47,13 +47,14 @@ public class ComunidadeDAO {
         try {
             Connection conn = conexao.conectar();
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
                 // Definindo os parâmetros da query
                 pstmt.setString(1, comunidade.getNome());
                 pstmt.setString(2, comunidade.getCriador());
                 pstmt.setString(3, comunidade.getDescricao());
-                pstmt.setInt(4, comunidade.getQntIntegrantes()); // Ajustado para usar o método correto
+                pstmt.setInt(4, comunidade.getQntIntegrantes());
                 pstmt.setString(5, comunidade.getFotoPerfil());
-                pstmt.setInt(6, comunidade.getId()); // Adicionado para atualizar pelo ID
+                pstmt.setInt(6, comunidade.getId());
 
                 // Executa a atualização e retorna o sucesso
                 int rowsAffected = pstmt.executeUpdate();
@@ -103,6 +104,7 @@ public class ComunidadeDAO {
     public List<Comunidade> buscarComunidadePorNome(String nome) throws SQLException {
         String sql = "SELECT * FROM comunidade WHERE nome = ?";
         List<Comunidade> comunidades = new ArrayList<>();
+
         try {
             Connection conn = conexao.conectar();
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -171,6 +173,7 @@ public class ComunidadeDAO {
         }
     }
 
+    // Método para listar todas as comunidades no banco de dados
     public List<Comunidade> listarTodasComunidades() throws SQLException {
         String sql = "SELECT * FROM comunidade";
         List<Comunidade> comunidades = new ArrayList<>();
@@ -198,6 +201,6 @@ public class ComunidadeDAO {
             conexao.desconectar();
         }
 
-        return comunidades; // Retorna a lista de comunidades
+        return comunidades;
     }
 }

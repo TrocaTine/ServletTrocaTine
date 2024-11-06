@@ -1,7 +1,5 @@
 package com.example.servlettrocatine.DAO;
 
-
-
 import com.example.servlettrocatine.model.Adm;
 import com.example.servlettrocatine.model.Conexao;
 
@@ -39,6 +37,8 @@ public class AdmDAO {
         }
     }
 
+    // Verifica as credenciais do administrador.
+    // Retorna o ID do administrador se a autenticação for bem-sucedida, caso contrário, -1.
     public int verificarAdmin(String user, String senha) {
         conexao.conectar();
         try {
@@ -60,11 +60,10 @@ public class AdmDAO {
         }
     }
 
-
-    // Edita a senha de um administrador com base no ID.
+    // Edita as informações de um administrador com base no ID.
     // Retorna true se a operação for bem-sucedida, caso contrário, false.
     public boolean editarAdmPorId(Adm adm) {
-        String sql = "UPDATE adm SET nome = ?, email = ?, senha = ?, idusuario = ?  WHERE id = ?";
+        String sql = "UPDATE adm SET nome = ?, email = ?, senha = ?, idusuario = ? WHERE id = ?";
         Connection conn = conexao.conectar();
 
         try {
@@ -84,7 +83,8 @@ public class AdmDAO {
         }
     }
 
-    // Busca e exibe os dados de um administrador com base no ID do administrador.
+    // Busca um administrador específico pelo ID.
+    // Retorna um objeto Adm se encontrado, ou null caso contrário.
     public Adm buscarAdmPorId(int idAdm) {
         String sql = "SELECT * FROM adm WHERE id = ?";
         Connection conn = conexao.conectar();
@@ -114,7 +114,7 @@ public class AdmDAO {
         return adm;
     }
 
-    // Exclui um administrador com base no ID do administrador.
+    // Exclui um administrador com base no ID.
     // Retorna true se a operação for bem-sucedida, caso contrário, false.
     public boolean excluirAdmPorId(int idAdm) {
         String sql = "DELETE FROM adm WHERE id = ?";
@@ -134,6 +134,7 @@ public class AdmDAO {
         }
     }
 
+    // Retorna uma lista com todos os administradores cadastrados.
     public List<Adm> listarAdms() throws SQLException {
         String sql = "SELECT * FROM adm";
         List<Adm> admListagem = new ArrayList<>();

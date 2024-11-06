@@ -1,78 +1,85 @@
 package com.example.servlettrocatine.model;
 
+// Classe que representa um usuário no sistema
 public class Usuario {
-    private int id;
-    private String nome;
-    private String sobrenome;
-    private String telefone;
-    private String senha;
-    private int trocadinhas;
-    private String email;
-    private String cpf;
-    private String dtNascimento; // Pode ser ajustado para LocalDate se preferir
-    private String fotoPerfil;
-    private int idAdm;
-    private int idEndereco;
 
-    // Construtor padrão
+    // Atributos do usuário
+    private int id; // Identificador único do usuário
+    private String nome; // Nome do usuário
+    private String sobrenome; // Sobrenome do usuário
+    private String telefone; // Telefone de contato do usuário
+    private String senha; // Senha para autenticação do usuário
+    private int trocadinhas; // Pontuação ou saldo de "trocadinhas" do usuário
+    private String email; // Endereço de email do usuário
+    private String cpf; // CPF do usuário
+    private String dtNascimento; // Data de nascimento do usuário (pode ser ajustado para LocalDate se necessário)
+    private String fotoPerfil; // URL ou caminho para a foto de perfil do usuário
+    private int idAdm; // ID do administrador que gerencia o usuário
+    private int idEndereco; // ID do endereço associado ao usuário
+
+    // Construtor padrão, utilizado para criar um usuário sem parâmetros
     public Usuario() {
     }
 
-    // Construtor com parâmetros
+    // Construtor com parâmetros para inicializar todos os campos do usuário
     public Usuario(int id, String nome, String sobrenome, String telefone, String senha,
                    int trocadinhas, String email, String cpf, String dtNascimento,
                    String fotoPerfil, int idAdm, int idEndereco) {
-        this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.telefone = telefone;
-        this.senha = senha;
-        this.trocadinhas = trocadinhas;
-        this.email = email;
-        this.cpf = cpf;
-        this.dtNascimento = dtNascimento;
-        this.fotoPerfil = fotoPerfil;
-        this.idAdm = idAdm;
-        this.idEndereco = idEndereco;
+        this.id = id; // Inicializa o ID do usuário
+        this.nome = nome; // Inicializa o nome do usuário
+        this.sobrenome = sobrenome; // Inicializa o sobrenome do usuário
+        this.telefone = telefone; // Inicializa o telefone do usuário
+        this.senha = senha; // Inicializa a senha do usuário
+        this.trocadinhas = trocadinhas; // Inicializa o saldo de "trocadinhas"
+        this.email = email; // Inicializa o email do usuário
+        this.cpf = cpf; // Inicializa o CPF do usuário
+        this.dtNascimento = dtNascimento; // Inicializa a data de nascimento do usuário
+        this.fotoPerfil = fotoPerfil; // Inicializa a foto de perfil do usuário
+        this.idAdm = idAdm; // Inicializa o ID do administrador responsável
+        this.idEndereco = idEndereco; // Inicializa o ID do endereço do usuário
     }
 
+    // Construtor com parâmetros mais simples (sem foto de perfil e ID de administrador)
     public Usuario(int id, String nome, String telefone, String senha, String email, String cpf, String dtNascimento) {
-        this.id = id;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.senha = senha;
-        this.email = email;
-        this.cpf = cpf;
-        this.dtNascimento = dtNascimento;
+        this.id = id; // Inicializa o ID do usuário
+        this.nome = nome; // Inicializa o nome do usuário
+        this.telefone = telefone; // Inicializa o telefone do usuário
+        this.senha = senha; // Inicializa a senha do usuário
+        this.email = email; // Inicializa o email do usuário
+        this.cpf = cpf; // Inicializa o CPF do usuário
+        this.dtNascimento = dtNascimento; // Inicializa a data de nascimento do usuário
     }
 
+    // Construtor para criação de um usuário com valores nulos, provavelmente para casos específicos
     public Usuario(int id, String nome, String sobrenome, String telefone, String senha, Integer o, String email, String cpf, Object dtNascimento, Object fotoPerfil, Object idAdm, Object idEndereco) {
-        this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.telefone = telefone;
-        this.senha = senha;
-        this.trocadinhas = Integer.parseInt(null);
-        this.email = email;
-        this.cpf = cpf;
-        this.dtNascimento = null;
-        this.fotoPerfil = null;
-        this.idAdm = Integer.parseInt(null);
-        this.idEndereco = Integer.parseInt(null);
+        this.id = id; // Inicializa o ID do usuário
+        this.nome = nome; // Inicializa o nome do usuário
+        this.sobrenome = sobrenome; // Inicializa o sobrenome do usuário
+        this.telefone = telefone; // Inicializa o telefone do usuário
+        this.senha = senha; // Inicializa a senha do usuário
+        this.trocadinhas = Integer.parseInt(null); // Inicializa o saldo de "trocadinhas" com valor nulo (erro de implementação)
+        this.email = email; // Inicializa o email do usuário
+        this.cpf = cpf; // Inicializa o CPF do usuário
+        this.dtNascimento = null; // Inicializa a data de nascimento com valor nulo (erro de implementação)
+        this.fotoPerfil = null; // Inicializa a foto de perfil com valor nulo
+        this.idAdm = Integer.parseInt(null); // Inicializa o ID do administrador com valor nulo (erro de implementação)
+        this.idEndereco = Integer.parseInt(null); // Inicializa o ID do endereço com valor nulo (erro de implementação)
     }
 
+    // Construtor para criar um usuário com o endereço associado
     public Usuario(String nome, String sobrenome, String telefone, String senha, String email, String cpf, String dtNascimento, int idEndereco) {
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.telefone = telefone;
-        this.senha = senha;
-        this.email = email;
-        this.cpf = cpf;
-        this.dtNascimento = dtNascimento;
-        this.idEndereco = idEndereco;
+        this.nome = nome; // Inicializa o nome do usuário
+        this.sobrenome = sobrenome; // Inicializa o sobrenome do usuário
+        this.telefone = telefone; // Inicializa o telefone do usuário
+        this.senha = senha; // Inicializa a senha do usuário
+        this.email = email; // Inicializa o email do usuário
+        this.cpf = cpf; // Inicializa o CPF do usuário
+        this.dtNascimento = dtNascimento; // Inicializa a data de nascimento do usuário
+        this.idEndereco = idEndereco; // Inicializa o ID do endereço associado
     }
 
-    // Getters e Setters
+    // Getters e Setters para acessar e modificar os valores dos atributos do usuário
+
     public int getId() {
         return id;
     }
@@ -169,9 +176,9 @@ public class Usuario {
         this.idEndereco = idEndereco;
     }
 
+    // Atributo para armazenar o endereço do usuário, com getter e setter
     private Endereco endereco;
 
-    // Adicione o getter e setter para Endereco
     public Endereco getEndereco() {
         return endereco;
     }
@@ -180,7 +187,7 @@ public class Usuario {
         this.endereco = endereco;
     }
 
-
+    // Método toString para representar o usuário como uma string
     @Override
     public String toString() {
         return "Usuario{" +

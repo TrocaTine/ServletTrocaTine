@@ -6,7 +6,7 @@
   <title>Dashboard</title>
   <style>
     body{
-      overflow-y: hidden;
+      overflow-y: hidden; /* Impede a rolagem vertical */
       position: relative;
       max-width: 100%;
       max-height: 100%;
@@ -33,7 +33,7 @@
       margin-right: 10px;
     }
     .ancora:hover {
-      color: #ffa201 !important;
+      color: #ffa201 !important; /* Cor ao passar o mouse */
     }
     .ilustration-container {
       display: flex;
@@ -63,6 +63,7 @@
       width: 180px;
       text-align: center;
     }
+    /* Estilos responsivos para dispositivos com largura até 500px */
     @media (max-width: 500px) {
       *{
         max-width: 100.4%;
@@ -80,7 +81,7 @@
       }
 
       body{
-        overflow-y: scroll;
+        overflow-y: scroll; /* Habilita a rolagem vertical */
       }
       .logo {
         overflow-x: hidden;
@@ -96,6 +97,7 @@
         margin-bottom: 10px;
       }
     }
+    /* Estilos responsivos para dispositivos com largura mínima de 700px */
     @media (min-width: 700px) {
       .myFlexEnd{
         position: absolute;
@@ -138,10 +140,8 @@
 <body>
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 0; margin: 0; width: 100%;">
-    <div
-            class="container-fluid"
-            style="background-color: #55aca0; padding: 10px"
-    >
+    <div class="container-fluid" style="background-color: #55aca0; padding: 10px">
+      <!-- Logo da empresa -->
       <img src="../Assets/TrocatineLogoBranca.png" style="height: 65px; width: 215px; margin: 0 50px 0 50px" class="navbar-brand logo" alt="" />
       <button
               class="navbar-toggler"
@@ -154,22 +154,17 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-              class="collapse navbar-collapse myFlexEnd"
-              id="navbarSupportedContent"
-      >
+      <div class="collapse navbar-collapse myFlexEnd" id="navbarSupportedContent">
+        <!-- Menu de navegação -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link link-light ancora" aria-current="page" href="dashboard.html" onclick="mostrarAlerta()"
-            >Dashboard</a
-            >
+            <a class="nav-link link-light ancora" aria-current="page" href="dashboard.html" onclick="mostrarAlerta()">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link link-light ancora" href="pagCrud.jsp">CRUD</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link-light ancora" aria-disabled="true"
-               href="../index.html" >Landing Page</a>
+            <a class="nav-link link-light ancora" aria-disabled="true" href="../index.html">Landing Page</a>
           </li>
         </ul>
       </div>
@@ -178,33 +173,34 @@
 </header>
 
 <main>
-  <h1>Bem vindo à área restrita</h1>
+  <h1>Bem-vindo à área restrita</h1>
   <p>Um espaço exclusivo onde você pode acessar e gerenciar informações essenciais através de nossa dashboard interativa. Aqui, utilizamos a tecnologia de Servlets para garantir que todos os dados sejam processados de forma eficiente e segura.</p>
 
   <h3>Ilustrações da área restrita</h3>
 
+  <!-- Seção com ilustrações da área restrita -->
   <div class="ilustration-container">
     <div class="ilustration">
       <div class="wrapper">
         <div class="rectangle"></div>
         <div class="description">
-          <img src="../AreaRestrita/_Assets/navigation.png"><p>Dashboard</p>
+          <img src="../AreaRestrita/_Assets/navigation.png" alt="Icon"> <p>Dashboard</p>
         </div>
       </div>
       <div class="wrapper">
         <div class="rectangle"></div>
         <div class="description">
-          <img src="../AreaRestrita/_Assets/navigation.png"><p>CRUD</p>
+          <img src="../AreaRestrita/_Assets/navigation.png" alt="Icon"> <p>CRUD</p>
         </div>
       </div>
     </div>
   </div>
-
 </main>
 
 <script>
+  // Função para exibir um alerta quando o usuário já estiver na página
   function mostrarAlerta() {
-   alert("Você já está nessa página!");
+    alert("Você já está nessa página!");
   }
 </script>
 

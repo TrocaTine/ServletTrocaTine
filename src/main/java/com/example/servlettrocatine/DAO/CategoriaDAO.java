@@ -1,7 +1,4 @@
-
 package com.example.servlettrocatine.DAO;
-
-
 
 import com.example.servlettrocatine.model.Categoria;
 import com.example.servlettrocatine.model.Conexao;
@@ -98,11 +95,14 @@ public class CategoriaDAO {
         }
     }
 
+    // Método para listar todas as categorias no banco de dados
     public List<Categoria> listarCategorias() throws SQLException {
         String sql = "SELECT * FROM categoria";
         List<Categoria> categorias = new ArrayList<>();
+
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
