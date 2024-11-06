@@ -33,7 +33,8 @@ public class ListarTodasTags extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
             // Se ocorrer um erro de SQL, envia um erro 500 (Internal Server Error)
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao listar tags.");
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

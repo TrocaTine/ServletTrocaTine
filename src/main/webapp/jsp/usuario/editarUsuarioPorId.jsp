@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Editar Usuário</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <!-- Link para o arquivo de estilo -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estiloInserir.css">
 </head>

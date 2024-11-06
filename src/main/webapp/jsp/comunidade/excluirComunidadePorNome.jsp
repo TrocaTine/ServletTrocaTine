@@ -3,6 +3,7 @@
 <head>
     <!-- Título da página -->
     <title>Excluir Comunidade</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <style>
         /* Estilo geral do corpo da página */
         body {

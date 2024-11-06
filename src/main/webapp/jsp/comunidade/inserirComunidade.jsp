@@ -3,6 +3,7 @@
 <head>
   <!-- Título da página -->
   <title>Inserir Comunidade</title>
+  <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
 
   <!-- Link para o arquivo CSS -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estiloInserir.css">
@@ -18,23 +19,23 @@
 
     <!-- Campo para o nome da comunidade -->
     <label for="nome">Nome:</label>
-    <input type="text" name="nome" id="nome">
+    <input type="text" name="nome" id="nome" required>
 
     <!-- Campo para o criador da comunidade -->
     <label for="criador">Criador:</label>
-    <input type="text" name="criador" id="criador">
+    <input type="text" name="criador" id="criador" required>
 
     <!-- Campo para a descrição da comunidade -->
     <label for="descricao">Descrição:</label>
-    <input type="text" name="descricao" id="descricao">
+    <input type="text" name="descricao" id="descricao" required>
 
     <!-- Campo para a quantidade de integrantes -->
     <label for="qntIntegrantes">Quantidade de integrantes:</label>
-    <input type="number" name="qntIntegrantes" id="qntIntegrantes">
+    <input type="number" name="qntIntegrantes" id="qntIntegrantes" required>
 
     <!-- Campo para a foto do perfil da comunidade -->
     <label for="foto">Foto do Perfil:</label>
-    <input type="text" name="foto" id="foto">
+    <input type="text" name="foto" id="foto" required>
 
     <!-- Botão para enviar o formulário -->
     <input type="submit" value="Inserir">

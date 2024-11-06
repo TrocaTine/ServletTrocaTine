@@ -60,10 +60,14 @@ public class AdicionarCategoria extends HttpServlet {
                 request.getSession().setAttribute("successMessage", "Categoria adicionada com sucesso!");
                 response.sendRedirect("jsp/categoria/adicionarCategoria.jsp");
             } else {
+                // Retorna o erro 404 na página de erro
                 request.setAttribute("erro", "Erro ao inserir categoria.");
                 request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
         } catch (Exception e) {
+            e.printStackTrace();
+
+            // Retorna o erro 500 na página de erro
             request.setAttribute("erro", "Erro ao inserir categoria.");
             request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }

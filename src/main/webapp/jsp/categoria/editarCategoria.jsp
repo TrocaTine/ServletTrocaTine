@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Editar Categoria</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <style>
         /* Estilo para o corpo da página */
         body {

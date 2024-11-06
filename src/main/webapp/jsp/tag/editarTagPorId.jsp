@@ -3,6 +3,7 @@
 <head>
     <!-- Título da página -->
     <title>Editar Tag</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
 
     <!-- Estilo da página -->
     <style>

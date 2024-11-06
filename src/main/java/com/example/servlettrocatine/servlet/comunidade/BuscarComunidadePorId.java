@@ -42,7 +42,9 @@ public class BuscarComunidadePorId extends HttpServlet {
             Comunidade comunidade = comunidadeDAO.buscarComunidadePorId(id);
             if (comunidade == null) {
                 // Retorna erro 404 se a comunidade não for encontrada
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Comunidade não encontrada.");
+
+                request.setAttribute("erro", "Erro: 404 - Comunidade não encontrada.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
                 return;
             }
 
@@ -51,10 +53,12 @@ public class BuscarComunidadePorId extends HttpServlet {
 
             // Redireciona para a página JSP para exibir os detalhes da comunidade
             request.getRequestDispatcher("jsp/comunidade/buscarComunidadePorID.jsp").forward(request, response);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+
             // Retorna erro 500 em caso de falha ao acessar o banco de dados
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao buscar comunidades.");
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

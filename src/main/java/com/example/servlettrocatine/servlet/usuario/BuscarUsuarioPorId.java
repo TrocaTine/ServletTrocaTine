@@ -33,7 +33,8 @@ public class BuscarUsuarioPorId extends HttpServlet {
             id = Integer.parseInt(idParam);
         } catch (NumberFormatException e) {
             // Caso o ID seja inválido, retornar erro 400
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
+            request.setAttribute("erro", "Erro: 400 - ID inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -45,7 +46,8 @@ public class BuscarUsuarioPorId extends HttpServlet {
 
             // Se o usuário não for encontrado, retornar erro 404
             if (usuario == null) {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Usuário não encontrado.");
+                request.setAttribute("erro", "Erro: 404 - Usuário não encontrada.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
                 return;
             }
 
@@ -58,7 +60,8 @@ public class BuscarUsuarioPorId extends HttpServlet {
         } catch (SQLException e) {
             // Em caso de erro de banco de dados, retornar erro 500
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao buscar usuário.");
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

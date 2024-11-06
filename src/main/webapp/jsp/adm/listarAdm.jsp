@@ -5,6 +5,7 @@
 <head>
     <title>Listar Adm</title>
     <!-- Link para o arquivo CSS de estilização da página -->
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estiloListar.css">
 </head>
 <body>

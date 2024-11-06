@@ -28,7 +28,8 @@ public class ListarTodasComunidades extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             // Caso ocorra um erro, envia um erro 500 (Internal Server Error) ao usuário
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao listar comunidades.");
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 

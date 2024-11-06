@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Buscar Usuário por ID</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <style>
         /* Estilos para o corpo da página */
         body {

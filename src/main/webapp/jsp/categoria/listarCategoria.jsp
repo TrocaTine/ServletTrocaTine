@@ -6,6 +6,7 @@
 <head>
     <title>Listar Categoria</title>
     <!-- Link para o arquivo de estilo CSS -->
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estiloListar.css">
 </head>
 <body>

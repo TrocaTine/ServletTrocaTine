@@ -63,16 +63,19 @@ public class EditarTagPorId extends HttpServlet {
                 request.getSession().setAttribute("successMessage", "Tag atualizada com sucesso!");
                 response.sendRedirect("jsp/tag/editarTag.jsp");
             } else {
-                // Caso contrário, envia um erro 500 (erro interno do servidor)
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao atualizar a tag.");
+                // Caso contrário, envia um erro 404 (erro de inserção)
+                request.setAttribute("erro", "Erro: 404 - Falha ao atualizar a tag.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
             // Se ocorrer erro de SQL, envia um erro 500 (erro interno do servidor)
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao atualizar a tag.");
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             // Se o ID ou o ID do tipo de produto não puderem ser convertidos para inteiro, envia um erro 400 (Bad Request)
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
+            request.setAttribute("erro", "Erro: 400 - Id inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

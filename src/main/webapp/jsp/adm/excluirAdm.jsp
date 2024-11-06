@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Excluir Administrador</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <style>
         /* Estilos para o corpo da página */
         body {
@@ -48,7 +49,7 @@
     </style>
 </head>
 <body>
-<h1>Excluir Usuário</h1>
+<h1>Excluir Adm</h1>
 
 <!-- Formulário para excluir um administrador -->
 <form action="${pageContext.request.contextPath}/excluirAdm" method="post">
