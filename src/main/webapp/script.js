@@ -1,18 +1,18 @@
 // Evento disparado quando o conteúdo da página é completamente carregado
 document.addEventListener("DOMContentLoaded", () => {
-    // Selecionando os elementos da página que serão manipulados
-    const phoneLeft = document.querySelector(".phoneLeft");  // Referência para o telefone à esquerda
-    const phoneMiddle = document.querySelector(".phoneMiddle");  // Referência para o telefone no meio
-    const phoneRight = document.querySelector(".phoneRight");  // Referência para o telefone à direita
-    const container = document.querySelector(".phoneContainer");  // Referência para o container que envolve os telefones
-    const header = document.querySelector(".header");  // Referência para o cabeçalho da página
-    const headerImg = document.getElementById("img-banner");  // Referência para a imagem do logo no cabeçalho
-    const footer = document.querySelector('footer');  // Referência para o rodapé da página
-    const nuvemFooter = document.getElementById('nuvemFooter');  // Referência para a imagem de nuvem no rodapé
-    const knowUs = document.getElementById('knowUs');  // Referência para o título de "Conheça-nos"
-    const team = document.getElementById('team');  // Referência para o título da "Equipe"
-    const signInButtom = document.getElementById('signIn');  // Referência para o botão de "Cadastre-se"
-    var r = document.querySelector(':root');  // Referência para o elemento raiz do documento (útil para alterar variáveis CSS)
+    // Elementos para manipulação (estilo)
+    const phoneLeft = document.querySelector(".phoneLeft");
+    const phoneMiddle = document.querySelector(".phoneMiddle");
+    const phoneRight = document.querySelector(".phoneRight");
+    const container = document.querySelector(".phoneContainer");
+    const header = document.querySelector(".header");
+    const headerImg = document.getElementById("img-banner");
+    const footer = document.querySelector('footer');
+    const nuvemFooter = document.getElementById('nuvemFooter');
+    const knowUs = document.getElementById('knowUs');
+    const team = document.getElementById('team');
+    const signInButtom = document.getElementById('signIn');
+    var r = document.querySelector(':root');
 
     // Definindo a imagem do logo no cabeçalho
     headerImg.src = "Assets/TrocaTineLogoBranca.png";

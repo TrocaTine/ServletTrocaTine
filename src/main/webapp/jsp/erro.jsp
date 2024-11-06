@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" href="Assets/logo.png"> <!-- Favicon -->
     <style>
         * {
             font-family: Arial, Helvetica, sans-serif;
@@ -79,6 +80,9 @@
             top: 120px;
             left: 150px;
         }
+        .image{
+            z-index: 969;
+        }
         a {
             position: absolute;
             top: 500px;
@@ -94,11 +98,11 @@
     </style>
 </head>
 <body>
-<img src="Assets/camisa.png" alt="Camisa" id="camisa">
-<img src="Assets/Cabide.png" alt="Cabide" id="cabide">
-<img src="Assets/botao.png" alt="Botão" id="botao">
-<img src="Assets/urso.png" alt="Urso" id="urso">
-<img src="Assets/macacao.png" alt="Macacão" id="macacao">
+<img src="Assets/camisa.png" alt="Camisa" id="camisa" class="image">
+<img src="Assets/Cabide.png" alt="Cabide" id="cabide" class="image">
+<img src="Assets/botao.png" alt="Botão" id="botao" class="image">
+<img src="Assets/urso.png" alt="Urso" id="urso" class="image">
+<img src="Assets/macacao.png" alt="Macacão" id="macacao" class="image">
 
 <div id="information">
     <h1>Erro</h1>
