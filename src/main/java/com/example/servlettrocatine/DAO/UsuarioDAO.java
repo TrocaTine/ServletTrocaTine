@@ -37,8 +37,8 @@ public class UsuarioDAO {
    }
 
     // Método para editar um usuário existente com base no ID
-    public boolean editarUsuarioPorId(int id, String nome, String sobrenome, String telefone, String senha, String email, String cpf, String data_nascimento, int i) throws SQLException {
-        String sql = "UPDATE usuario SET nome = ?, sobrenome = ?, telefone = ?, senha = ?, email = ?, cpf = ?, dt_nascimento =?,  WHERE id = ?";
+    public boolean editarUsuarioPorId(int id, String nome, String sobrenome, String telefone, String senha, String email, String cpf, String data_nascimento, int idendereco) throws SQLException {
+        String sql = "UPDATE usuario SET nome = ?, sobrenome = ?, telefone = ?, senha = ?, email = ?, cpf = ?, dt_nascimento =?, idendereco = ?  WHERE id = ?";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -50,8 +50,9 @@ public class UsuarioDAO {
             pstmt.setString(4, senha);
             pstmt.setString(5, email);
             pstmt.setString(6, cpf);
-            pstmt.setString(7, data_nascimento);
-            pstmt.setInt(8, id);
+            pstmt.setDate(7, java.sql.Date.valueOf(data_nascimento));
+            pstmt.setInt(8, idendereco);
+            pstmt.setInt(9, id);
 
             // Executa a atualização e verifica se linhas foram afetadas
             int rowsAffected = pstmt.executeUpdate();

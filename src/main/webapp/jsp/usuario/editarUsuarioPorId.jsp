@@ -33,7 +33,7 @@
         <input type="text" id="dt_nascimento" name="dt_nascimento" placeholder="yyyy-mm-dd" required>
 
         <label for="idendereco">Endereço:</label>
-        <input type="text" id="idendereco" name="idendereco">
+        <input type="text" id="idendereco" name="idendereco" required>
 
         <input type="submit" value="Editar Usuario">
     </form>

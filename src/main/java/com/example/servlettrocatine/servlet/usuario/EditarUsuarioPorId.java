@@ -30,8 +30,8 @@ public class EditarUsuarioPorId extends HttpServlet {
         int idAdm = (Integer) request.getSession().getAttribute("idAdm");
 
         // Verifique se os parâmetros são válidos
-        if (nome == null || idParam == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Nome e ID são obrigatórios.");
+        if (nome == null || idParam == null || idEndereco == null) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Nome ,ID e ID do endereço são obrigatórios.");
             return;
         }
 
@@ -39,7 +39,7 @@ public class EditarUsuarioPorId extends HttpServlet {
             // Inserir usuário no banco de dados
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             boolean certo = usuarioDAO.editarUsuarioPorId( Integer.parseInt(idParam), nome, sobrenome, telefone, senha, email, cpf, dt_nascimento, Integer.parseInt(idEndereco));
-            Log log = new Log("Editar", "Usuario", "update usuario set nome = '"+ nome +"', telefone = '"+ telefone +"', senha = '"+ senha +"', email = '"+ email +"', cpf = '"+ cpf +"', dt_nascimento = '"+ dt_nascimento +"' where id = "+ idParam, idAdm);
+            Log log = new Log("Editar", "Usuario", "update usuario set nome = '"+ nome +"', telefone = '"+ telefone +"', senha = '"+ senha +"', email = '"+ email +"', cpf = '"+ cpf +"', dt_nascimento = '"+ dt_nascimento +"', idendereco = "+ idEndereco + " where id = "+ idParam, idAdm);
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);
 
