@@ -160,12 +160,12 @@
       >
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link link-light ancora" aria-current="page" href="dashboard.html"
+            <a class="nav-link link-light ancora" aria-current="page" href="dashboard.html" onclick="mostrarAlerta()"
             >Dashboard</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link link-light ancora" href="#">Servlet</a>
+            <a class="nav-link link-light ancora" href="pagCrud.jsp">CRUD</a>
           </li>
           <li class="nav-item">
             <a class="nav-link link-light ancora" aria-disabled="true"
@@ -201,6 +201,12 @@
   </div>
 
 </main>
+
+<script>
+  function mostrarAlerta() {
+   alert("Você já está nessa página!");
+  }
+</script>
 
 </body>
 </html>

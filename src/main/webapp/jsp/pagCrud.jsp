@@ -92,7 +92,7 @@
                         >
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light ancora" href="#">Servlet</a>
+                        <a class="nav-link link-light ancora" href="#" onclick="mostrarAlerta()">CRUD</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-light ancora" aria-disabled="true"
@@ -117,6 +117,12 @@
         </div>
         <hr class="line">
     </main>
+
+    <script>
+    function mostrarAlerta() {
+    alert("Você já está nessa página!");
+    }
+    </script>
 
     </body>
 </html>
