@@ -46,11 +46,17 @@ public class InserirComunidade extends HttpServlet {
         boolean certo = comunidadeDAO.inserirComunidade(comunidade);
 
         // Cria o log da operação de inserção
-        Log log = new Log("Inserir", "Comunidade",
-                "insert into comunidade (nome, criador, descricao, qnt_integrantes, foto) values ('" + nome + "', '" + criador + "', '" + descricao + "', " + qntIntegrantes + ", '" + foto + "')",
+        Log log = new Log(
+                "Inserir",
+                "Comunidade",
+                "Comunidade inserida: Nome: " + nome + ", Criador: " + criador + ", Descrição: " + descricao + ", Foto: " + foto + ", Quantidade de integrantes: " + qntIntegrantes,
                 idAdm
         );
+
+        // Criação do objeto logDAO
         LogDAO logDAO = new LogDAO();
+
+        // Inserção do log no banco de dados
         boolean logCerto = logDAO.inserirLog(log);
 
         // Verifica se a inserção da comunidade e do log foram bem-sucedidas

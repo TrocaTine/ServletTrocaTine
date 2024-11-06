@@ -43,9 +43,15 @@ public class AdicionarCategoria extends HttpServlet {
             boolean certo = categoriaDAO.inserirCategoria(nome);
 
             // Cria um log para o registro da operação
-            Log log = new Log("Inserir", "Categoria",
-                    "insert into categoria (tipo_produto) values ('" + nome + "')", idAdm);
+            Log log = new Log(
+                    "Inserir",
+                    "Categoria",
+                    "Categoria " + nome + " foi adicionada", idAdm);
+
+            //Inicializa o DAO do Log e tenta inserir o log
             LogDAO logDAO = new LogDAO();
+
+            //Insere o log no banco de dados
             boolean logCerto = logDAO.inserirLog(log);
 
             // Verifica o resultado das operações de inserção e log e define o redirecionamento

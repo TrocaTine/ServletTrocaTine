@@ -37,8 +37,15 @@ public class ExcluirCategoria extends HttpServlet {
             boolean certo = categoriaDAO.excluirCategoriaPorId(Integer.parseInt(idParam));
 
             // Cria uma entrada de log para registrar a ação de exclusão
-            Log log = new Log("Excluir", "Categoria", "delete from categoria where id = " + idParam , idAdm);
+            Log log = new Log(
+                    "Excluir",
+                    "Categoria",
+                    "Categoria com ID: " + idParam + " excluída", idAdm);
+
+            // Cria uma instância do DAO de Log para inserir a entrada de log
             LogDAO logDAO = new LogDAO();
+
+            // Insere a entrada de log no banco de dados
             boolean logCerto = logDAO.inserirLog(log);
 
             // Verifica se tanto a exclusão quanto o log foram realizados com sucesso

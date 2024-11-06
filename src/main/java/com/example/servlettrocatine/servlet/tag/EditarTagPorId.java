@@ -48,8 +48,14 @@ public class EditarTagPorId extends HttpServlet {
             boolean sucesso = tagDAO.editarTagPorId(id, novaTag);
 
             // Criar o log para registrar a atualização
-            Log log = new Log("Editar", "Tag", "Atualização de tag com ID" + id + " realizada", idAdm);
+            Log log = new Log(
+                    "Editar",
+                    "Tag",
+                    "Atualização de tag com ID" + id + " realizada", idAdm);
+            // Criação do objeto logDAO
             LogDAO logDAO = new LogDAO();
+
+            // Inserção do log no banco de dados
             boolean logCerto = logDAO.inserirLog(log);
 
             // Se a atualização e o log foram bem-sucedidos, redireciona para a página de sucesso

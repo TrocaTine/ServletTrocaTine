@@ -57,8 +57,8 @@ public class EditarAdm extends HttpServlet {
             Log log = new Log(
                     "Editar",
                     "Adm",
-                    "update adm set nome = " + nome + ", email = " + email + ", senha = " + senha +
-                            ", idusuario = " + idUsuario + " WHERE id = " + idParam + " AND idusuario = " + idUsuario,
+                    "Administrador editado: Novo nome: " + nome + ", Novo email: " + email + ",Nova senha: " + senha +
+                            ", Novo usuario relacionado: " + idUsuario + " Id do Administrador: " + idParam,
                     idAdm
             );
 

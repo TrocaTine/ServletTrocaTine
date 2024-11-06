@@ -45,9 +45,10 @@ public class InserirTag extends HttpServlet {
             boolean sucesso = tagDAO.inserirTag(novaTag);
 
             // Criar o log para registrar a inserção da nova tag
-            Log log = new Log("Inserir", "Adm", "insert into tag (genero, cor, tamanho, qualidade, " +
-                    "idtipo_produto) values ('" + genero + "', '" + cor + "', '" + tamanho + "', '" + qualidade +
-                    "', " + idtipo_produto + ")", idAdm);
+            Log log = new Log(
+                    "Inserir",
+                    "Tag",
+                    "Nova tag inserida: "+genero+" "+cor+" "+tamanho+" "+qualidade, idAdm);
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);
 

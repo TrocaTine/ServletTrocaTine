@@ -56,7 +56,7 @@ public class InserirAdm extends HttpServlet {
                 Log log = new Log(
                         "Inserir",
                         "Adm",
-                        "insert into Adm (nome, email, senha, idUsuario) values ('" + nome + "', '" + email + "', '" + senha + "', '" + idUsuario + "')",
+                        "Administrador adicionado: '" + nome + "', '" + email + "', '" + senha + "', '" + idUsuario,
                         idAdm
                 );
 

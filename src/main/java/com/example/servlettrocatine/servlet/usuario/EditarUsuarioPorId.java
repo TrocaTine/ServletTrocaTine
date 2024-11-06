@@ -11,9 +11,37 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "EditarUsuarioPorId", value = "/editarUsuarioPorId")
 public class EditarUsuarioPorId extends HttpServlet {
+
+    // Expressões regulares para validação
+    private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@gmail\\.com$";  // Email no formato nome@gmail.com
+    private static final String TELEFONE_REGEX = "^[0-9]{2}\\s?[0-9]{5}\\s?[0-9]{4}$"; // Telefone em vários formatos
+    private static final String CPF_REGEX = "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$"; // CPF no formato xxx.xxx.xxx-xx
+
+    // Método para validar o email
+    private boolean validarEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    // Método para validar o telefone
+    private boolean validarTelefone(String telefone) {
+        Pattern pattern = Pattern.compile(TELEFONE_REGEX);
+        Matcher matcher = pattern.matcher(telefone);
+        return matcher.matches();
+    }
+
+    // Método para validar o CPF
+    private boolean validarCpf(String cpf) {
+        Pattern pattern = Pattern.compile(CPF_REGEX);
+        Matcher matcher = pattern.matcher(cpf);
+        return matcher.matches();
+    }
 
     // Método que lida com a requisição POST para editar um usuário pelo ID
     @Override
@@ -39,6 +67,22 @@ public class EditarUsuarioPorId extends HttpServlet {
             return;
         }
 
+        // Validação de e-mail, telefone e CPF
+        if (!validarEmail(email)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "E-mail deve ser do tipo nome@gmail.com.");
+            return;
+        }
+
+        if (!validarTelefone(telefone)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Telefone inválido.");
+            return;
+        }
+
+        if (!validarCpf(cpf)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "CPF inválido.");
+            return;
+        }
+
         try {
             // Criar uma instância do DAO para editar o usuário
             UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -47,10 +91,16 @@ public class EditarUsuarioPorId extends HttpServlet {
             );
 
             // Criar o log para registrar a ação de edição
-            Log log = new Log("Editar", "Usuario",
-                    "update usuario set nome = '"+ nome +"', telefone = '"+ telefone +"', senha = '"+ senha +"', email = '"+ email +"', cpf = '"+ cpf +"', dt_nascimento = '"+ dt_nascimento +"', idendereco = "+ idEndereco + " where id = "+ idParam,
+            Log log = new Log(
+                    "Editar",
+                    "Usuario",
+                    "Usuário atualizado: Novo nome: '"+ nome +"', Novo telefone: '"+ telefone +"', Nova senha: '"+ senha +"', Novo email: '"+ email +"', Novo cpf: '"+ cpf +"', Nova data de nascimento: '"+ dt_nascimento +"', Novo id doendereco: "+ idEndereco + " para o usuário com ID: "+ idParam,
                     idAdm);
+
+            // Criação do objeto logDAO
             LogDAO logDAO = new LogDAO();
+
+            // Inserção do log no banco de dados
             boolean logCerto = logDAO.inserirLog(log);
 
             // Se a edição e o log forem bem-sucedidos, redirecionar para a página de edição com sucesso
