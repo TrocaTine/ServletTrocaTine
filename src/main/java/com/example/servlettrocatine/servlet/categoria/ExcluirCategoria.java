@@ -27,7 +27,8 @@ public class ExcluirCategoria extends HttpServlet {
 
         // Verifica se o parâmetro ID foi fornecido
         if (idParam == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Nome e ID são obrigatórios."); // Retorna erro 400 se o ID não for informado
+            request.setAttribute("erro", "Nome e ID são obrigatórios.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -54,13 +55,12 @@ public class ExcluirCategoria extends HttpServlet {
                 request.getSession().setAttribute("successMessage", "Categoria excluída com sucesso!");
                 response.sendRedirect("jsp/categoria/excluidoComSucesso.jsp"); // Redireciona para a página de sucesso
             } else {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao excluir categoria."); // Retorna erro 500 se algo deu errado
+                request.setAttribute("erro", "Erro ao excluir categoria.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao excluir categoria."); // Retorna erro 500 em caso de falha no banco de dados
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido."); // Retorna erro 400 se o ID não for válido
+        } catch (Exception e) {
+            request.setAttribute("erro", "Erro ao excluir categoria.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

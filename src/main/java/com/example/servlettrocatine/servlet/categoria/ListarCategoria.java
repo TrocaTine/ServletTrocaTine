@@ -25,9 +25,8 @@ public class ListarCategoria extends HttpServlet {
             // Redireciona para a página JSP que exibirá as categorias
             request.getRequestDispatcher("jsp/categoria/listarCategoria.jsp").forward(request, response);
         } catch (Exception e) {
-            e.printStackTrace();
-            // Retorna erro 500 em caso de falha ao listar categorias
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao listar categorias.");
+            request.setAttribute("erro", "Erro ao listar categorias.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 

@@ -38,7 +38,8 @@ public class InserirAdm extends HttpServlet {
 
             // Verifica se os parâmetros obrigatórios foram preenchidos
             if (nome == null || email == null || senha == null || idUsuario == null) {
-                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos os campos são obrigatórios.");
+                request.setAttribute("erro", "Todos os campos são obrigatórios.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
                 return;
             }
 
@@ -72,17 +73,17 @@ public class InserirAdm extends HttpServlet {
                 } else {
                     // Envia um erro de servidor se a inserção falhar
                     request.setAttribute("erro", "Erro ao inserir administrador.");
-                    response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao inserir administrador.");
+                    request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
                 }
             } catch (Exception e) {
                 // Trata exceções gerais e redireciona para uma página de erro
                 request.setAttribute("erro", e.getMessage());
-                request.getRequestDispatcher("../erro400.jsp").forward(request, response);
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
-        } catch (InternalError e) {
+        } catch (Exception e) {
             // Trata erros internos e redireciona para uma página de erro
             request.setAttribute("erro", e.getMessage());
-            request.getRequestDispatcher("../erro400.jsp").forward(request, response);
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

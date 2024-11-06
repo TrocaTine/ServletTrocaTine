@@ -34,7 +34,8 @@ public class ExcluirAdm extends HttpServlet {
 
         // Valida se o ID do administrador a ser excluído foi fornecido
         if (idParam == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID é obrigatório.");
+            request.setAttribute("erro", "ID é obrigatório.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -64,11 +65,13 @@ public class ExcluirAdm extends HttpServlet {
                 response.sendRedirect("jsp/adm/excluirAdm.jsp");
             } else {
                 // Envia um erro de servidor se a exclusão falhar
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao excluir administrador.");
+                request.setAttribute("erro", "Erro ao excluir administrador.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             // Trata exceção de formato inválido para o ID
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
+            request.setAttribute("erro", "ID inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

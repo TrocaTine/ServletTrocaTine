@@ -39,7 +39,8 @@ public class ListarAdmins extends HttpServlet {
             e.printStackTrace();
 
             // Envia uma resposta de erro ao cliente em caso de falha
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao listar administradores.");
+            request.setAttribute("erro", "Erro ao listar administradores.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 

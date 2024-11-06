@@ -28,7 +28,8 @@ public class EditarCategoria extends HttpServlet {
 
         // Verifica se os parâmetros são válidos (nome e id não podem ser nulos)
         if (nome == null || idParam == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Nome e ID são obrigatórios."); // Retorna erro 400 se faltar algum parâmetro
+            request.setAttribute("erro", "Nome e ID são obrigatórios.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -55,13 +56,12 @@ public class EditarCategoria extends HttpServlet {
                 request.getSession().setAttribute("successMessage", "Categoria editada com sucesso!");
                 response.sendRedirect("jsp/categoria/editarCategoria.jsp"); // Redireciona para a página de edição
             } else {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar categoria."); // Retorna erro 500 se algo deu errado
+                request.setAttribute("erro", "Erro ao editar categoria.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar categoria."); // Retorna erro 500 em caso de falha no banco de dados
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido."); // Retorna erro 400 se o ID não for válido
+        } catch (Exception e) {
+            request.setAttribute("erro", "Erro ao editar categoria.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }
