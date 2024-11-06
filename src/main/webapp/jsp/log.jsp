@@ -7,7 +7,7 @@
     <title>Relatorio</title>
     <!-- Link para o arquivo de estilos CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estiloListar.css">
-    <link rel="icon" href="Assets/logo.png"> <!-- Favicon -->
+    <link rel="icon" href="../Assets/logo.png"> <!-- Favicon -->
 </head>
 <body>
 

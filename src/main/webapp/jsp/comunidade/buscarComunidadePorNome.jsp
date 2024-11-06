@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>Buscar Comunidade por Nome</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <style>
         body {
             font-family: Arial, sans-serif;

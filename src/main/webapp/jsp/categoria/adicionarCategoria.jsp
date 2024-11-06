@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Adicionar Categoria</title>
+  <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
   <!-- Link para o arquivo CSS de estilização da página -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estiloInserir.css">
 </head>

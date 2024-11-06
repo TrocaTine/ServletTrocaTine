@@ -3,6 +3,7 @@
 <head>
     <title>Adicionar Administrador</title>
     <!-- Estilo CSS para a página -->
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estiloInserir.css">
 </head>
 <body>

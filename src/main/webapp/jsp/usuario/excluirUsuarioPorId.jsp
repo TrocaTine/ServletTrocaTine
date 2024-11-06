@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Excluir Usuário</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <!-- Estilos para a página -->
     <style>
         body {

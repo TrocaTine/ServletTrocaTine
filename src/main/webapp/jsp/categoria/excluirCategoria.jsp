@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Excluir Categoria</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <style>
         /* Estilos para a página */
         body {

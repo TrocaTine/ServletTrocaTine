@@ -3,6 +3,7 @@
 <head>
     <!-- Título da página -->
     <title>Excluir Tag</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
 
     <!-- Estilos da página -->
     <style>

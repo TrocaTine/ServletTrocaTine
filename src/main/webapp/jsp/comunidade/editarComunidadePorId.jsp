@@ -3,6 +3,7 @@
 <head>
   <!-- Título da página -->
   <title>Editar Comunidade</title>
+  <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
   <style>
     /* Estilos gerais do corpo da página */
     body {

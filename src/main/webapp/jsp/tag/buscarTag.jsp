@@ -4,6 +4,7 @@
 <head>
     <!-- Título da página -->
     <title>Buscar Admin por ID</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
 
     <!-- Estilo da página -->
     <style>

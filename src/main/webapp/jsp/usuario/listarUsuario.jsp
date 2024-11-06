@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Listar Usuário</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <!-- Estilo da página -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estiloListar.css">
 </head>

@@ -5,6 +5,7 @@
 <head>
     <!-- Título da página -->
     <title>Listar Todas as Tags</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
 
     <!-- Link para o arquivo de CSS para estilização -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estiloListar.css">

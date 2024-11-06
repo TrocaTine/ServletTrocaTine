@@ -3,6 +3,7 @@
 <head>
   <!-- Título da página -->
   <title>Inserir Comunidade</title>
+  <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
 
   <!-- Link para o arquivo CSS -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estiloInserir.css">
