@@ -23,7 +23,8 @@ public class BuscarCategoria extends HttpServlet {
 
         // Verifica se o parâmetro "id" foi fornecido
         if (idParam == null || idParam.isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID não fornecido."); // Retorna erro 400 se o ID não for informado
+            request.setAttribute("erro", "ID não fornecido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -32,7 +33,8 @@ public class BuscarCategoria extends HttpServlet {
             // Converte o parâmetro "id" para inteiro
             id = Integer.parseInt(idParam);
         } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido."); // Retorna erro 400 se o ID não for um número válido
+            request.setAttribute("erro", "ID inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -44,7 +46,8 @@ public class BuscarCategoria extends HttpServlet {
 
             // Verifica se a categoria foi encontrada
             if (categoria == null) {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Categoria não encontrada."); // Retorna erro 404 se a categoria não for encontrada
+                request.setAttribute("erro", "Categoria não encontrada.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
                 return;
             }
 
@@ -54,8 +57,8 @@ public class BuscarCategoria extends HttpServlet {
             // Redireciona para a página JSP que exibirá os dados da categoria
             request.getRequestDispatcher("jsp/categoria/buscarCategoria.jsp").forward(request, response);
         } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao buscar categoria."); // Retorna erro 500 em caso de falha na consulta ao banco de dados
+            request.setAttribute("erro", "Erro ao buscar categoria.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

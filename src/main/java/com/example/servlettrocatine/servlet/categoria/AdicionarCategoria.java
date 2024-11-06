@@ -33,7 +33,8 @@ public class AdicionarCategoria extends HttpServlet {
 
         // Verifica se o parâmetro nome foi fornecido
         if (nome == null || nome.isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Nome é obrigatório.");
+            request.setAttribute("erro", "Nome é obrigatório.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -59,11 +60,12 @@ public class AdicionarCategoria extends HttpServlet {
                 request.getSession().setAttribute("successMessage", "Categoria adicionada com sucesso!");
                 response.sendRedirect("jsp/categoria/adicionarCategoria.jsp");
             } else {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao inserir categoria.");
+                request.setAttribute("erro", "Erro ao inserir categoria.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao inserir categoria.");
+        } catch (Exception e) {
+            request.setAttribute("erro", "Erro ao inserir categoria.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

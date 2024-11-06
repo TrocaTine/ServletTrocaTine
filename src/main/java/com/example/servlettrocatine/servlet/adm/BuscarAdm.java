@@ -30,7 +30,7 @@ public class BuscarAdm extends HttpServlet {
         // Verifica se o ID foi fornecido
         if (idComunidade == null || idComunidade.isEmpty()) {
             request.setAttribute("erro", "ID não fornecido.");
-            request.getRequestDispatcher("../erro400.jsp").forward(request, response);
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -38,10 +38,10 @@ public class BuscarAdm extends HttpServlet {
         try {
             // Tenta converter o ID para um número inteiro
             id = Integer.parseInt(idComunidade);
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             // Trata erro de conversão caso o ID não seja um número válido
-            request.setAttribute("erro", "ID inválido: " + e.getMessage());
-            request.getRequestDispatcher("../erro400.jsp").forward(request, response);
+            request.setAttribute("erro", e.getMessage());
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -54,7 +54,7 @@ public class BuscarAdm extends HttpServlet {
         // Verifica se o administrador foi encontrado
         if (adm == null) {
             request.setAttribute("erro", "Administrador não encontrado.");
-            request.getRequestDispatcher("../erro400.jsp").forward(request, response);
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 

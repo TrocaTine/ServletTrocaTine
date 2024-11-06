@@ -39,7 +39,8 @@ public class EditarAdm extends HttpServlet {
 
         // Valida se todos os campos obrigatórios foram preenchidos
         if (nome == null || idParam == null || email == null || senha == null || idUsuario == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos os campos são obrigatórios.");
+            request.setAttribute("erro", "Todos os campos são obrigatórios.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -73,11 +74,13 @@ public class EditarAdm extends HttpServlet {
                 response.sendRedirect("jsp/adm/editarAdm.jsp");
             } else {
                 // Envia um erro de servidor se a edição falhar
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar administrador.");
+                request.setAttribute("erro", "Erro ao editar administrador.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
         } catch (NumberFormatException e) {
             // Trata exceção de formato inválido para o ID
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
+            request.setAttribute("erro", "ID inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }
