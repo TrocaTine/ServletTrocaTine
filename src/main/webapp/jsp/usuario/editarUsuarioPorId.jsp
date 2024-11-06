@@ -39,7 +39,7 @@
 
         <!-- Campo para o CPF do usuário -->
         <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf" required>
+        <input type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" required>
 
         <!-- Campo para a data de nascimento do usuário -->
         <label for="dt_nascimento">Data nascimento:</label>
