@@ -3,128 +3,107 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link rel="icon" href="Assets/logo.png"> <!-- Favicon -->
+    <title>Home</title>
+    <script src="dashboard.js" defer></script>
     <style>
-      body{
-        overflow-y: hidden; /* Impede a rolagem vertical */
-        position: relative;
-        max-width: 100%;
-        max-height: 100%;
-      }
-      main{
-        padding: 50px;
-        font-size: larger;
-        display: flex;
-        flex-direction: column;
-      }
-      main h3{
-        margin-bottom: 15px;
-        width: 95%;
-      }
-      p{
-        margin-bottom: 45px;
-      }
-      .description{
-        display: flex;
-      }
-      .description img{
-        width: 24px;
-        height: 24px;
-        margin-right: 10px;
-      }
-      .ancora:hover {
-        color: #ffa201 !important; /* Cor ao passar o mouse */
-      }
-      .ilustration-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        margin-top: 20px;
-      }
-      .ilustration {
-        display: flex;
-        gap: 20px;
-      }
-      .rectangle{
-        width: 300px;
-        height: 200px;
-        border: #ffa201 solid 3px;
-        border-radius: 10px;
-        margin-bottom: 10px;
-      }
-      .button-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-      }
-      .button-container a {
-        width: 180px;
-        text-align: center;
-      }
-      /* Estilos responsivos para dispositivos com largura até 500px */
-      @media (max-width: 500px) {
-        *{
-          max-width: 100.4%;
+        iframe{
+            padding: 0;
+        }
+        .a{
+            display: none;
+        }
+        body {
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        main {
+            padding: 50px;
+            font-size: larger;
+            display: flex;
+            flex-direction: column;
+        }
+        main h3 {
+            margin-bottom: 15px;
+            width: 95%;
+        }
+        p {
+            margin-bottom: 45px;
+        }
+        .description {
+            display: flex;
+        }
+        .description img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
         }
 
-        p{
-          font-size: 0.75em;
-          overflow-x: hidden;
+        #iframe {
+            margin: 20px;
+            display: flex;
+            justify-content: center;
         }
-        main{
-          margin: 6%;
-          overflow-x: hidden;
-          width: 90%;
-          padding: 0px;
+        .ancora:hover {
+            color: #ffa201 !important;
         }
+        @media (max-width: 500px) {
+            * {
+                max-width: 100.4%;
+            }
 
-        body{
-          overflow-y: scroll; /* Habilita a rolagem vertical */
+            p {
+                font-size: 0.75em;
+                overflow-x: hidden;
+            }
+            main {
+                margin: 6%;
+                overflow-x: hidden;
+                width: 90%;
+                padding: 0px;
+            }
+
+            body {
+                overflow-y: scroll;
+            }
+            .logo {
+                overflow-x: hidden;
+                width: 100px;
+            }
+            .rectangle {
+                overflow-x: hidden;
+                width: 90%;
+                margin-left: 3px;
+                height: 200px;
+                border: #ffa201 solid 3px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
         }
-        .logo {
-          overflow-x: hidden;
-          width: 100px;
+        @media (min-width: 700px) {
+            .ilustration {
+                display: flex;
+                gap: 20px;
+            }
+            .rectangle {
+                width: 454px;
+                height: 303px;
+                border: #ffa201 solid 3px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
+            .myFlexEnd {
+                position: absolute;
+                right: 20px;
+            }
+            .logo {
+                width: 130px;
+                margin-left: 20px;
+            }
+            li {
+                font-size: 20px;
+            }
         }
-        .rectangle{
-          overflow-x: hidden;
-          width: 90%;
-          margin-left: 3px;
-          height: 200px;
-          border: #ffa201 solid 3px;
-          border-radius: 10px;
-          margin-bottom: 10px;
-        }
-      }
-      /* Estilos responsivos para dispositivos com largura mínima de 700px */
-      @media (min-width: 700px) {
-        .myFlexEnd{
-          position: absolute;
-          right: 20px;
-        }
-        .logo {
-          width: 130px;
-          margin-left: 20px;
-        }
-        li {
-          font-size: 20px;
-        }
-      }
-      .sair{
-        background-color: #d9534f; /* Cor de fundo vermelha */
-        color: white; /* Cor do texto */
-        padding: 10px 20px; /* Espaçamento interno */
-        border: none; /* Remove borda */
-        border-radius: 5px; /* Bordas arredondadas */
-        cursor: pointer; /* Cursor de mão ao passar o mouse */
-        font-size: 50px; /* Tamanho da fonte */
-        transition: background-color 0.3s ease; /* Efeito de transição */
-      }
-      .sair:hover{
-        background-color: #c9302c; /* Cor de fundo ao passar o mouse */
-      }
     </style>
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -139,71 +118,75 @@
     ></script>
 </head>
 <body>
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 0; margin: 0; width: 100%;">
-        <div class="container-fluid" style="background-color: #55aca0; padding: 10px">
-          <!-- Logo da empresa -->
-          <img src="../Assets/TrocatineLogoBranca.png" style="height: 65px; width: 215px; margin: 0 50px 0 50px" class="navbar-brand logo" alt="" />
-          <button
-                  class="navbar-toggler"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse myFlexEnd" id="navbarSupportedContent">
-            <!-- Menu de navegação -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link link-light ancora" aria-current="page" href="dashboard.html" onclick="mostrarAlerta()">Dashboard</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link-light ancora" href="pagCrud.jsp">CRUD</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link-light ancora" aria-disabled="true" href="../index.html">Landing Page</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <main>
-      <h1>Bem-vindo à área restrita</h1>
-      <p>Um espaço exclusivo onde você pode acessar e gerenciar informações essenciais através de nossa dashboard interativa. Aqui, utilizamos a tecnologia de Servlets para garantir que todos os dados sejam processados de forma eficiente e segura.</p>
-
-      <h3>Ilustrações da área restrita</h3>
-
-      <!-- Seção com ilustrações da área restrita -->
-      <div class="ilustration-container">
-        <div class="ilustration">
-          <div class="wrapper">
-            <div class="rectangle"></div>
-            <div class="description">
-              <img src="../AreaRestrita/_Assets/navigation.png" alt="Icon"> <p>Dashboard</p>
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 0">
+        <div
+                class="container-fluid"
+                style="background-color: #55aca0; padding: 10px"
+        >
+            <img
+                    src="../Assets/Logo-nuvem.png"
+                    class="navbar-brand logo"
+                    alt=""
+            />
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+                    class="collapse navbar-collapse myFlexEnd"
+                    id="navbarSupportedContent"
+            >
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a
+                                class="nav-link link-light ancora"
+                                aria-current="page"
+                                href="#"
+                        >Dashboard</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-light ancora" href="#">Servlet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-light ancora" aria-disabled="true"
+                        >Landing Page</a
+                        >
+                    </li>
+                </ul>
             </div>
-          </div>
-          <div class="wrapper">
-            <div class="rectangle"></div>
-            <div class="description">
-              <img src="../AreaRestrita/_Assets/navigation.png" alt="Icon"> <p>CRUD</p>
-            </div>
-          </div>
         </div>
-      </div>
-    </main>
+    </nav>
+</header>
+<main>
+    <h1>Bem vindo ao Dashboard</h1>
+    <p style="margin: 10px 0px">
+        Essa área do projeto que foi planejada para oferecer métricas sobre o nosso publico, facilitando a vida das pessoas que desejam analizar.
+    </p>
+    <div class="mt-4" id="option">
+        <p style="font-size: 20px; font-weight: 500">Escolha um dashboard</p>
+        <select id="select"
+                style="width: 20rem"
+                class="form-select size"
+                aria-label="Default select example"
+        >
+            <option value="1">Dashboard público-alvo</option>
+            <option  value="2">Dashboard feira</option>
+        </select>
+    </div>
 
-    <script>
-      // Função para exibir um alerta quando o usuário já estiver na página
-      function mostrarAlerta() {
-        alert("Você já está nessa página!");
-      }
-    </script>
+    <div  id="iframe">
 
+
+    </div>
+</main>
 </body>
 </html>
