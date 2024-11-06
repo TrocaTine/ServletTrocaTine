@@ -36,7 +36,7 @@
 
     <!-- Campo de entrada para o CPF do usuário -->
     <label for="cpf">CPF:</label>
-    <input type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx"> <!-- Campo obrigatório -->
+    <input type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" required> <!-- Campo obrigatório -->
 
     <!-- Campo de entrada para a data de nascimento do usuário -->
     <label for="dt_nascimento">Data nascimento:</label>
