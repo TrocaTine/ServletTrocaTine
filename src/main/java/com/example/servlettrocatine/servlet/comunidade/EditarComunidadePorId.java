@@ -72,7 +72,7 @@ public class EditarComunidadePorId extends HttpServlet {
             if (certo && logCerto) {
                 // Define a mensagem de sucesso na sessão e redireciona para a lista de comunidades
                 request.getSession().setAttribute("successMessage", "Comunidade editada com sucesso!");
-                response.sendRedirect(request.getContextPath() + "/comunidade");
+                response.sendRedirect("comunidade");
             } else {
                 request.setAttribute("erro", "Erro: 404 - Falha ao editar a comunidade.");
                 request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);

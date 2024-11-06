@@ -14,7 +14,7 @@ public class TagDAO {
     // Método para inserir uma nova tag no banco de dados
     public boolean inserirTag(Tag tag) throws SQLException {
         // SQL para inserir uma nova tag
-        String sql = "INSERT INTO tag (genero, cor, tamanho, qualidade, idtcategoria) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tag (genero, cor, tamanho, qualidade, idcategoria) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = conexao.conectar(); // Conecta ao banco de dados
              PreparedStatement pstmt = conn.prepareStatement(sql)) { // Prepara a instrução SQL
@@ -36,7 +36,7 @@ public class TagDAO {
     // Método para atualizar uma tag existente no banco de dados com base no ID
     public boolean editarTagPorId(int id, Tag novaTag) throws SQLException {
         // SQL para atualizar uma tag existente
-        String sql = "UPDATE tag SET genero = ?, cor = ?, tamanho = ?, qualidade = ?, idtcategoria = ? WHERE id = ?";
+        String sql = "UPDATE tag SET genero = ?, cor = ?, tamanho = ?, qualidade = ?, idcategoria = ? WHERE id = ?";
 
         try (Connection conn = conexao.conectar(); // Conecta ao banco de dados
              PreparedStatement pstmt = conn.prepareStatement(sql)) { // Prepara a instrução SQL

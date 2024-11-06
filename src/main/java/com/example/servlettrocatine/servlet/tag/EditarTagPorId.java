@@ -25,14 +25,15 @@ public class EditarTagPorId extends HttpServlet {
         String cor = request.getParameter("cor");
         String tamanho = request.getParameter("tamanho");
         String qualidade = request.getParameter("qualidade");
-        String idtipo_produto = request.getParameter("idtipo_produto");
+        String idcategoria = request.getParameter("idcategoria");
 
         // Coletar o ID do administrador da sessão
         int idAdm = (Integer) request.getSession().getAttribute("idAdm");
 
         // Validar se todos os parâmetros necessários estão presentes
         if (idParam == null || idParam.isEmpty() || genero == null || cor == null || tamanho == null || qualidade == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos os campos são obrigatórios.");
+            request.setAttribute("erro", "Erro: 404 - Todos os campos devem ser preenchidos.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -41,7 +42,7 @@ public class EditarTagPorId extends HttpServlet {
             int id = Integer.parseInt(idParam);
 
             // Criar um novo objeto Tag com os dados atualizados
-            Tag novaTag = new Tag(id, genero, cor, tamanho, qualidade, Integer.parseInt(idtipo_produto));
+            Tag novaTag = new Tag(id, genero, cor, tamanho, qualidade, Integer.parseInt(idcategoria));
 
             // Atualizar a tag no banco de dados
             TagDAO tagDAO = new TagDAO();
@@ -61,7 +62,7 @@ public class EditarTagPorId extends HttpServlet {
             // Se a atualização e o log foram bem-sucedidos, redireciona para a página de sucesso
             if (sucesso && logCerto) {
                 request.getSession().setAttribute("successMessage", "Tag atualizada com sucesso!");
-                response.sendRedirect("jsp/tag/editarTag.jsp");
+                response.sendRedirect("jsp/tag/editarTagPorId.jsp");
             } else {
                 // Caso contrário, envia um erro 404 (erro de inserção)
                 request.setAttribute("erro", "Erro: 404 - Falha ao atualizar a tag.");

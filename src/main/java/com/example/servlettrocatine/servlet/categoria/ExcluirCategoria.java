@@ -53,7 +53,7 @@ public class ExcluirCategoria extends HttpServlet {
             if (certo && logCerto) {
                 // Se tudo estiver certo, envia uma mensagem de sucesso para a sessão
                 request.getSession().setAttribute("successMessage", "Categoria excluída com sucesso!");
-                response.sendRedirect("jsp/categoria/excluidoComSucesso.jsp"); // Redireciona para a página de sucesso
+                response.sendRedirect("categoria"); // Redireciona para a página de sucesso
             } else {
                 request.setAttribute("erro", "Erro ao excluir categoria.");
                 request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);

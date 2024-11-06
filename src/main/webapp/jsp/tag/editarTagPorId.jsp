@@ -99,11 +99,11 @@
 
         <!-- Campo para Gênero -->
         <label for="genero">Genero:</label>
-        <input type="text" id="genero" name="genero" required>
+        <input type="text" id="genero" name="genero" placeholder="Menino, Menina ou Unissex" required>
 
         <!-- Campo para Tamanho -->
         <label for="tamanho">Tamanho:</label>
-        <input type="text" id="tamanho" name="tamanho" required>
+        <input type="text" id="tamanho" name="tamanho" placeholder="P, M, G, GG, U" required>
 
         <!-- Campo para Qualidade -->
         <label for="qualidade">Qualidade:</label>

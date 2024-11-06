@@ -62,7 +62,7 @@ public class ExcluirAdm extends HttpServlet {
             if (certo && logCerto) {
                 // Define uma mensagem de sucesso na sessão e redireciona para a página de exclusão
                 request.getSession().setAttribute("successMessage", "Administrador excluído com sucesso!");
-                response.sendRedirect("jsp/adm/excluirAdm.jsp");
+                response.sendRedirect("adms");
             } else {
                 // Envia um erro de servidor se a exclusão falhar
                 request.setAttribute("erro", "Erro ao excluir administrador.");

@@ -131,6 +131,6 @@
 %>
 
 <!-- Botão de voltar -->
-<a href="${pageContext.request.contextPath}/adms" class="btn-back">Voltar para a Lista de Adms</a>
+<a href="${pageContext.request.contextPath}/tags" class="btn-back">Voltar para a Lista de Tags</a>
 </body>
 </html>

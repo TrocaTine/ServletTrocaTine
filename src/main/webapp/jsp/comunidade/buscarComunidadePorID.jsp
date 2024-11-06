@@ -121,6 +121,6 @@
     }
 %>
 <!-- Botão de voltar -->
-<a href="${pageContext.request.contextPath}/comunidade" class="btn-back">Voltar para a Lista de Adms</a>
+<a href="${pageContext.request.contextPath}/comunidade" class="btn-back">Voltar para a Lista de Comunidades</a>
 </body>
 </html>

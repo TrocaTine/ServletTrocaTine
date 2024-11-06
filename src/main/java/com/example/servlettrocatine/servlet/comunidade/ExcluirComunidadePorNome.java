@@ -51,7 +51,7 @@ public class ExcluirComunidadePorNome extends HttpServlet {
             if (certo && logCerto) {
                 // Define a mensagem de sucesso na sessão e redireciona para a página de sucesso
                 request.getSession().setAttribute("successMessage", "Comunidade excluída com sucesso!");
-                response.sendRedirect("jsp/comunidade/ComunidadeExcluidaComSucesso.jsp");
+                response.sendRedirect("comunidade");
             } else {
                 request.setAttribute("erro", "Erro: 404 - Falha ao excluir comunidade.");
                 request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);

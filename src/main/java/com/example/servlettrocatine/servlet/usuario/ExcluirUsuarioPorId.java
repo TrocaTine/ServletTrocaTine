@@ -47,7 +47,7 @@ public class ExcluirUsuarioPorId extends HttpServlet {
             // Se a exclusão e o log forem bem-sucedidos, redirecionar para a página de exclusão com sucesso
             if (certo && logCerto) {
                 request.getSession().setAttribute("successMessage", "Usuário excluído com sucesso!");
-                response.sendRedirect("jsp/usuario/excluirUsuarioPorId.jsp");
+                response.sendRedirect("usuario");
             } else {
                 // Caso ocorra algum erro ao excluir o usuário, retornar erro 404
                 request.setAttribute("erro", "Erro: 404 - Falha ao excluir usuário.");
