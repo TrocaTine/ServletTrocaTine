@@ -12,9 +12,37 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-@WebServlet(name = "AdicionarUsuario", value = "/adicionarUsuario") // Mapeia a URL "/adicionarUsuario" para este servlet
+@WebServlet(name = "AdicionarUsuario", value = "/adicionarUsuario")
 public class AdicionarUsuario extends HttpServlet {
+
+    // Expressões regulares para validação
+    private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@gmail\\.com$";  // Email no formato nome@gmail.com
+    private static final String TELEFONE_REGEX = "^[0-9]{2}\\s?[0-9]{5}\\s?[0-9]{4}$";// Telefone em varios formatos
+    private static final String CPF_REGEX = "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$"; //cpf em formato xxx.xxx.xxx-xx
+
+    // Método para validar o email
+    private boolean validarEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    // Método para validar o telefone
+    private boolean validarTelefone(String telefone) {
+        Pattern pattern = Pattern.compile(TELEFONE_REGEX);
+        Matcher matcher = pattern.matcher(telefone);
+        return matcher.matches();
+    }
+
+    // Método para validar o CPF
+    private boolean validarCpf(String cpf) {
+        Pattern pattern = Pattern.compile(CPF_REGEX);
+        Matcher matcher = pattern.matcher(cpf);
+        return matcher.matches();
+    }
 
     // Método que lida com a requisição POST para adicionar um usuário
     @Override
@@ -28,6 +56,22 @@ public class AdicionarUsuario extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String dt_nascimento = request.getParameter("dt_nascimento");
         int idendereco = Integer.parseInt(request.getParameter("idendereco"));
+
+        // Validação de e-mail, telefone e CPF
+        if (!validarEmail(email)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "E-mail deve ser do tipo nome@gmail.com.");
+            return;
+        }
+
+        if (!validarTelefone(telefone)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Telefone inválido.");
+            return;
+        }
+
+        if (!validarCpf(cpf)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "CPF inválido.");
+            return;
+        }
 
         // Criar um objeto Usuario com os dados coletados
         Usuario usuario = new Usuario(nome, sobrenome, telefone, senha, email, cpf, dt_nascimento, idendereco);

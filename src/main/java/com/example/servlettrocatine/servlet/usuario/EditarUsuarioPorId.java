@@ -11,9 +11,37 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "EditarUsuarioPorId", value = "/editarUsuarioPorId")
 public class EditarUsuarioPorId extends HttpServlet {
+
+    // Expressões regulares para validação
+    private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@gmail\\.com$";  // Email no formato nome@gmail.com
+    private static final String TELEFONE_REGEX = "^[0-9]{2}\\s?[0-9]{5}\\s?[0-9]{4}$"; // Telefone em vários formatos
+    private static final String CPF_REGEX = "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$"; // CPF no formato xxx.xxx.xxx-xx
+
+    // Método para validar o email
+    private boolean validarEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    // Método para validar o telefone
+    private boolean validarTelefone(String telefone) {
+        Pattern pattern = Pattern.compile(TELEFONE_REGEX);
+        Matcher matcher = pattern.matcher(telefone);
+        return matcher.matches();
+    }
+
+    // Método para validar o CPF
+    private boolean validarCpf(String cpf) {
+        Pattern pattern = Pattern.compile(CPF_REGEX);
+        Matcher matcher = pattern.matcher(cpf);
+        return matcher.matches();
+    }
 
     // Método que lida com a requisição POST para editar um usuário pelo ID
     @Override
@@ -36,6 +64,22 @@ public class EditarUsuarioPorId extends HttpServlet {
         // Verificar se os parâmetros essenciais (nome, id e idEndereco) estão presentes
         if (nome == null || idParam == null || idEndereco == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Nome, ID e ID do endereço são obrigatórios.");
+            return;
+        }
+
+        // Validação de e-mail, telefone e CPF
+        if (!validarEmail(email)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "E-mail deve ser do tipo nome@gmail.com.");
+            return;
+        }
+
+        if (!validarTelefone(telefone)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Telefone inválido.");
+            return;
+        }
+
+        if (!validarCpf(cpf)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "CPF inválido.");
             return;
         }
 
