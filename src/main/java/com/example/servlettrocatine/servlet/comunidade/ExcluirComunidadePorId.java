@@ -27,7 +27,8 @@ public class ExcluirComunidadePorId extends HttpServlet {
 
         // Verifica se o parâmetro "id" foi fornecido
         if (idComunidade == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID é obrigatório.");
+            request.setAttribute("erro", "Erro: 404 - Id inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 

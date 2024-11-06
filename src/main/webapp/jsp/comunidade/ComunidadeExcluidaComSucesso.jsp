@@ -46,7 +46,7 @@
     <script>
         // Redireciona automaticamente após 3 segundos
         setTimeout(function() {
-            window.location.href = '../../categoria'; // URL do CRUD de Categoria
+            window.location.href = '../../comunidade'; // URL do CRUD de Categoria
         }, 3000);
     </script>
 </head>
