@@ -24,7 +24,7 @@ public class InserirTag extends HttpServlet {
         String cor = request.getParameter("cor");
         String tamanho = request.getParameter("tamanho");
         String qualidade = request.getParameter("qualidade");
-        String idtipo_produto = request.getParameter("idtipo_produto");
+        String idcategoria = request.getParameter("idcategoria");
 
         // Coletar o ID do administrador da sessão
         int idAdm = (Integer) request.getSession().getAttribute("idAdm");
@@ -32,13 +32,14 @@ public class InserirTag extends HttpServlet {
         // Validar se todos os campos estão preenchidos
         if (genero == null || cor == null || tamanho == null || qualidade == null ||
                 genero.isEmpty() || cor.isEmpty() || tamanho.isEmpty() || qualidade.isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos os campos são obrigatórios.");
+            request.setAttribute("erro", "Erro: 400 - Todos os campos devem ser preenchidos.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
         try {
             // Criar a nova tag com os dados do formulário
-            Tag novaTag = new Tag(genero, cor, tamanho, qualidade, Integer.parseInt(idtipo_produto)); // ID será gerado pelo banco
+            Tag novaTag = new Tag(genero, cor, tamanho, qualidade, Integer.parseInt(idcategoria)); // ID será gerado pelo banco
 
             // Inserir a nova tag no banco de dados
             TagDAO tagDAO = new TagDAO();

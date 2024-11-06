@@ -59,17 +59,20 @@ public class AdicionarUsuario extends HttpServlet {
 
         // Validação de e-mail, telefone e CPF
         if (!validarEmail(email)) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "E-mail deve ser do tipo nome@gmail.com.");
+            request.setAttribute("erro", "Erro: 400 - Email inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
         if (!validarTelefone(telefone)) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Telefone inválido.");
+            request.setAttribute("erro", "Erro: 400 - Telefone inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
         if (!validarCpf(cpf)) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "CPF inválido.");
+            request.setAttribute("erro", "Erro: 400 - CPF inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 

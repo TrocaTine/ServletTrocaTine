@@ -129,6 +129,6 @@
     }
 %>
 <!-- Botão de voltar -->
-<a href="${pageContext.request.contextPath}/categoria" class="btn-back">Voltar para a Lista de Adms</a>
+<a href="${pageContext.request.contextPath}/categoria" class="btn-back">Voltar para a Lista de Categoria</a>
 </body>
 </html>

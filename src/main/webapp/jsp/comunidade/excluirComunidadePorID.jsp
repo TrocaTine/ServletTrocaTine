@@ -63,7 +63,7 @@
 <h1>Excluir Comunidade</h1>
 
 <!-- Formulário para excluir a comunidade -->
-<form action="${pageContext.request.contextPath}/excluirComunidadePorID" method="post">
+<form action="${pageContext.request.contextPath}/comunidade/excluirComunidadePorID" method="post">
     <!-- Campo para o ID da comunidade -->
     <label for="id">ID:</label>
     <input type="number" id="id" name="id" required><br>
