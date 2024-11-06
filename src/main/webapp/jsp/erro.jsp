@@ -3,114 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Error Page</title>
     <link rel="icon" href="${pageContext.request.contextPath}/Assets/logo.png"> <!-- Favicon -->
     <style>
         * {
             font-family: Arial, Helvetica, sans-serif;
-            color: white;
-            font-size: 1.1em;
-            margin-top: 0;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             overflow: hidden;
-            background-color: white;
-            opacity: 1.1;
+            color: #333;
         }
-        h1 {
-            font-size: 4.5em;
-            margin-bottom: 0;
-            margin-left: 50px;
-        }
-        #cabide {
-            width: 230px;
-            right: 70px;
-            top: 530px;
-            transform: rotate(-10deg);
-            box-shadow: 1px solid black;
-            position: absolute;
-        }
-        #botao {
-            width: 230px;
-            left: 800px;
-            transform: rotate(13deg);
-            top: 540px;
-            position: absolute;
-        }
-        #urso {
-            width: 230px;
-            right: 0;
-            transform: rotate(13deg);
-            top: -30px;
-            box-shadow: 1px solid black;
-            position: absolute;
-        }
-        #macacao {
-            width: 180px;
-            right: 10px;
-            transform: rotate(-20deg);
-            top: 300px;
-            box-shadow: 1px solid black;
-            position: absolute;
-        }
-        #camisa {
-            width: 190px;
-            right: 550px;
-            transform: rotate(-30deg);
-            top: 100px;
-            box-shadow: 1px solid black;
-            position: absolute;
-        }
-        #logo {
-            opacity: 1;
-            width: 300px;
-            position: absolute;
-            top: 210px;
-            left: 1005px;
+        .container {
+            display: flex;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 70vw;
+            max-width: 1200px;
+            min-height: 500px;
         }
         #imagem {
-            margin-top: 0;
             background-color: #55ACA0;
-            height: 100vh;
-            width: 60vw;
-        }
-        #information {
-            position: absolute;
-            font-size: 2.3em;
-            top: 120px;
-            left: 150px;
-        }
-        .image{
-            z-index: 969;
-        }
-        a {
-            position: absolute;
-            top: 500px;
-            left: 200px;
-            border: 2px solid black;
-            background-color: white;
-            color: black;
-            padding: 30px 50px;
-            text-decoration: none;
-            border-radius: 10px;
+            width: 40%;
+            display: flex;
+            align-items: center;
             justify-content: center;
+            position: relative;
+        }
+        #logo {
+            width: 150px;
+            opacity: 0.9;
+        }
+        .error-content {
+            width: 60%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            color: #333;
+        }
+        h1 {
+            font-size: 3em;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .return-button {
+            padding: 15px 30px;
+            background-color: #e74c3c;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        .return-button:hover {
+            background-color: #c0392b;
+        }
+        .images {
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 300px;
+        }
+        .images img {
+            width: 50px;
+            margin: 0 5px;
+            opacity: 0.8;
+            transform: rotate(-15deg);
+            transition: transform 0.3s;
+        }
+        .images img:hover {
+            transform: rotate(0deg) scale(1.1);
         }
     </style>
 </head>
 <body>
-<img src="Assets/camisa.png" alt="Camisa" id="camisa" class="image">
-<img src="Assets/Cabide.png" alt="Cabide" id="cabide" class="image">
-<img src="Assets/botao.png" alt="Botão" id="botao" class="image">
-<img src="Assets/urso.png" alt="Urso" id="urso" class="image">
-<img src="Assets/macacao.png" alt="Macacão" id="macacao" class="image">
-
-<div id="information">
-    <h1>Erro</h1>
-    <p><%=request.getAttribute("erro")%></p>
+<div class="container">
+    <div id="imagem">
+        <img src="Assets/logo.png" alt="Logo" id="logo">
+    </div>
+    <div class="error-content">
+        <h1>Erro</h1>
+        <p><%= request.getAttribute("erro") %></p>
+        <a href="javascript:history.back()" class="return-button">Retornar para a tela inicial</a>
+        <div class="images">
+            <img src="${pageContext.request.contextPath}/Assets/camisa.png" alt="Camisa">
+            <img src="${pageContext.request.contextPath}/Assets/Cabide.png" alt="Cabide">
+            <img src="${pageContext.request.contextPath}/Assets/botao.png" alt="Botão">
+            <img src="${pageContext.request.contextPath}/Assets/urso.png" alt="Urso">
+            <img src="${pageContext.request.contextPath}/Assets/macacao.png" alt="Macacão">
+        </div>
+    </div>
 </div>
-<div id="imagem">
-    <img src="Assets/logo.png" alt="Logo" id="logo">
-</div>
-<a href="javascript:history.back()">Retornar para a tela inicial</a>
 </body>
 </html>
