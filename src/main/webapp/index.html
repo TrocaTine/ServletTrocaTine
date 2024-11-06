@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TrocaTine | Landing Page</title>
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="icon" href="Assets/logo.png">
+    <link rel="stylesheet" href="style.css"> <!-- CSS Principal -->
+    <link rel="icon" href="Assets/logo.png"> <!-- Favicon -->
+    <!-- CSS e JS do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- Script da página (Menu e sessões) -->
 </head>
-<body style="background-color: var(--color-body);">
-    <div class="background">
-        <div class="header">
-            <div class="scroll-watcher"></div>
+<body style="background-color: var(--color-body);"> <!-- Forçando a cor do corpo ser a variável do body por conta do JS -->
+    <div class="background"> <!--  O plano de fundo da sessão inicial (apresentação) -->
+        <div class="header"> <!-- Menu -->
+            <div class="scroll-watcher"></div> <!-- Barra de progresso de scroll no topo do header -->
             <nav>
                 <img id="img-banner" src="Assets/TrocaTineLogoBranca.png">
                 <ul>
@@ -28,26 +28,30 @@
         </div>
 
         <div class="home" id="home">
+            <!-- Elementos "flutuantes" (display: relative) -->
             <img src="Assets/camisa.png" alt="" id="camisa">
             <img src="Assets/cabide.png" alt="" id="cabide">
             <img src="Assets/botao.png" alt="" id="botao">
             <img src="Assets/urso.png" alt="" id="urso">
             <img src="Assets/macacao.png" alt="" id="macacao">
-            <div class="content">
-                <h1 style="color: white; font-size: 500%; width: 60%; text-align: center; font-weight: 400; margin: -50px 0 25px 0;">A moda que une Familias</h1>
-                <p style="color: white; font-size: 150%; width: 80%; text-align: center;">Bem vindo ao Trocatine, aqui você não só troca roupas, mas também constrói um mundo melhor.</p>
+            <div class="content"> <!-- Texto de apresentação da landing -->
+                <h1 style="color: white; font-size: 500%; width: 60%; text-align: center; font-weight: 400; margin: -50px 0 25px 0;">
+                    A moda que une Familias
+                </h1>
+                <p style="color: white; font-size: 150%; width: 80%; text-align: center;"
+                >Bem vindo ao Trocatine, aqui você não só troca roupas, mas também constrói um mundo melhor</p>
             </div>
         </div>
-        <img src="Assets/nuvens.png" class="nuvens"></img>
+        <img src="Assets/nuvens.png" class="nuvens">
     </div>
 
-        <div class="phoneContainer">
-            <img src="Assets/phone-accepted.png" class="phone phoneLeft" id="phone-accepted"></img>
-            <img src="Assets/phone-home.png" class="phone phoneMiddle" id="phone-home"></img>
-            <img src="Assets/phone-product.png" class="phone phoneRight" id="phone-product"></img>
+        <div class="phoneContainer"> <!-- Conteiner com os 3 celulares -->
+            <img src="Assets/phone-accepted.png" class="phone phoneLeft" id="phone-accepted"> <!-- Primeiro (1º) -->
+            <img src="Assets/phone-home.png" class="phone phoneMiddle" id="phone-home"> <!-- Meio (2º) -->
+            <img src="Assets/phone-product.png" class="phone phoneRight" id="phone-product"> <!-- Último (3º) -->
         </div>
 
-    <div class="sobre-nos" id="sobre-nos" style="margin-top: 200px">
+    <div class="sobre-nos" id="sobre-nos" style="margin-top: 200px"> <!-- Mias informações sobre nós (com imagens) -->
         <div class="sessao">
             <div>
                 <div class="image"></div>
@@ -73,34 +77,35 @@
         <div class="content">
             <div class="text">
                 <h1>Sobre nós</h1>
-                <p>
+                <p> <!-- Texto principal explicando o TrocaTine -->
                     O TrocaTine é uma plataforma gratuita que revoluciona a forma como as famílias lidam com o vestuário infantil. Ele oferece uma
                     interface inovadora e acessível para trocar e vender roupas de crianças em bom estado. A plataforma permite encontrar produtos
                     próximos através de diversos filtros de busca, tornando a experiência simples e precisa. Seja para economizar dinheiro, promover
                     a reutilização de roupas infantis ou encontrar peças exclusivas
                 </p>
             </div>
-            <img src="Assets/mae.png" id="mae">
+            <img src="Assets/mae.png" id="mae"> <!-- Imagem da mãe com a filha -->
         </div>
     </div>
 
     <div class="sustentabilidade" id="sustentabilidade">
         <div class="content">
+            <!-- Imagens de arvores -->
             <div class="arvore1"></div>
             <div class="arvore2"></div>
             <div class="s1">
                 <h2>N<span></span>O<span></span>S<span></span>S<span></span>A<span class="divs"></span>M<span></span>I<span></span>S<span></span>S<span></span>Ã<span></span>O</h2>
                 <h1>Objetivo de Desenvolvimento Sustentável 11</h1>
-                <p>
+                <p> <!-- Texto principal (1/2) sobre a sustentabilidade do app -->
                     O TrocaTine, comprometido com a sustentabilidade no mundo, oferece soluções práticas e eficazes, como a reutilização de roupas e acessórios infantis, assim dispensando a necessidade de comprar uma roupa nova e descartar outra em ótimo estado.
                 </p>
             </div>
 
             <div class="s2">
-                <p>
+                <p> <!-- Texto (2/2) sobre sustentabilidade -->
                     Aqui, promovemos a sustentabilidade e a redução do consumo de roupas em massa, facilitando o contato entre pessoas que compartilham do mesmo objetivo: trocar roupas para ajudar o próximo e promover um estilo de vida mais consciente e eco-friendly.
                 </p>
-                <div class="predio1"></div>
+                <div class="predio1"></div> <!-- Imagem de prédio -->
             </div>
 
         </div>
@@ -109,7 +114,7 @@
     <div class="equipe" id="nossa-equipe">
         <h2 id="knowUs" style="transition: 0.75s">N<span>O<span>S<span class="divs">C<span>O<span>N<span>H<span>E<span>Ç<span>A</h2>
         <h1 id="team" style="transition: 0.75s">Equipe TrocaTine</h1>
-        <div class="membros">
+        <div class="membros"> <!-- Card com foto, nome e cargo de cada membro do time -->
             <div id="Geovanna">
                 <div class="blob"></div>
                 <p class="nome">Geovanna Diniz</p>
@@ -169,11 +174,11 @@
     </div>
 
     <footer>
-        <div class="midia">
+        <div class="midia"> <!-- Redes sociais (Instagram e GitHub) -->
             <a href="https://instagram.com/trocatine" id="instagram"><img src="Assets/logo-instagram.png"><p>Instagram</p></a>
             <a href="https://github.com/trocatine" id="github"><img src="Assets/logo-github.png"><p>GitHub</p></a>
         </div>
-        <img src="Assets/footer.png" class="nuvem" id="nuvemFooter">
+        <img src="Assets/footer.png" class="nuvem" id="nuvemFooter"> <!-- Imagens final do footer -->
     </footer>
 
 </body>
