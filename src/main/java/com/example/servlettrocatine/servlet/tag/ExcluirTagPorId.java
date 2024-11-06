@@ -39,7 +39,10 @@ public class ExcluirTagPorId extends HttpServlet {
             boolean sucesso = tagDAO.excluirTagPorId(id);
 
             // Criar o log para registrar a exclusão
-            Log log = new Log("Excluir", "Tag", "delete from adm where id = " + idParam, idAdm);
+            Log log = new Log(
+                    "Excluir",
+                    "Tag",
+                    "Tag " + idParam + " Excluída", idAdm);
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);
 

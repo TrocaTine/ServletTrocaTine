@@ -36,8 +36,15 @@ public class ExcluirComunidadePorNome extends HttpServlet {
             boolean certo = comunidadeDAO.excluirComunidadePorNome(nomeComunidade);
 
             // Cria o log de exclusão
-            Log log = new Log("Excluir", "Comunidade", "delete from comunidade where nome = " + nomeComunidade, idAdm);
+            Log log = new Log(
+                    "Excluir",
+                    "Comunidade",
+                    "Comunidade com o nome: " + nomeComunidade + " excluída", idAdm);
+
+            // Cria o objeto LogDAO  no banco de dados
             LogDAO logDAO = new LogDAO();
+
+            // Insere o log no banco de dados
             boolean logCerto = logDAO.inserirLog(log);
 
             // Verifica se tanto a exclusão quanto a inserção do log foram bem-sucedidas

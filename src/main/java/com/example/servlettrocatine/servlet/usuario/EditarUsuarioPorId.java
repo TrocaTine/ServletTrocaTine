@@ -47,10 +47,16 @@ public class EditarUsuarioPorId extends HttpServlet {
             );
 
             // Criar o log para registrar a ação de edição
-            Log log = new Log("Editar", "Usuario",
-                    "update usuario set nome = '"+ nome +"', telefone = '"+ telefone +"', senha = '"+ senha +"', email = '"+ email +"', cpf = '"+ cpf +"', dt_nascimento = '"+ dt_nascimento +"', idendereco = "+ idEndereco + " where id = "+ idParam,
+            Log log = new Log(
+                    "Editar",
+                    "Usuario",
+                    "Usuário atualizado: Novo nome: '"+ nome +"', Novo telefone: '"+ telefone +"', Nova senha: '"+ senha +"', Novo email: '"+ email +"', Novo cpf: '"+ cpf +"', Nova data de nascimento: '"+ dt_nascimento +"', Novo id doendereco: "+ idEndereco + " para o usuário com ID: "+ idParam,
                     idAdm);
+
+            // Criação do objeto logDAO
             LogDAO logDAO = new LogDAO();
+
+            // Inserção do log no banco de dados
             boolean logCerto = logDAO.inserirLog(log);
 
             // Se a edição e o log forem bem-sucedidos, redirecionar para a página de edição com sucesso

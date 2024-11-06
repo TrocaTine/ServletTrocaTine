@@ -54,11 +54,18 @@ public class EditarComunidadePorId extends HttpServlet {
             boolean certo = comunidadeDAO.editarComunidadePorId(comunidade);
 
             // Cria o log de edição
-            Log log = new Log("Editar", "Comunidade", "update comunidade set nome = " + nomeComunidade +
-                    ", criador = " + criadorComunidade + ", descricao = " + descricaoComunidade +
-                    ", qnt_integrantes = " + qntComunidade + ", foto_perfil = " + fotoComunidade +
-                    " where id = " + idComunidade, idAdm);
+            Log log = new Log(
+                    "Editar",
+                    "Comunidade",
+                    "Comunidade atualizada Novo nome: " + nomeComunidade +
+                    ", Novo criador: " + criadorComunidade + ", Nova descricão: " + descricaoComunidade +
+                    ", Nova quantidade de integrantes: " + qntComunidade + ", Nova foto de perfil: " + fotoComunidade +
+                    " com ID: " + idComunidade, idAdm);
+
+            // Cria o objeto LogDAO para inserir o log no banco de dados
             LogDAO logDAO = new LogDAO();
+
+            // Insere o log no banco de dados
             boolean logCerto = logDAO.inserirLog(log);
 
             // Verifica se tanto a atualização da comunidade quanto o log foram bem-sucedidos

@@ -41,7 +41,9 @@ public class AdicionarUsuario extends HttpServlet {
             boolean certo = usuarioDAO.inserirUsuario(usuario);
 
             // Criar um log de inserção
-            Log log = new Log("Inserir", "Usuario",
+            Log log = new Log(
+                    "Inserir",
+                    "Usuario",
                     "Usuário adicionado nome: " + nome + " sobrenome: " + sobrenome +
                             " telefone: " + telefone + " email: " + email + " cpf: " + cpf +
                             " dt_nascimento: " + dt_nascimento + " idEndereco: " + idendereco,

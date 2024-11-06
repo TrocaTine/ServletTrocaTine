@@ -37,7 +37,10 @@ public class ExcluirComunidadePorId extends HttpServlet {
             boolean certo = comunidadeDAO.excluirComunidadePorId(Integer.parseInt(idComunidade));
 
             // Cria o log de exclusão
-            Log log = new Log("Excluir", "Comunidade", "delete from comunidade where id = " + idComunidade, idAdm);
+            Log log = new Log(
+                    "Excluir",
+                    "Comunidade",
+                    "Comunidade com ID:" + idComunidade + " excluída", idAdm);
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);
 

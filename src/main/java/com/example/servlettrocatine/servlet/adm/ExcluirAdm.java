@@ -49,7 +49,7 @@ public class ExcluirAdm extends HttpServlet {
             Log log = new Log(
                     "Excluir",
                     "Adm",
-                    "delete from adm where id = " + idParam,
+                    "Administrador excluído com ID: " + idParam,
                     idAdm
             );
 

@@ -27,6 +27,7 @@ public class ListarAdmins extends HttpServlet {
         // Cria uma instância de AdmDAO para acessar o banco de dados
         AdmDAO admDAO = new AdmDAO();
 
+
         try {
             // Atribui a lista de administradores ao atributo "adms" para ser exibida na JSP
             request.setAttribute("adms", admDAO.listarAdms());

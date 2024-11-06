@@ -37,7 +37,10 @@ public class ExcluirUsuarioPorId extends HttpServlet {
             boolean certo = usuarioDAO.excluirUsuarioPorId(Integer.parseInt(idParam));
 
             // Criar o log para registrar a ação de exclusão
-            Log log = new Log("Excluir", "Usuario", "delete from usuario where id = " + idParam, idAdm);
+            Log log = new Log(
+                    "Excluir",
+                    "Usuario",
+                    "Usuário com ID: " + idParam + " excluído", idAdm);
             LogDAO logDAO = new LogDAO();
             boolean logCerto = logDAO.inserirLog(log);
 

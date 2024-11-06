@@ -38,8 +38,15 @@ public class EditarCategoria extends HttpServlet {
             boolean certo = categoriaDAO.editarCategoriaPorId(nome, Integer.parseInt(idParam));
 
             // Cria uma entrada de log para registrar a ação de edição
-            Log log = new Log("Editar", "Categoria", "update categoria set tipo_produto = " + nome + " where id = " + idParam , idAdm);
+            Log log = new Log(
+                    "Editar",
+                    "Categoria",
+                    "Categoria " + nome + " atualizada com ID " + idParam , idAdm);
+
+            // Cria instância do DAO de Log para inserir a entrada de log
             LogDAO logDAO = new LogDAO();
+
+            // Insere a entrada de log no banco de dados
             boolean logCerto = logDAO.inserirLog(log);
 
             // Verifica se tanto a edição quanto o log foram realizados com sucesso
