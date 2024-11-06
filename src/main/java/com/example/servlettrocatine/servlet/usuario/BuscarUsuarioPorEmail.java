@@ -33,7 +33,8 @@ public class BuscarUsuarioPorEmail extends HttpServlet {
             email = emailParam.toLowerCase();
         } catch (NumberFormatException e) {
             // Caso haja erro ao processar o e-mail, retornar erro 400
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "E-mail inválido.");
+            request.setAttribute("erro", "Erro: 400 - Id inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             return;
         }
 
@@ -45,7 +46,8 @@ public class BuscarUsuarioPorEmail extends HttpServlet {
 
             // Se o usuário não for encontrado, enviar erro 404
             if (usuario == null) {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Usuário não encontrado.");
+                request.setAttribute("erro", "Erro: 404 - Usuário não encontrado.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
                 return;
             }
 
@@ -58,7 +60,8 @@ public class BuscarUsuarioPorEmail extends HttpServlet {
         } catch (SQLException e) {
             // Em caso de erro de banco de dados, enviar erro 500
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao buscar usuário.");
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

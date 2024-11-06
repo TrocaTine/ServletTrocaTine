@@ -53,15 +53,18 @@ public class ExcluirComunidadePorNome extends HttpServlet {
                 request.getSession().setAttribute("successMessage", "Comunidade excluída com sucesso!");
                 response.sendRedirect("jsp/comunidade/ComunidadeExcluidaComSucesso.jsp");
             } else {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao excluir comunidade!");
+                request.setAttribute("erro", "Erro: 404 - Falha ao excluir comunidade.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
             // Retorna erro em caso de problemas com o banco de dados
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao excluir comunidade!");
+            request.setAttribute("erro", "Erro: 500 - Falha na conexão com o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             // Retorna erro se o ID fornecido não for válido
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
+            request.setAttribute("erro", "Erro: 400 - Id inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

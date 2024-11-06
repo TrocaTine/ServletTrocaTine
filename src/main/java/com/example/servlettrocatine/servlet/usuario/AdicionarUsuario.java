@@ -102,16 +102,19 @@ public class AdicionarUsuario extends HttpServlet {
                 request.getSession().setAttribute("successMessage", "Usuário adicionado com sucesso!");
                 response.sendRedirect("jsp/usuario/adicionarUsuario.jsp");
             } else {
-                // Caso haja erro, envia um erro 500
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao inserir usuário.");
+                // Caso haja erro, envia um erro 404
+                request.setAttribute("erro", "Erro: 404 - Falha ao adicionar usuário.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
             // Se ocorrer erro de SQL, envia um erro 500
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao inserir usuário.");
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             // Se houver erro ao converter o ID para número, envia um erro 400
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
+            request.setAttribute("erro", "Erro: 400 - Id inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

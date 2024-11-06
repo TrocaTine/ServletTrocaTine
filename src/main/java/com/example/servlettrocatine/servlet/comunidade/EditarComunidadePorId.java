@@ -74,15 +74,17 @@ public class EditarComunidadePorId extends HttpServlet {
                 request.getSession().setAttribute("successMessage", "Comunidade editada com sucesso!");
                 response.sendRedirect(request.getContextPath() + "/comunidade");
             } else {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar comunidade.");
+                request.setAttribute("erro", "Erro: 404 - Falha ao editar a comunidade.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
             // Retorna erro em caso de problemas com o banco de dados
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro SQL exception ao editar comunidade.");
-        } catch (NumberFormatException e) {
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);        } catch (NumberFormatException e) {
             // Retorna erro se houver um problema com a conversão de dados numéricos
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID ou valores numéricos inválidos.");
+            request.setAttribute("erro", "Erro: 400 - Id inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

@@ -28,7 +28,9 @@ public class ListarUsuario extends HttpServlet {
         } catch (Exception e) {
             // Caso ocorra algum erro ao listar os usuários, imprime o erro e retorna uma resposta de erro 500
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao listar usuários.");
+
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 

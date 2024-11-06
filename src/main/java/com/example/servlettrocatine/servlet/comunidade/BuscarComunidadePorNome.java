@@ -36,7 +36,8 @@ public class BuscarComunidadePorNome extends HttpServlet {
 
             // Verifica se a lista de comunidades está vazia e retorna erro 404 se não houver comunidades encontradas
             if (comunidade.isEmpty()) {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Comunidade não encontrada.");
+                request.setAttribute("erro", "Erro: 404 - Comunidade não encontrada.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
                 return;
             }
 
@@ -45,10 +46,12 @@ public class BuscarComunidadePorNome extends HttpServlet {
 
             // Redireciona para a página JSP para exibir as comunidades encontradas
             request.getRequestDispatcher("jsp/comunidade/buscarComunidadePorNome.jsp").forward(request, response);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+
             // Retorna erro 500 em caso de falha ao acessar o banco de dados
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao buscar comunidades.");
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

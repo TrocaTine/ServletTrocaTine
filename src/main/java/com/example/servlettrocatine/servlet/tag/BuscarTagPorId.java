@@ -42,15 +42,18 @@ public class BuscarTagPorId extends HttpServlet {
                 request.getRequestDispatcher("jsp/tag/buscarTag.jsp").forward(request, response);
             } else {
                 // Se a tag não for encontrada, envia um erro 404 (não encontrada)
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Tag não encontrada.");
+                request.setAttribute("erro", "Erro: 404 - Tag não encontrada.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
         } catch (NumberFormatException e) {
             // Caso o ID não seja um número válido, envia um erro 400 (Bad Request)
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
+            request.setAttribute("erro", "Erro: 400 - Id inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             // Caso ocorra um erro de SQL, envia um erro 500 (Internal Server Error)
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao buscar tag por ID.");
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

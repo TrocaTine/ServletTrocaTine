@@ -108,16 +108,21 @@ public class EditarUsuarioPorId extends HttpServlet {
                 request.getSession().setAttribute("successMessage", "Usuário editado com sucesso!");
                 response.sendRedirect("jsp/usuario/editarUsuarioPorId.jsp");
             } else {
-                // Caso ocorra algum erro ao editar o usuário, retornar erro 500
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar usuário.");
+                // Caso ocorra algum erro ao editar o usuário, retornar erro 404
+                request.setAttribute("erro", "Erro: 404 - Falha ao editar o usuário.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             // Caso ocorra algum erro no banco de dados, retornar erro 500
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao editar usuário.");
+
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         } catch (NumberFormatException e) {
             // Caso ocorra erro ao converter os IDs para inteiro, retornar erro 400
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
+
+            request.setAttribute("erro", "Erro: 400 - Id inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

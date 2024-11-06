@@ -57,13 +57,15 @@ public class InserirTag extends HttpServlet {
                 request.getSession().setAttribute("successMessage", "Tag adicionada com sucesso!");
                 response.sendRedirect("jsp/tag/inserirTag.jsp");
             } else {
-                // Caso contrário, envia um erro 500 (erro interno do servidor)
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao inserir a tag.");
+                // Caso contrário, envia um erro 404 (erro ao inserir)
+                request.setAttribute("erro", "Erro: 404 - Falha ao inserir a tag no banco de dados.");
+                request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
             // Se ocorrer erro de SQL, envia um erro 500 (erro interno do servidor)
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao inserir a tag.");
+            request.setAttribute("erro", "Erro: 500 - Falha ao acessar o banco de dados.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }

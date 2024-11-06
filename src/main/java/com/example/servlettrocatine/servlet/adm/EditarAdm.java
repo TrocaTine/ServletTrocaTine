@@ -74,12 +74,12 @@ public class EditarAdm extends HttpServlet {
                 response.sendRedirect("jsp/adm/editarAdm.jsp");
             } else {
                 // Envia um erro de servidor se a edição falhar
-                request.setAttribute("erro", "Erro ao editar administrador.");
+                request.setAttribute("erro", "Erro: 404 - Não foi possível editar administrador.");
                 request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
             }
         } catch (NumberFormatException e) {
             // Trata exceção de formato inválido para o ID
-            request.setAttribute("erro", "ID inválido.");
+            request.setAttribute("erro", "Erro: 400 - ID inválido.");
             request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }

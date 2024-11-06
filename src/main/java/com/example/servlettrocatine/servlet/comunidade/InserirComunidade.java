@@ -66,7 +66,8 @@ public class InserirComunidade extends HttpServlet {
             response.sendRedirect("jsp/comunidade/inserirComunidade.jsp");
         } else {
             // Caso contrário, retorna um erro interno
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao inserir categoria.");
+            request.setAttribute("erro", "Erro: 400 - Id inválido.");
+            request.getRequestDispatcher("jsp/erro.jsp").forward(request, response);
         }
     }
 }
