@@ -56,6 +56,7 @@
     </style>
 </head>
 <body>
+
 <!-- Título da página -->
 <h1>Excluir Usuário</h1>
 
@@ -66,7 +67,7 @@
     <input type="number" id="id" name="id" required><br>
 
     <!-- Botão para enviar o formulário -->
-    <input type="submit" value="Excluir Usuário">
+    <input type="submit" value="Excluir Adm">
 </form>
 
 <!-- Link para voltar à lista de usuários -->
