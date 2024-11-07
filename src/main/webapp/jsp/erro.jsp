@@ -102,7 +102,7 @@
     <div class="error-content">
         <h1>Erro</h1>
         <p><%= request.getAttribute("erro") %></p>
-        <a href="javascript:history.back()" class="return-button">Retornar para a tela inicial</a>
+        <a href="javascript:history.back()" class="return-button">Retornar para a tela anterior</a>
         <div class="images">
             <img src="${pageContext.request.contextPath}/Assets/camisa.png" alt="Camisa">
             <img src="${pageContext.request.contextPath}/Assets/Cabide.png" alt="Cabide">
