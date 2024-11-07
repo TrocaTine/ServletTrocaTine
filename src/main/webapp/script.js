@@ -14,6 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const signInButtom = document.getElementById('signIn');
     var r = document.querySelector(':root');
 
+    // Ativando inicialmente o menu
+    headerImg.src = "Assets/TrocaTineLogoBranca.png";
+    header.style.height = '150px';
+    headerImg.src = "Assets/TrocaTineLogoBranca.png";
+    signInButtom.classList.remove('signIn-active');
+    signInButtom.classList.add('signIn-unactive');
+
     // Definindo as rotações iniciais dos celulares
     const initialRotations = {
         phoneLeft: 7.5,
@@ -60,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Mudando o cabeçalho quando o scroll chegar ao topo da página
         if (scrollY > 0) {
             header.style.backdropFilter = "blur(5px)";
-
             header.style.backgroundColor = '#373a37f7';
             header.style.height = '90px';
             headerImg.src = "Assets/TrocaTineLogo.png";
@@ -71,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             header.style.backgroundColor = '#00000000';
             header.style.height = '150px';
-            headerImg.src = "Assets/TrocatineLogoBranca.png";
+            headerImg.src = "Assets/TrocaTineLogoBranca.png";
             signInButtom.classList.remove('signIn-active');
             signInButtom.classList.add('signIn-unactive');
         }

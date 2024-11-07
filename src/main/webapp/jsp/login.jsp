@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding:0;">
         <div class="container-fluid" style="background-color: #55aca0; padding: 10px">
             <!-- Logo do site -->
-            <img src="../Assets/TrocatineLogoBranca.png" style="margin: 0 50px 0 50px; height: 65px;" class="navbar-brand logo" alt="" />
+            <img src="../Assets/TrocaTineLogoBranca.png" style="margin: 0 50px 0 50px; height: 65px;" class="navbar-brand logo" alt="" />
 
             <!-- Botão para toggle da navegação em telas menores -->
             <button
