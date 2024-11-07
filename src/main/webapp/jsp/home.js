@@ -1,19 +1,17 @@
 const dash = document.getElementById("dash");
 const serv = document.getElementById("serv");
 
-
 dash.addEventListener("click", () => {
-    window.location.href = "../dashboard/dashboard.html";
+    window.location.href = "../jsp/dashboard.html";
 });
 serv.addEventListener("click", () => {
-    window.location.href = "../servlet.html";
+    window.location.href = "../jsp/pagCrud.jsp";
 });
 const dashImg = document.getElementById("dashImg")
 const dashVideo = document.getElementsByTagName("video")[0]
 dash.addEventListener("mouseenter", () => {
     dashImg.classList.add("invisible")
     dashVideo.classList.remove("invisible")
-
 });
 dash.addEventListener("mouseleave", () => {
     dashImg.classList.remove("invisible")

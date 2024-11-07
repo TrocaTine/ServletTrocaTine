@@ -40,7 +40,7 @@ public class VerificarAdmins extends HttpServlet {
             session.setAttribute("idAdm", idAdm); // Armazena o idAdm na sessão
 
             // Redireciona para a página de CRUD
-            response.sendRedirect("jsp/pagCrud.jsp");
+            response.sendRedirect("jsp/home.html");
         } else {
             // Se o ID não for encontrado, retorna erro de login
             request.setAttribute("ErroLogin", "Usuário ou senha incorretos");

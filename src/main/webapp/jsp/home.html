@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>TrocaTine | Área Restrita</title>
+    <link rel="icon" href="../Assets/logo.png"> <!-- Favicon -->
     <script src="home.js" defer></script>
     <style>
         body{
@@ -116,7 +117,9 @@
         <div
                 class="container-fluid"
                 style="background-color: #55aca0; padding: 10px">
-            <img src="../Assets/Logo-nuvem.png" class="navbar-brand logo" alt="" />
+            <img src="../Assets/TrocatineLogoBranca.png"
+                 class="navbar-brand logo"
+                 style="width: 212px; height: 65px; margin-left: 50px" />
             <button
                     class="navbar-toggler"
                     type="button"
@@ -134,17 +137,20 @@
             >
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-light ancora" aria-current="page" href="#"
-                        >Dashboard</a
-                        >
+                        <a class="nav-link link-light ancora" aria-disabled="true" href="#"
+                        >Área Restrita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light ancora" href="#">Servlet</a>
+                        <a class="nav-link link-light ancora" aria-current="page" href="dashboard.html"
+                        >Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light ancora" aria-disabled="true"
-                        >Landing Page</a
-                        >
+                        <a class="nav-link link-light ancora" href="pagCrud.jsp"
+                        >CRUD</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-light ancora" aria-disabled="true" href="../index.html"
+                        >Landing Page</a>
                     </li>
                 </ul>
             </div>
@@ -176,7 +182,7 @@
                 <img id="servImg" src="../Assets/servlet.png" width="100%" height="100%" style="border-radius: 10px; position: absolute;" alt="">
             </div>
             <div class="description">
-                <img src="../Assets/navigation.png"><p>Servlet</p>
+                <img src="../Assets/navigation.png"><p>CRUD</p>
             </div>
         </div>
     </div>

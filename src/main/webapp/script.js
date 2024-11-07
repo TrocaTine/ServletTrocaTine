@@ -14,17 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const signInButtom = document.getElementById('signIn');
     var r = document.querySelector(':root');
 
-    // Definindo a imagem do logo no cabeçalho
-    headerImg.src = "Assets/TrocaTineLogoBranca.png";
-
-    // Definindo as rotações iniciais dos telefones
+    // Definindo as rotações iniciais dos celulares
     const initialRotations = {
-        phoneLeft: 7.5,  // Rotações iniciais para o telefone à esquerda
-        phoneMiddle: 0,  // Rotações iniciais para o telefone do meio
-        phoneRight: -7.5  // Rotações iniciais para o telefone à direita
+        phoneLeft: 7.5,
+        phoneMiddle: 0,
+        phoneRight: -7.5
     };
 
-    // Função que anima os telefones durante o scroll
+    // Função que anima os celulares durante o scroll
     function animatePhones() {
         // Obtendo a posição do scroll na página
         const scrollY = window.scrollY;
@@ -46,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         phoneRight.style.right = `${50 - scrollProgress * 200}px`;
         phoneRight.style.transform = `rotate(${initialRotations.phoneRight + scrollProgress * -initialRotations.phoneRight}deg)`;
 
-        // Adicionando animação de escala nos telefones quando o scroll atingir uma determinada posição
+        // Adicionando animação de escala nos celulares quando o scroll atingir uma determinada posição
         if (scrollY >= 1000) {
             phoneLeft.classList.add('scale-for-hover');
             phoneMiddle.classList.add('scale-for-hover');
@@ -60,28 +57,32 @@ document.addEventListener("DOMContentLoaded", () => {
             phoneRight.classList.remove('scale-for-hover');
         }
 
-        // Mudando o cabeçalho quando o scroll ultrapassar o topo da página
+        // Mudando o cabeçalho quando o scroll chegar ao topo da página
         if (scrollY > 0) {
-            header.style.backgroundColor = '#373a37f7';  // Mudando a cor de fundo do cabeçalho
-            header.style.height = '90px';  // Diminuindo a altura do cabeçalho
-            headerImg.src = "Assets/TrocaTineLogo.png";  // Mudando o logo do cabeçalho
-            signInButtom.classList.add('signIn-active');  // Ativando o estilo para o botão de cadastro
-            signInButtom.classList.remove('signIn-unactive');  // Removendo a classe que torna o botão inativo
+            header.style.backdropFilter = "blur(5px)";
+
+            header.style.backgroundColor = '#373a37f7';
+            header.style.height = '90px';
+            headerImg.src = "Assets/TrocaTineLogo.png";
+            signInButtom.classList.add('signIn-active');
+            signInButtom.classList.remove('signIn-unactive');
         } else {
-            header.style.backgroundColor = '#00000000';  // Cor de fundo transparente
-            header.style.height = '150px';  // Altura original do cabeçalho
-            headerImg.src = "Assets/TrocatineLogoBranca.png";  // Mudando o logo para a versão branca
-            signInButtom.classList.remove('signIn-active');  // Removendo o estilo de botão ativo
-            signInButtom.classList.add('signIn-unactive');  // Adicionando a classe de botão inativo
+            header.style.backdropFilter = "blur(0px)";
+
+            header.style.backgroundColor = '#00000000';
+            header.style.height = '150px';
+            headerImg.src = "Assets/TrocatineLogoBranca.png";
+            signInButtom.classList.remove('signIn-active');
+            signInButtom.classList.add('signIn-unactive');
         }
 
         // Mudando o estilo do corpo e do rodapé com base na rolagem
         if (scrollY > 3500) {
             // Mudando a cor de fundo para uma cor personalizada
             document.documentElement.style.setProperty('--color-body', '#55aca0', 'important');
-            footer.style.backgroundColor = "#55aca0";  // Mudando a cor do rodapé
-            knowUs.style.color = "white";  // Mudando a cor do texto "Conheça-nos"
-            team.style.color = 'white';  // Mudando a cor do texto "Equipe"
+            footer.style.backgroundColor = "#55aca0";
+            knowUs.style.color = "white";
+            team.style.color = 'white';
 
             // Mudando a cor dos nomes e cargos
             document.querySelectorAll('.nome').forEach(nome => {
@@ -96,9 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (scrollY < 3800) {
             // Voltando ao estilo original quando a rolagem estiver dentro do intervalo
             document.documentElement.style.setProperty('--color-body', 'white', 'important');
-            footer.style.backgroundColor = "white";  // Cor do rodapé voltando para branco
-            knowUs.style.color = "var(--color-lightgray)";  // Cor do texto "Conheça-nos"
-            team.style.color = 'var(--color-blue)';  // Cor do texto "Equipe"
+            footer.style.backgroundColor = "white";
+            knowUs.style.color = "var(--color-lightgray)";
+            team.style.color = 'var(--color-blue)';
 
             // Revertendo as cores dos nomes e cargos
             document.querySelectorAll('.nome').forEach(nome => {

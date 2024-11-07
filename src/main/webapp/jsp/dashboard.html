@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>TrocaTine | Área Restrita - Dashboard</title>
+    <link rel="icon" href="../Assets/logo.png"> <!-- Favicon -->
     <script src="dashboard.js" defer></script>
     <style>
         iframe{
@@ -125,9 +126,9 @@
                 style="background-color: #55aca0; padding: 10px"
         >
             <img
-                    src="../Assets/Logo-nuvem.png"
+                    src="../Assets/TrocatineLogoBranca.png"
                     class="navbar-brand logo"
-                    alt=""
+                    style="width: 212px; height: 65px; margin-left: 50px;"
             />
             <button
                     class="navbar-toggler"
@@ -146,20 +147,20 @@
             >
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a
-                                class="nav-link link-light ancora"
-                                aria-current="page"
-                                href="#"
-                        >Dashboard</a
-                        >
+                        <a class="nav-link link-light ancora" aria-disabled="true" href="home.html"
+                        >Área Restrita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light ancora" href="pagCrud.jsp">CRUD</a>
+                        <a class="nav-link link-light ancora" aria-current="page" href="#"
+                        >Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light ancora" aria-disabled="true"
-                        >Landing Page</a
-                        >
+                        <a class="nav-link link-light ancora" href="pagCrud.jsp"
+                        >CRUD</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-light ancora" aria-disabled="true" href="../index.html"
+                        >Landing Page</a>
                     </li>
                 </ul>
             </div>

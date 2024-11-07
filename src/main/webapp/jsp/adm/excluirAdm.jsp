@@ -58,7 +58,7 @@
     <input type="number" id="id" name="id" required><br>
 
     <!-- Botão para enviar a requisição de exclusão -->
-    <input type="submit" value="Excluir Usuário">
+    <input type="submit" value="Excluir Admin">
 </form>
 
 <!-- Link para voltar à lista de administradores -->

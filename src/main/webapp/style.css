@@ -29,16 +29,6 @@ body{
 body .background{
     background: var(--color-homeGradient);
 }
-
-.blur15px{
-    filter: blur(15px);
-}
-.blur10px{
-    filter: blur(10px);
-}
-.blur3px{
-    backdrop-filter: blur(3px);
-}
 .scroll-watcher{
     height: 10px;
     position: fixed;
@@ -105,6 +95,7 @@ body .background{
 }
 
 .header {
+    backdrop-filter: blur(3px);
     width: 100%;
     height: 100px;
     position: fixed; 
@@ -112,8 +103,7 @@ body .background{
     display: flex;
     z-index: 999;
     background-color: rgba(0, 0, 0, 0);
-    transition: background-color 0.005s ease;
-    transition: 0.15s;
+    transition: background-color 0.4s;
 }
 .header #img-banner{
     margin-left: 75px;

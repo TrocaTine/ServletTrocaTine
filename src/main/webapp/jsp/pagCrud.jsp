@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Área Restrita | CRUD</title>
+    <title>TrocaTine | Área Restrita - CRUD</title>
     <link rel="icon" href="../Assets/logo.png"> <!-- Favicon -->
     <!-- Link para o Bootstrap CSS -->
     <link
@@ -104,13 +104,20 @@
         <div class="collapse navbar-collapse myFlexEnd" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link link-light ancora" aria-current="page" href="dashboard.html">Dashboard</a>
+                    <a class="nav-link link-light ancora" aria-disabled="true" href="home.html"
+                    >Área Restrita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link-light ancora" href="#" onclick="mostrarAlerta()">CRUD</a>
+                    <a class="nav-link link-light ancora" aria-current="page" href="dashboard.html"
+                    >Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link-light ancora" aria-disabled="true" href="../index.html">Landing Page</a>
+                    <a class="nav-link link-light ancora" href="#"
+                    >CRUD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-light ancora" aria-disabled="true" href="../index.html"
+                    >Landing Page</a>
                 </li>
             </ul>
         </div>

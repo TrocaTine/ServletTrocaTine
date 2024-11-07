@@ -19,7 +19,7 @@
             crossorigin="anonymous"
     ></script>
 
-    <title>Login - Área Restrita</title>
+    <title>TrocaTine | Área Restrita - Login</title>
 </head>
 <body>
 <header>
