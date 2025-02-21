@@ -29,6 +29,7 @@ Incentivar a troca de roupas e artigos infantis usados
 ### Pré-requisitos
 Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
+- **IDE**: Intellij, Eclipse, DIO
 - **Java Development Kit (JDK)**: Versão 8 ou superior.
 - **Apache Tomcat**: Servidor web para executar o servlet.
 - **Maven**: Para gerenciamento de dependências e construção do projeto.
