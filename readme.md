@@ -44,7 +44,7 @@ src/main/webapp: Contém os arquivos web (como JSPs, CSS e o JavaScript).
 pom.xml: Arquivo de configuração do Maven.
 
 ### Licença
-Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](https://en.wikipedia.org/wiki/MIT_License) para mais detalhes.
 
 ### Copyright
 © 2024 TrocaTine. Todos os direitos reservados.
