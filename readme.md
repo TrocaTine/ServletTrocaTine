@@ -1,8 +1,4 @@
-
-# ServletTrocaTine ![Tine](src/main/webapp/Assets/logo.png)
-
-
-# TrocaTine
+# TrocaTine ![Tine](src/main/webapp/Assets/logo.png)
 Incentivar a troca de roupas e artigos infantis usados 
 
 ---
