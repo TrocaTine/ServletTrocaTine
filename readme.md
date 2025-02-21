@@ -18,6 +18,7 @@ Incentivar a troca de roupas e artigos infantis usados
 
 ### Banco de Dados
 - **PostgreSQL**
+- **MongoDB**
 
 ### Framework
 - *Nenhum*
