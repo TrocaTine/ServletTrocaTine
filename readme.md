@@ -1,6 +1,6 @@
 
 # ServletTrocaTine
-<![Tine]("c:\Users\danielsousa-ieg\OneDrive - Instituto Germinare\Tech\1°Grade\ServletTrocaTine\src\main\webapp\Assets\logo.png")>
+<![Tine](c:\Users\danielsousa-ieg\OneDrive - Instituto Germinare\Tech\1°Grade\ServletTrocaTine\src\main\webapp\Assets\logo.png)>
 
 # TrocaTine
 Incentivar a troca de roupas e artigos infantis usados 
